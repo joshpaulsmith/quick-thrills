@@ -495,6 +495,22 @@
       0%,100%{transform:scale(1); opacity:.9}
       50%{transform:scale(1.06); opacity:1}
     }
+    /* FORCE CENTER LOGO */
+.brand{
+position:absolute;
+left:50%;
+transform:translateX(-50%);
+}
+
+.nav-inner{
+position:relative;
+}
+
+.brand img{
+height:48px;
+width:auto;
+object-fit:contain;
+}
 
     @media (max-width: 860px){
       .nav-links{display:none}
@@ -654,3 +670,6 @@
   </footer>
 </body>
 </html>
+<a class="brand" href="#top">
+<img src="logo.png" alt="The Quick Thrills Logo">
+</a>
