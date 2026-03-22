@@ -18,31 +18,37 @@
 
   <style>
     :root{
-      --bg:#070707;
+      --bg:#060606;
       --bg-soft:#0d0d0d;
       --panel:#111111;
+      --panel-soft:#151515;
       --line:rgba(255,255,255,.08);
-      --text:#f3eadc;
-      --muted:#b8aa95;
-      --accent:#f3eadc;
+      --text:#f2e8d8;
+      --muted:#baa992;
+      --accent:#f2e8d8;
       --max:1180px;
+      --shadow:0 24px 70px rgba(0,0,0,.35);
     }
 
-    *{box-sizing:border-box}
+    *{
+      box-sizing:border-box;
+    }
 
-    html{scroll-behavior:smooth}
+    html{
+      scroll-behavior:smooth;
+    }
 
     body{
       margin:0;
       font-family: Arial, Helvetica, sans-serif;
-      background:var(--bg);
       color:var(--text);
       line-height:1.6;
       -webkit-font-smoothing:antialiased;
       text-rendering:optimizeLegibility;
-      background-image:
-        radial-gradient(circle at top, rgba(255,255,255,.03), transparent 35%),
-        linear-gradient(180deg, #0a0a0a 0%, #060606 100%);
+      background:
+        radial-gradient(circle at top, rgba(255,255,255,.025), transparent 32%),
+        linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
+      overflow-x:hidden;
     }
 
     a{
@@ -64,13 +70,13 @@
       position:sticky;
       top:0;
       z-index:100;
-      background:rgba(7,7,7,.88);
+      background:rgba(6,6,6,.88);
       backdrop-filter:blur(10px);
       border-bottom:1px solid var(--line);
     }
 
     .nav-inner{
-      min-height:78px;
+      min-height:86px;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -78,24 +84,35 @@
     }
 
     .nav-logo{
-      height:34px;
+      height:64px;
       width:auto;
       object-fit:contain;
-      opacity:.96;
+      opacity:.98;
+      transition:transform .25s ease, opacity .25s ease;
+      filter:drop-shadow(0 8px 18px rgba(0,0,0,.18));
+    }
+
+    .nav-logo:hover{
+      transform:scale(1.03);
     }
 
     .nav-links{
       display:flex;
       align-items:center;
-      gap:20px;
-      font-size:12px;
-      letter-spacing:.16em;
+      gap:28px;
+      font-size:13px;
+      letter-spacing:.22em;
       text-transform:uppercase;
       color:var(--muted);
     }
 
+    .nav-links a{
+      transition:color .2s ease, transform .2s ease;
+    }
+
     .nav-links a:hover{
       color:var(--text);
+      transform:translateY(-1px);
     }
 
     .hero{
@@ -107,16 +124,26 @@
       overflow:hidden;
     }
 
-    .hero:before{
+    .hero::before{
       content:"";
       position:absolute;
       inset:0;
-      opacity:.16;
+      opacity:.12;
       pointer-events:none;
       background-image:
         radial-gradient(circle, rgba(255,255,255,.45) 1px, transparent 1px);
       background-size:4px 4px;
       mix-blend-mode:soft-light;
+    }
+
+    .hero::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      background:
+        radial-gradient(circle at 70% 36%, rgba(255,255,255,.04), transparent 20%),
+        linear-gradient(180deg, transparent 0%, rgba(0,0,0,.14) 100%);
     }
 
     .hero-inner{
@@ -125,32 +152,38 @@
       width:min(var(--max), calc(100% - 32px));
       margin:0 auto;
       display:grid;
-      grid-template-columns:1.05fr .95fr;
-      gap:40px;
+      grid-template-columns:1fr 1fr;
+      gap:64px;
       align-items:center;
-      padding:72px 0;
+      padding:90px 0;
     }
 
     .eyebrow{
       color:var(--muted);
-      font-size:11px;
+      font-size:12px;
       text-transform:uppercase;
       letter-spacing:.24em;
-      margin-bottom:18px;
+      margin-bottom:20px;
+      animation:fadeUp .8s ease both;
     }
 
-    .hero-logo{
-      width:min(100%, 620px);
-      height:auto;
-      margin-bottom:24px;
-      filter:drop-shadow(0 10px 30px rgba(0,0,0,.28));
+    .hero-title{
+      margin:0 0 18px;
+      font-size:clamp(72px, 12vw, 170px);
+      line-height:.86;
+      letter-spacing:-.08em;
+      text-transform:uppercase;
+      color:var(--text);
+      font-weight:900;
+      animation:fadeUp 1s ease both;
     }
 
     .hero-copy{
-      max-width:620px;
+      max-width:560px;
       color:var(--muted);
-      font-size:18px;
-      margin:0 0 26px;
+      font-size:20px;
+      margin:0 0 28px;
+      animation:fadeUp 1.2s ease both;
     }
 
     .cta-row{
@@ -158,11 +191,12 @@
       flex-wrap:wrap;
       gap:14px;
       margin-bottom:24px;
+      animation:fadeUp 1.35s ease both;
     }
 
     .btn{
-      min-height:50px;
-      padding:0 20px;
+      min-height:52px;
+      padding:0 22px;
       border-radius:999px;
       display:inline-flex;
       align-items:center;
@@ -171,7 +205,7 @@
       font-weight:700;
       letter-spacing:.14em;
       text-transform:uppercase;
-      transition:.2s ease;
+      transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
       border:1px solid var(--line);
     }
 
@@ -202,52 +236,71 @@
       font-size:11px;
       text-transform:uppercase;
       letter-spacing:.16em;
+      animation:fadeUp 1.5s ease both;
     }
 
     .hero-panel{
       border:1px solid var(--line);
-      border-radius:28px;
+      border-radius:32px;
       background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.05), transparent 28%),
         linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
         var(--panel);
-      min-height:520px;
+      min-height:560px;
       display:flex;
       align-items:flex-end;
-      padding:34px;
+      padding:40px;
       position:relative;
       overflow:hidden;
-      box-shadow:0 20px 60px rgba(0,0,0,.28);
+      box-shadow:var(--shadow);
+      animation:floatPanel 5s ease-in-out infinite;
     }
 
-    .hero-panel:before{
+    .hero-panel::before{
       content:"";
       position:absolute;
       inset:0;
-      background:
-        radial-gradient(circle at 30% 20%, rgba(255,255,255,.04), transparent 28%),
-        linear-gradient(180deg, transparent 0%, rgba(0,0,0,.12) 100%);
+      opacity:.09;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,.45) 1px, transparent 1px);
+      background-size:4px 4px;
+      mix-blend-mode:soft-light;
+      pointer-events:none;
+    }
+
+    .hero-panel::after{
+      content:"";
+      position:absolute;
+      top:16%;
+      left:18%;
+      width:180px;
+      height:180px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(255,255,255,.04), transparent 70%);
+      filter:blur(8px);
       pointer-events:none;
     }
 
     .panel-copy{
       position:relative;
       z-index:2;
-      max-width:340px;
+      max-width:360px;
+      animation:fadeUp 1.1s ease both;
     }
 
     .panel-kicker{
       color:var(--muted);
       font-size:11px;
       text-transform:uppercase;
-      letter-spacing:.2em;
-      margin-bottom:10px;
+      letter-spacing:.20em;
+      margin-bottom:12px;
     }
 
     .panel-title{
       margin:0 0 12px;
-      font-size:clamp(40px, 7vw, 72px);
-      line-height:.9;
-      letter-spacing:-.05em;
+      font-size:clamp(54px, 8vw, 96px);
+      line-height:.88;
+      letter-spacing:-.06em;
       text-transform:uppercase;
       color:var(--text);
     }
@@ -307,6 +360,7 @@
       border:1px solid var(--line);
       border-radius:24px;
       padding:24px;
+      box-shadow:0 14px 36px rgba(0,0,0,.16);
     }
 
     .card h3{
@@ -322,7 +376,9 @@
       min-height:300px;
       border-radius:20px;
       border:1px solid var(--line);
-      background:#0e0e0e;
+      background:
+        radial-gradient(circle at 30% 25%, rgba(255,255,255,.04), transparent 24%),
+        #0e0e0e;
       display:flex;
       align-items:flex-end;
       padding:28px;
@@ -330,11 +386,11 @@
       overflow:hidden;
     }
 
-    .release-box:before{
+    .release-box::before{
       content:"";
       position:absolute;
       inset:0;
-      opacity:.1;
+      opacity:.08;
       background-image:
         radial-gradient(circle, rgba(255,255,255,.5) 1px, transparent 1px);
       background-size:4px 4px;
@@ -384,9 +440,10 @@
     }
 
     .contact-logo{
-      width:min(100%, 440px);
-      margin:0 auto 22px;
+      width:min(100%, 520px);
+      margin:0 auto 26px;
       opacity:.98;
+      filter:drop-shadow(0 12px 30px rgba(0,0,0,.22));
     }
 
     .contact-mail{
@@ -423,17 +480,39 @@
       text-transform:uppercase;
       letter-spacing:.14em;
       font-size:11px;
+      transition:background .2s ease, color .2s ease, transform .2s ease;
     }
 
     .social-link:hover{
       color:var(--text);
       background:rgba(255,255,255,.03);
+      transform:translateY(-1px);
     }
 
     footer{
       padding:28px 0 40px;
       color:var(--muted);
       font-size:13px;
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(24px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @keyframes floatPanel{
+      0%,100%{
+        transform:translateY(0);
+      }
+      50%{
+        transform:translateY(-6px);
+      }
     }
 
     @media (max-width: 920px){
@@ -447,7 +526,7 @@
       }
 
       .hero-panel{
-        min-height:380px;
+        min-height:420px;
       }
 
       .section-head{
@@ -461,6 +540,10 @@
     }
 
     @media (max-width: 700px){
+      .nav-logo{
+        height:54px;
+      }
+
       .nav-links{
         display:none;
       }
@@ -469,12 +552,20 @@
         font-size:16px;
       }
 
+      .hero-title{
+        font-size:clamp(58px, 18vw, 110px);
+      }
+
       section{
         padding:72px 0;
       }
 
       .hero-panel{
         padding:24px;
+      }
+
+      .meta{
+        gap:12px;
       }
     }
   </style>
@@ -499,11 +590,10 @@
         <div>
           <div class="eyebrow">Alternative Rock / Northern Ontario</div>
 
-          <img class="hero-logo" src="logo.png" alt="The Quick Thrills band logo">
+          <h1 class="hero-title">Dirty Money</h1>
 
           <p class="hero-copy">
-            Alternative rock from Northern Ontario with a darker, retro-modern edge.
-            New music, visuals, and releases from The Quick Thrills.
+            Retro-modern alternative rock from Northern Ontario. Dark guitars, late-night energy, and new releases from The Quick Thrills.
           </p>
 
           <div class="cta-row">
@@ -512,7 +602,7 @@
           </div>
 
           <div class="meta">
-            <span>New single: Dirty Money</span>
+            <span>New single out now</span>
             <span>Booking open</span>
             <span>thequickthrills@proton.me</span>
           </div>
@@ -521,7 +611,7 @@
         <div class="hero-panel">
           <div class="panel-copy">
             <div class="panel-kicker">Featured Release</div>
-            <h1 class="panel-title">Dirty<br>Money</h1>
+            <h2 class="panel-title">Dirty<br>Money</h2>
             <p>Minimal, dark, and stripped back. Built to match the band’s new branding.</p>
           </div>
         </div>
