@@ -113,29 +113,37 @@
     }
 
     .nav-inner{
-      min-height:118px;
-      display:grid;
-      grid-template-columns:1fr auto 1fr;
+      min-height:126px;
+      display:flex;
+      flex-direction:column;
       align-items:center;
-      gap:16px;
+      justify-content:center;
+      gap:12px;
+      padding:14px 0 16px;
+    }
+
+    .nav-logo{
+      height:96px;
+      width:auto;
+      object-fit:contain;
+      opacity:.98;
+      transition:transform .25s ease;
+      filter:drop-shadow(0 10px 20px rgba(0,0,0,.22));
+    }
+
+    .nav-logo:hover{
+      transform:scale(1.03);
     }
 
     .nav-links{
       display:flex;
       align-items:center;
+      justify-content:center;
       gap:28px;
       font-size:17px;
       letter-spacing:.16em;
       text-transform:uppercase;
       color:var(--muted);
-    }
-
-    .nav-links.left{
-      justify-content:flex-start;
-    }
-
-    .nav-links.right{
-      justify-content:flex-end;
     }
 
     .nav-links a{
@@ -145,20 +153,6 @@
     .nav-links a:hover{
       color:var(--text);
       transform:translateY(-1px);
-    }
-
-    .nav-logo{
-      height:96px;
-      width:auto;
-      object-fit:contain;
-      opacity:.98;
-      margin:auto;
-      transition:transform .25s ease;
-      filter:drop-shadow(0 10px 20px rgba(0,0,0,.22));
-    }
-
-    .nav-logo:hover{
-      transform:scale(1.03);
     }
 
     .hero{
@@ -586,23 +580,19 @@
 
     @media (max-width: 700px){
       .nav-inner{
-        grid-template-columns:1fr;
+        min-height:auto;
         gap:10px;
-        padding:10px 0 14px;
+        padding:12px 0 16px;
       }
 
-      .nav-links.left,
-      .nav-links.right{
-        justify-content:center;
+      .nav-logo{
+        height:84px;
       }
 
       .nav-links{
         gap:22px;
         font-size:18px;
-      }
-
-      .nav-logo{
-        height:84px;
+        width:100%;
       }
 
       .hero{
@@ -691,16 +681,13 @@
 </head>
 <body>
   <nav class="nav">
-    <div class="wrap nav-inner centered">
-      <div class="nav-links left">
-        <a href="#music">Music</a>
-      </div>
-
+    <div class="wrap nav-inner">
       <a href="#top" aria-label="The Quick Thrills home">
-        <img class="nav-logo" src="logo.png" alt="The Quick Thrills logo">
+        <img class="nav-logo" src="logo2.png" alt="The Quick Thrills QT logo">
       </a>
 
-      <div class="nav-links right">
+      <div class="nav-links">
+        <a href="#music">Music</a>
         <a href="#contact">Contact</a>
       </div>
     </div>
