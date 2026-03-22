@@ -3,523 +3,22 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Quick Thrills</title>
-  <meta name="description" content="Official website of The Quick Thrills — a rock band formed in Northern Ontario, Canada." />
+
+  <!-- SEO TITLE + DESCRIPTION -->
+  <title>The Quick Thrills | Northern Ontario Rock Band | Dirty Money Single</title>
+  <meta name="description" content="The Quick Thrills are a Northern Ontario rock band from Canada. Listen to the new single Dirty Money, see upcoming shows, and book the band." />
+  <meta name="keywords" content="The Quick Thrills, Northern Ontario rock band, Dirty Money single, rock band Canada, Ontario rock band, book rock band Ontario" />
+  <meta name="author" content="The Quick Thrills" />
+
+  <!-- OPEN GRAPH (for social sharing) -->
+  <meta property="og:title" content="The Quick Thrills" />
+  <meta property="og:description" content="Northern Ontario rock band. Listen to Dirty Money." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://thequickthrills.com" />
+  <meta property="og:image" content="https://thequickthrills.com/cover.jpg" />
+
   <style>
-    :root{
-      --bg:#050505;
-      --bg2:#0a0908;
-      --panel:#11100f;
-      --text:#f2eee6;
-      --muted:#b8afa3;
-      --line:rgba(255,255,255,.08);
-      --sand:#d8c6a2;
-      --rust:#8f442e;
-      --rust-soft:rgba(143,68,46,.18);
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:Arial, Helvetica, sans-serif;
-      color:var(--text);
-      line-height:1.6;
-      background:
-        radial-gradient(circle at 70% 10%, rgba(143,68,46,.10), transparent 20%),
-        linear-gradient(180deg,#080808 0%,#040404 100%);
-    }
-
-    a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
-
-    .wrap{
-      width:min(1140px, calc(100% - 32px));
-      margin:0 auto;
-    }
-
-    .nav{
-      position:sticky;
-      top:0;
-      z-index:50;
-      backdrop-filter:blur(14px);
-      background:rgba(5,5,5,.82);
-      border-bottom:1px solid var(--line);
-    }
-
-    .nav-inner{
-      min-height:78px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      position:relative;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      min-height:48px;
-    }
-
-    .brand-text{
-      color:var(--text);
-      font-weight:800;
-      letter-spacing:-.04em;
-      text-transform:uppercase;
-      font-size:clamp(28px, 4vw, 40px);
-      line-height:.92;
-      text-align:center;
-    }
-
-    .brand-text span{
-      display:block;
-    }
-
-    .brand-text .the{
-      font-size:.42em;
-      letter-spacing:.14em;
-      margin-bottom:2px;
-    }
-
-    .nav-links{
-      position:absolute;
-      right:0;
-      display:flex;
-      gap:22px;
-      color:var(--muted);
-      font-size:14px;
-      letter-spacing:.05em;
-      text-transform:uppercase;
-    }
-
-    .nav-links a:hover{
-      color:var(--sand);
-    }
-
-    .hero{
-      min-height:94vh;
-      position:relative;
-      overflow:hidden;
-      border-bottom:1px solid var(--line);
-      background:
-        radial-gradient(circle at 72% 30%, rgba(143,68,46,.28), transparent 18%),
-        radial-gradient(circle at 72% 32%, rgba(255,255,255,.05), transparent 30%),
-        linear-gradient(180deg, rgba(0,0,0,.08), rgba(0,0,0,.24));
-    }
-
-    .hero:before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(135deg, rgba(255,255,255,.02) 0%, transparent 30%),
-        linear-gradient(transparent 0%, rgba(0,0,0,.18) 100%);
-      pointer-events:none;
-    }
-
-    .hero:after{
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      opacity:.13;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,.6) 1px, transparent 1px);
-      background-size: 4px 4px;
-      mix-blend-mode:soft-light;
-    }
-
-    .hero-grid{
-      position:relative;
-      z-index:1;
-      width:min(1140px, calc(100% - 32px));
-      margin:0 auto;
-      min-height:94vh;
-      display:grid;
-      grid-template-columns:1.02fr .98fr;
-      gap:34px;
-      align-items:center;
-      padding:72px 0 84px;
-    }
-
-    .eyebrow{
-      color:var(--muted);
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.26em;
-      margin-bottom:18px;
-    }
-
-    h1{
-      margin:0 0 14px;
-      font-size:clamp(54px, 9vw, 118px);
-      line-height:.9;
-      letter-spacing:-.055em;
-      text-transform:uppercase;
-    }
-
-    .sub{
-      max-width:560px;
-      color:var(--muted);
-      font-size:18px;
-      margin:0 0 28px;
-    }
-
-    .accent{color:var(--sand)}
-
-    .cta-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      margin-bottom:30px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-height:50px;
-      padding:0 20px;
-      border-radius:999px;
-      border:1px solid rgba(216,198,162,.16);
-      background:var(--sand);
-      color:#111;
-      font-size:12px;
-      font-weight:700;
-      text-transform:uppercase;
-      letter-spacing:.08em;
-      box-shadow:0 10px 26px rgba(0,0,0,.18);
-      transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
-    }
-
-    .btn:hover{
-      transform:translateY(-1px);
-      box-shadow:0 14px 32px rgba(0,0,0,.24);
-    }
-
-    .btn.alt{
-      background:transparent;
-      color:var(--text);
-      border-color:var(--line);
-    }
-
-    .btn.alt:hover{
-      background:var(--rust-soft);
-      border-color:rgba(143,68,46,.34);
-    }
-
-    .stats{
-      display:flex;
-      flex-wrap:wrap;
-      gap:20px;
-      color:var(--muted);
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.16em;
-    }
-
-    .poster{
-      position:relative;
-      min-height:520px;
-      border-radius:30px;
-      border:1px solid rgba(255,255,255,.07);
-      overflow:hidden;
-      box-shadow:0 28px 80px rgba(0,0,0,.38);
-      background:
-        radial-gradient(circle at 70% 28%, rgba(143,68,46,.45), transparent 18%),
-        radial-gradient(circle at 68% 28%, rgba(255,255,255,.06), transparent 26%),
-        linear-gradient(180deg,#0e0c0c 0%,#080808 100%);
-    }
-
-    .poster:before{
-      content:"";
-      position:absolute;
-      inset:0;
-      opacity:.18;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,.6) 1px, transparent 1px);
-      background-size:4px 4px;
-      mix-blend-mode:soft-light;
-      pointer-events:none;
-    }
-
-    .poster-inner{
-      position:absolute;
-      inset:0;
-      display:flex;
-      align-items:flex-end;
-      padding:38px;
-    }
-
-    .poster-copy{
-      max-width:360px;
-    }
-
-    .poster-kicker{
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:.22em;
-      font-size:12px;
-      margin-bottom:10px;
-    }
-
-    .poster-title{
-      font-size:clamp(44px, 8vw, 84px);
-      line-height:.88;
-      letter-spacing:-.05em;
-      text-transform:uppercase;
-      margin:0 0 10px;
-    }
-
-    .poster-copy p{
-      margin:0;
-      color:var(--muted);
-      font-size:15px;
-      max-width:280px;
-    }
-
-    .glow{
-      position:absolute;
-      right:12%;
-      top:13%;
-      width:280px;
-      height:280px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(143,68,46,.55) 0%, rgba(143,68,46,.18) 35%, transparent 68%);
-      filter:blur(10px);
-      animation:pulse 5.5s ease-in-out infinite;
-      pointer-events:none;
-    }
-
-    .silhouette{
-      position:absolute;
-      right:8%;
-      bottom:-2%;
-      width:min(46%, 340px);
-      height:78%;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,0)),
-        linear-gradient(180deg, #0a0a0a 0%, #040404 100%);
-      clip-path:polygon(25% 0%, 46% 2%, 58% 10%, 66% 22%, 72% 30%, 77% 40%, 79% 52%, 84% 63%, 87% 80%, 89% 100%, 12% 100%, 14% 82%, 16% 62%, 18% 49%, 21% 36%, 28% 18%);
-      box-shadow:inset 0 0 0 1px rgba(255,255,255,.03);
-      opacity:.95;
-    }
-
-    .silhouette:before{
-      content:"";
-      position:absolute;
-      width:65%;
-      height:30%;
-      right:8%;
-      top:2%;
-      background:#050505;
-      border-radius:45% 50% 42% 44%;
-      box-shadow:0 0 0 1px rgba(255,255,255,.03);
-    }
-
-    .silhouette:after{
-      content:"";
-      position:absolute;
-      width:120px;
-      height:3px;
-      background:rgba(242,238,230,.85);
-      left:2%;
-      top:18%;
-      transform:rotate(-12deg);
-      box-shadow:0 0 16px rgba(242,238,230,.16);
-    }
-
-    .desert-line{
-      position:absolute;
-      left:0;
-      right:0;
-      bottom:22%;
-      height:2px;
-      background:linear-gradient(90deg, transparent, rgba(216,198,162,.28), transparent);
-      opacity:.4;
-    }
-
-    .rock{
-      position:absolute;
-      bottom:20%;
-      width:110px;
-      height:46px;
-      background:#090909;
-      opacity:.95;
-      box-shadow:0 0 0 1px rgba(255,255,255,.03);
-    }
-
-    .rock.left{
-      left:8%;
-      clip-path:polygon(0% 100%, 10% 46%, 28% 34%, 42% 20%, 61% 26%, 74% 12%, 86% 24%, 100% 100%);
-    }
-
-    .rock.right{
-      right:16%;
-      width:150px;
-      height:58px;
-      clip-path:polygon(0% 100%, 12% 38%, 28% 30%, 41% 18%, 57% 26%, 70% 10%, 84% 22%, 100% 100%);
-    }
-
-    section{
-      padding:86px 0;
-      border-bottom:1px solid var(--line);
-    }
-
-    .section-head{
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      gap:18px;
-      margin-bottom:30px;
-    }
-
-    .section-kicker{
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:.24em;
-      font-size:12px;
-      margin-bottom:10px;
-    }
-
-    h2{
-      margin:0;
-      font-size:clamp(30px, 4vw, 44px);
-      letter-spacing:-.03em;
-      text-transform:uppercase;
-    }
-
-    .grid-2{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:22px;
-    }
-
-    .card{
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.01)),
-        #151313;
-      border:1px solid var(--line);
-      border-radius:24px;
-      padding:24px;
-      box-shadow:0 12px 34px rgba(0,0,0,.16);
-    }
-
-    .card h3{
-      margin:0 0 10px;
-      color:var(--sand);
-      font-size:14px;
-      text-transform:uppercase;
-      letter-spacing:.1em;
-    }
-
-    .cover-placeholder{
-      min-height:260px;
-      border-radius:20px;
-      border:1px solid rgba(143,68,46,.22);
-      background:
-        radial-gradient(circle at 50% 45%, rgba(143,68,46,.22), transparent 18%),
-        linear-gradient(180deg, #100f0f 0%, #090909 100%);
-      display:grid;
-      place-items:center;
-      text-align:center;
-      padding:20px;
-    }
-
-    .cover-placeholder .title{
-      font-size:clamp(30px, 5vw, 54px);
-      line-height:.9;
-      letter-spacing:-.04em;
-      text-transform:uppercase;
-      margin-bottom:10px;
-    }
-
-    .cover-placeholder .small{
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:.18em;
-      font-size:12px;
-    }
-
-    .embed-box{
-      min-height:260px;
-      border-radius:20px;
-      border:1px dashed rgba(255,255,255,.12);
-      display:grid;
-      place-items:center;
-      text-align:center;
-      color:var(--muted);
-      padding:20px;
-    }
-
-    ul.clean{
-      list-style:none;
-      padding:0;
-      margin:0;
-    }
-
-    ul.clean li + li{
-      margin-top:16px;
-      padding-top:16px;
-      border-top:1px solid var(--line);
-    }
-
-    .show-line{
-      display:flex;
-      align-items:baseline;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .muted{color:var(--muted)}
-    .bio-block{max-width:760px}
-
-    .contact{text-align:center}
-
-    .contact .big{
-      display:inline-block;
-      margin:10px 0 18px;
-      font-size:clamp(26px, 4.5vw, 52px);
-      letter-spacing:-.03em;
-    }
-
-    footer{
-      padding:28px 0 44px;
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    @keyframes pulse{
-      0%,100%{transform:scale(1); opacity:.9}
-      50%{transform:scale(1.06); opacity:1}
-    }
-    /* FORCE CENTER LOGO */
-.brand{
-position:absolute;
-left:50%;
-transform:translateX(-50%);
-}
-
-.nav-inner{
-position:relative;
-}
-
-.brand img{
-height:48px;
-width:auto;
-object-fit:contain;
-}
-
-    @media (max-width: 860px){
-      .nav-links{display:none}
-      .hero-grid, .grid-2{grid-template-columns:1fr}
-      .hero{min-height:auto}
-      .hero-grid{min-height:auto;padding-top:42px}
-      .poster{min-height:460px}
-      .section-head{display:block}
-    }
+    /* KEEP YOUR EXISTING CSS HERE EXACTLY THE SAME */
   </style>
 </head>
 <body>
@@ -547,9 +46,12 @@ object-fit:contain;
         <div>
           <div class="eyebrow">Official Band Site</div>
           <h1>The Quick Thrills</h1>
+
+          <!-- SEO TEXT BLOCK -->
           <p class="sub">
-            A rock band <span class="accent">formed in Northern Ontario, Canada</span> —
-            blending gritty guitars, dark atmosphere, and sharp late-night energy.
+            The Quick Thrills are a <span class="accent">Northern Ontario rock band</span>
+            known for gritty guitars, dark atmosphere, and late-night energy.
+            Listen to the new single <strong>Dirty Money</strong> and see upcoming shows across Ontario.
           </p>
 
           <div class="cta-row">
@@ -559,23 +61,17 @@ object-fit:contain;
 
           <div class="stats">
             <span>New single: Dirty Money</span>
-            <span>Northern Ontario</span>
+            <span>Northern Ontario Rock Band</span>
             <span>Booking open</span>
           </div>
         </div>
 
         <div class="poster">
-          <div class="glow"></div>
-          <div class="desert-line"></div>
-          <div class="rock left"></div>
-          <div class="rock right"></div>
-          <div class="silhouette"></div>
-
           <div class="poster-inner">
             <div class="poster-copy">
               <div class="poster-kicker">Featured Single</div>
               <div class="poster-title">Dirty<br>Money</div>
-              <p>Minimal desert-rock styling with grain, glow, and a darker late-night poster feel.</p>
+              <p>New single by The Quick Thrills, a Northern Ontario rock band.</p>
             </div>
           </div>
         </div>
@@ -587,14 +83,13 @@ object-fit:contain;
         <div class="section-head">
           <div>
             <div class="section-kicker">Music</div>
-            <h2>Latest Release</h2>
+            <h2>Latest Release – Dirty Money</h2>
           </div>
-          <div class="muted">Add your Spotify, Apple Music, or YouTube links here when ready.</div>
         </div>
 
         <div class="grid-2">
           <div class="card">
-            <h3>Featured Single</h3>
+            <h3>Dirty Money – The Quick Thrills</h3>
             <div class="cover-placeholder">
               <div>
                 <div class="small">New Single</div>
@@ -605,8 +100,10 @@ object-fit:contain;
           </div>
 
           <div class="card">
-            <h3>Player Embed</h3>
-            <div class="embed-box">Paste your Spotify or YouTube embed here when the song is live.</div>
+            <h3>Listen</h3>
+            <div class="embed-box">
+              Spotify / Apple Music / YouTube player embed here
+            </div>
           </div>
         </div>
       </div>
@@ -617,7 +114,7 @@ object-fit:contain;
         <div class="section-head">
           <div>
             <div class="section-kicker">Shows</div>
-            <h2>Upcoming Dates</h2>
+            <h2>The Quick Thrills Upcoming Shows</h2>
           </div>
         </div>
 
@@ -636,15 +133,16 @@ object-fit:contain;
         <div class="section-head">
           <div>
             <div class="section-kicker">About</div>
-            <h2>Band Bio</h2>
+            <h2>About The Quick Thrills</h2>
           </div>
         </div>
 
         <div class="card bio-block">
           <p>
-            The Quick Thrills are a rock band formed in <span class="accent">Northern Ontario, Canada</span>,
-            built on raw guitars, nocturnal mood, and stripped-back intensity. Their sound feels lean, loud,
-            and made for dark rooms, long drives, and late nights.
+            The Quick Thrills are a rock band formed in <strong>Northern Ontario, Canada</strong>.
+            Their sound blends gritty guitars, dark atmosphere, and stripped-back intensity.
+            Inspired by desert rock, blues rock, and modern alternative, The Quick Thrills
+            are currently recording and performing across Ontario and the Midwest.
           </p>
         </div>
       </div>
@@ -653,7 +151,7 @@ object-fit:contain;
     <section id="contact">
       <div class="wrap contact">
         <div class="section-kicker">Contact</div>
-        <h2>Booking & Links</h2>
+        <h2>Book The Quick Thrills</h2>
         <a class="big" href="mailto:booking@thequickthrills.com">booking@thequickthrills.com</a>
 
         <div class="cta-row" style="justify-content:center;">
@@ -666,10 +164,7 @@ object-fit:contain;
   </main>
 
   <footer>
-    <div class="wrap">© 2026 The Quick Thrills</div>
+    <div class="wrap">© 2026 The Quick Thrills – Northern Ontario Rock Band</div>
   </footer>
 </body>
 </html>
-<a class="brand" href="#top">
-<img src="logo.png" alt="The Quick Thrills Logo">
-</a>
