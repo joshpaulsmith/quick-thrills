@@ -7,11 +7,9 @@
   <title>The Quick Thrills — Money Honey</title>
   <meta name="description" content="Official website of The Quick Thrills. Alternative rock from Northern Ontario. Listen to Money Honey and follow new releases.">
 
-  <!-- Favicon (QT logo) -->
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
 
-  <!-- Social sharing (full logo) -->
   <meta property="og:title" content="The Quick Thrills — Money Honey" />
   <meta property="og:description" content="Alternative rock from Northern Ontario. Listen to Money Honey." />
   <meta property="og:type" content="website" />
@@ -22,18 +20,20 @@
 
   <style>
     :root{
-      --bg:#0a0807;
-      --bg-2:#120d0b;
-      --rust:#3a2117;
-      --rust-2:#5b3424;
-      --panel:#15110f;
-      --panel-2:#1a1411;
+      --bg:#050404;
+      --bg-2:#0d0908;
+      --panel:#14100e;
+      --panel-2:#1b1512;
       --line:rgba(255,255,255,.08);
-      --text:#f2e8d8;
-      --muted:#c0aa93;
-      --accent:#f2e8d8;
+      --text:#f3eadc;
+      --muted:#c5ad96;
+      --accent:#f3eadc;
+      --accent-dark:#111;
+      --pink:rgba(255,70,160,.28);
+      --green:rgba(40,255,170,.24);
+      --warm:rgba(120,60,35,.20);
       --max:1180px;
-      --shadow:0 24px 70px rgba(0,0,0,.35);
+      --shadow:0 24px 70px rgba(0,0,0,.38);
     }
 
     *{
@@ -53,24 +53,24 @@
       text-rendering:optimizeLegibility;
       overflow-x:hidden;
       background:
-        radial-gradient(circle at 20% 18%, rgba(91,52,36,.22), transparent 20%),
-        radial-gradient(circle at 78% 26%, rgba(58,33,23,.22), transparent 22%),
-        radial-gradient(circle at 50% 78%, rgba(91,52,36,.12), transparent 26%),
-        linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 45%, #070606 100%);
+        radial-gradient(circle at 18% 16%, rgba(110,60,35,.18), transparent 20%),
+        radial-gradient(circle at 82% 24%, rgba(70,35,20,.18), transparent 24%),
+        radial-gradient(circle at 50% 80%, rgba(90,45,30,.10), transparent 24%),
+        linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 48%, #030303 100%);
       background-attachment: fixed;
     }
 
     body::before{
       content:"";
       position:fixed;
-      inset:0;
+      inset:-10%;
       pointer-events:none;
       opacity:.10;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,.45) 1px, transparent 1px);
+      background-image:radial-gradient(circle, rgba(255,255,255,.45) 1px, transparent 1px);
       background-size:4px 4px;
       mix-blend-mode:soft-light;
       z-index:0;
+      animation:grainMove 8s steps(10) infinite;
     }
 
     body::after{
@@ -79,8 +79,8 @@
       inset:0;
       pointer-events:none;
       background:
-        linear-gradient(180deg, rgba(255,255,255,.015), transparent 18%, transparent 82%, rgba(0,0,0,.2)),
-        radial-gradient(circle at center, transparent 35%, rgba(0,0,0,.16) 100%);
+        linear-gradient(180deg, rgba(255,255,255,.015), transparent 18%, transparent 82%, rgba(0,0,0,.24)),
+        radial-gradient(circle at center, transparent 35%, rgba(0,0,0,.18) 100%);
       z-index:0;
     }
 
@@ -109,23 +109,23 @@
       position:sticky;
       top:0;
       z-index:100;
-      background:rgba(10,8,7,.82);
-      backdrop-filter:blur(10px);
+      background:rgba(6,5,5,.84);
+      backdrop-filter:blur(12px);
       border-bottom:1px solid var(--line);
     }
 
     .nav-inner{
-      min-height:126px;
+      min-height:128px;
       display:flex;
       flex-direction:column;
       align-items:center;
       justify-content:center;
-      gap:12px;
+      gap:10px;
       padding:14px 0 16px;
     }
 
     .nav-logo{
-      height:96px;
+      height:92px;
       width:auto;
       object-fit:contain;
       opacity:.98;
@@ -135,6 +135,14 @@
 
     .nav-logo:hover{
       transform:scale(1.03);
+    }
+
+    .nav-tagline{
+      font-size:11px;
+      letter-spacing:.28em;
+      text-transform:uppercase;
+      color:var(--muted);
+      text-align:center;
     }
 
     .nav-links{
@@ -171,7 +179,7 @@
       position:absolute;
       inset:0;
       background:
-        radial-gradient(circle at 68% 35%, rgba(91,52,36,.18), transparent 20%),
+        radial-gradient(circle at 72% 35%, rgba(120,60,35,.12), transparent 20%),
         linear-gradient(180deg, rgba(255,255,255,.015), transparent 18%, rgba(0,0,0,.14));
       pointer-events:none;
     }
@@ -183,9 +191,9 @@
       margin:0 auto;
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:56px;
+      gap:58px;
       align-items:center;
-      padding:72px 0 84px;
+      padding:76px 0 88px;
     }
 
     .eyebrow{
@@ -199,7 +207,7 @@
 
     .hero-title{
       margin:0 0 16px;
-      font-size:clamp(80px, 12vw, 180px);
+      font-size:clamp(82px, 12vw, 182px);
       line-height:.88;
       letter-spacing:.02em;
       text-transform:uppercase;
@@ -219,7 +227,7 @@
       display:flex;
       flex-wrap:wrap;
       gap:14px;
-      margin-bottom:24px;
+      margin-bottom:18px;
       animation:fadeUp 1.35s ease both;
     }
 
@@ -240,7 +248,7 @@
 
     .btn.primary{
       background:var(--accent);
-      color:#111;
+      color:var(--accent-dark);
       border-color:var(--accent);
     }
 
@@ -255,6 +263,28 @@
 
     .btn.secondary:hover{
       background:rgba(255,255,255,.05);
+      transform:translateY(-1px);
+    }
+
+    .stream-links{
+      margin:0 0 24px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      font-size:14px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color:var(--muted);
+      animation:fadeUp 1.42s ease both;
+    }
+
+    .stream-links a{
+      transition:color .2s ease, transform .2s ease;
+    }
+
+    .stream-links a:hover{
+      color:var(--text);
+      transform:translateY(-1px);
     }
 
     .meta{
@@ -272,7 +302,7 @@
       border:1px solid rgba(255,255,255,.08);
       border-radius:34px;
       background:
-        radial-gradient(circle at 30% 24%, rgba(91,52,36,.20), transparent 24%),
+        radial-gradient(circle at 30% 24%, rgba(120,60,35,.16), transparent 24%),
         linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
         linear-gradient(180deg, var(--panel-2), var(--panel));
       min-height:560px;
@@ -291,8 +321,7 @@
       position:absolute;
       inset:0;
       opacity:.08;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,.5) 1px, transparent 1px);
+      background-image:radial-gradient(circle, rgba(255,255,255,.5) 1px, transparent 1px);
       background-size:4px 4px;
       mix-blend-mode:soft-light;
       pointer-events:none;
@@ -306,7 +335,7 @@
       width:220px;
       height:220px;
       border-radius:50%;
-      background:radial-gradient(circle, rgba(91,52,36,.18), transparent 70%);
+      background:radial-gradient(circle, rgba(120,60,35,.18), transparent 70%);
       filter:blur(12px);
       pointer-events:none;
     }
@@ -318,7 +347,21 @@
       max-width:420px;
     }
 
+    .panel-art::before{
+      content:"";
+      position:absolute;
+      inset:-24px;
+      background:
+        radial-gradient(circle at 30% 35%, var(--green), transparent 40%),
+        radial-gradient(circle at 70% 70%, var(--pink), transparent 40%);
+      filter:blur(42px);
+      z-index:1;
+      pointer-events:none;
+    }
+
     .panel-art img{
+      position:relative;
+      z-index:2;
       width:100%;
       aspect-ratio:1 / 1;
       object-fit:cover;
@@ -376,7 +419,7 @@
     .section-note{
       color:var(--muted);
       font-size:16px;
-      max-width:380px;
+      max-width:400px;
       text-align:right;
     }
 
@@ -388,7 +431,7 @@
 
     .card{
       background:
-        radial-gradient(circle at 24% 18%, rgba(91,52,36,.10), transparent 20%),
+        radial-gradient(circle at 24% 18%, rgba(120,60,35,.10), transparent 20%),
         linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
         var(--panel);
       border:1px solid var(--line);
@@ -411,7 +454,7 @@
       border-radius:20px;
       border:1px solid var(--line);
       background:
-        radial-gradient(circle at 30% 25%, rgba(91,52,36,.18), transparent 24%),
+        radial-gradient(circle at 30% 25%, rgba(120,60,35,.16), transparent 24%),
         linear-gradient(180deg, #181210, #100d0c);
       display:flex;
       align-items:center;
@@ -426,8 +469,7 @@
       position:absolute;
       inset:0;
       opacity:.08;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,.5) 1px, transparent 1px);
+      background-image:radial-gradient(circle, rgba(255,255,255,.5) 1px, transparent 1px);
       background-size:4px 4px;
       mix-blend-mode:soft-light;
     }
@@ -439,7 +481,21 @@
       max-width:340px;
     }
 
+    .release-art::before{
+      content:"";
+      position:absolute;
+      inset:-20px;
+      background:
+        radial-gradient(circle at 30% 35%, rgba(40,255,170,.18), transparent 38%),
+        radial-gradient(circle at 70% 70%, rgba(255,70,160,.18), transparent 38%);
+      filter:blur(34px);
+      z-index:1;
+      pointer-events:none;
+    }
+
     .release-art img{
+      position:relative;
+      z-index:2;
       width:100%;
       aspect-ratio:1 / 1;
       object-fit:cover;
@@ -471,9 +527,37 @@
       place-items:center;
       text-align:center;
       color:var(--muted);
-      padding:22px;
+      padding:28px;
       background:rgba(255,255,255,.01);
       font-size:18px;
+    }
+
+    .embed-box strong{
+      display:block;
+      color:var(--text);
+      font-size:28px;
+      letter-spacing:.06em;
+      margin-bottom:12px;
+      font-family:'Bebas Neue', sans-serif;
+      text-transform:uppercase;
+    }
+
+    .coming-card{
+      text-align:center;
+      padding:38px 28px;
+    }
+
+    .coming-card p{
+      margin:0 auto;
+      max-width:720px;
+      color:var(--muted);
+      font-size:21px;
+    }
+
+    .about-copy{
+      font-size:20px;
+      color:var(--muted);
+      max-width:880px;
     }
 
     .contact{
@@ -558,6 +642,20 @@
       }
     }
 
+    @keyframes grainMove{
+      0%{ transform:translate(0,0); }
+      10%{ transform:translate(-1%,-1%); }
+      20%{ transform:translate(1%,1%); }
+      30%{ transform:translate(-2%,1%); }
+      40%{ transform:translate(2%,-1%); }
+      50%{ transform:translate(-1%,2%); }
+      60%{ transform:translate(1%,-2%); }
+      70%{ transform:translate(-2%,0); }
+      80%{ transform:translate(2%,0); }
+      90%{ transform:translate(0,2%); }
+      100%{ transform:translate(0,0); }
+    }
+
     @media (max-width: 920px){
       .hero-inner,
       .grid-2{
@@ -604,6 +702,11 @@
         width:100%;
       }
 
+      .nav-tagline{
+        font-size:10px;
+        letter-spacing:.22em;
+      }
+
       .hero{
         min-height:auto;
       }
@@ -640,6 +743,11 @@
         width:100%;
       }
 
+      .stream-links{
+        gap:12px;
+        font-size:13px;
+      }
+
       .meta{
         gap:10px;
         font-size:10px;
@@ -665,6 +773,11 @@
         padding:22px;
       }
 
+      .about-copy,
+      .coming-card p{
+        font-size:18px;
+      }
+
       .contact-logo{
         width:min(100%, 360px);
       }
@@ -687,6 +800,8 @@
         <img class="nav-logo" src="logo2.png" alt="The Quick Thrills QT logo">
       </a>
 
+      <div class="nav-tagline">Love, Money, and Trouble</div>
+
       <div class="nav-links">
         <a href="#music">Music</a>
         <a href="#about">About</a>
@@ -704,12 +819,18 @@
           <h1 class="hero-title">Money Honey</h1>
 
           <p class="hero-copy">
-            Retro-modern alternative rock from Northern Ontario. Dark guitars, late-night energy, and new releases from The Quick Thrills.
+            Money Honey is the latest single from The Quick Thrills — retro guitars, neon tone, and late-night energy from Northern Ontario.
           </p>
 
           <div class="cta-row">
-            <a class="btn primary" href="#music">Listen Now</a>
-            <a class="btn secondary" href="#contact">Contact</a>
+            <a class="btn primary" href="#music">Stream Money Honey</a>
+            <a class="btn secondary" href="#contact">Contact / Booking</a>
+          </div>
+
+          <div class="stream-links">
+            <a href="#">Spotify</a>
+            <a href="#">Apple Music</a>
+            <a href="#">YouTube</a>
           </div>
 
           <div class="meta">
@@ -736,7 +857,7 @@
             <h2>Latest Release</h2>
           </div>
           <div class="section-note">
-            Add your Spotify, Apple Music, or YouTube embed here when ready.
+            Drop in your Spotify, Apple Music, or YouTube embed to turn this into a full release landing page.
           </div>
         </div>
 
@@ -754,9 +875,30 @@
           <div class="card">
             <h3>Player</h3>
             <div class="embed-box">
-              Paste your Spotify, Apple Music, or YouTube embed code here.
+              <div>
+                <strong>Embed Your Stream</strong>
+                Paste your Spotify, Apple Music, or YouTube embed code here when ready.
+              </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="coming-soon">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <div class="section-kicker">Next Release</div>
+            <h2>Coming Soon</h2>
+          </div>
+        </div>
+
+        <div class="card coming-card">
+          <p>
+            More music from The Quick Thrills is on the way. Follow on Instagram and YouTube for previews,
+            visuals, and release announcements from the next chapter.
+          </p>
         </div>
       </div>
     </section>
@@ -771,10 +913,10 @@
         </div>
 
         <div class="card">
-          <p>
+          <p class="about-copy">
             The Quick Thrills are an alternative rock project from Northern Ontario, started by two small town kids, Josh and Dayna.
-            Built on retro-inspired guitar tones, modern production, and a DIY approach, the band focuses on strong visuals,
-            loud guitars, and independent releases.
+            Built on retro-inspired guitar tones, modern production, and a DIY approach, the band blends strong visuals, loud guitars,
+            neon atmosphere, and independent releases into one world of love, money, and trouble.
           </p>
         </div>
       </div>
