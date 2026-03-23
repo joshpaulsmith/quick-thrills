@@ -715,7 +715,55 @@
         font-size:20px;
         width:100%;
       }
-    }
+    }/* MOBILE FIX */
+@media (max-width: 768px) {
+
+  /* Make header smaller on mobile */
+  header {
+    padding: 20px 0 10px 0;
+  }
+
+  /* Make logo slightly smaller on mobile */
+  .logo img {
+    width: 70px;
+  }
+
+  /* Reduce space above hero */
+  .hero {
+    padding-top: 40px;
+    padding-bottom: 40px;
+  }
+
+  /* Make MONEY HONEY big on mobile */
+  .hero h1 {
+    font-size: 48px;
+    line-height: 1.0;
+    margin-bottom: 20px;
+  }
+
+  /* Make sub text readable */
+  .hero p {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  /* Make button bigger */
+  .cta-button {
+    font-size: 16px;
+    padding: 16px 20px;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  /* Stack Spotify / Apple buttons */
+  .platforms {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+  }
+
+}
   </style>
 </head>
 <body>
