@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>The Quick Thrills — Money Honey</title>
-  <meta name="description" content="Official website of The Quick Thrills. Alternative rock from Northern Ontario. Listen to Money Honey and follow new releases.">
+  <meta name="description" content="Official website of The Quick Thrills. Listen to our latest single, Money Honey. Alternative rock from Northern Ontario.">
 
   <link rel="icon" type="image/png" href="favicon.png">
   <link rel="apple-touch-icon" href="favicon.png">
 
   <meta property="og:title" content="The Quick Thrills — Money Honey" />
-  <meta property="og:description" content="Alternative rock from Northern Ontario. Listen to Money Honey." />
+  <meta property="og:description" content="Listen to our latest single, Money Honey." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.quickthrills.com" />
   <meta property="og:image" content="https://www.quickthrills.com/moneyhoney.jpg" />
@@ -29,9 +29,9 @@
       --muted:#c5ad96;
       --accent:#f3eadc;
       --accent-dark:#111;
-      --pink:rgba(255,70,160,.28);
-      --green:rgba(40,255,170,.24);
-      --warm:rgba(120,60,35,.20);
+      --pink:rgba(255,70,160,.26);
+      --green:rgba(40,255,170,.22);
+      --warm:rgba(120,60,35,.18);
       --max:1180px;
       --shadow:0 24px 70px rgba(0,0,0,.38);
     }
@@ -94,7 +94,7 @@
       display:block;
     }
 
-    h1, h2, h3, .hero-title, .panel-title, .release-title, .nav-links, .btn{
+    h1, h2, h3, .hero-title, .nav-links, .btn{
       font-family:'Bebas Neue', sans-serif;
     }
 
@@ -219,7 +219,7 @@
       max-width:560px;
       color:var(--muted);
       font-size:24px;
-      margin:0 0 28px;
+      margin:0 0 26px;
       animation:fadeUp 1.2s ease both;
     }
 
@@ -227,7 +227,7 @@
       display:flex;
       flex-wrap:wrap;
       gap:14px;
-      margin-bottom:18px;
+      margin-bottom:16px;
       animation:fadeUp 1.35s ease both;
     }
 
@@ -266,25 +266,45 @@
       transform:translateY(-1px);
     }
 
-    .stream-links{
-      margin:0 0 24px;
+    .stream-row{
       display:flex;
+      align-items:center;
+      gap:16px;
+      margin:12px 0 24px;
       flex-wrap:wrap;
-      gap:18px;
-      font-size:14px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color:var(--muted);
       animation:fadeUp 1.42s ease both;
     }
 
-    .stream-links a{
-      transition:color .2s ease, transform .2s ease;
+    .stream-label{
+      font-size:11px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--muted);
     }
 
-    .stream-links a:hover{
-      color:var(--text);
+    .stream-icons{
+      display:flex;
+      align-items:center;
+      gap:18px;
+    }
+
+    .stream-icons a{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      opacity:.88;
+      transition:opacity .2s ease, transform .2s ease;
+    }
+
+    .stream-icons a:hover{
+      opacity:1;
       transform:translateY(-1px);
+    }
+
+    .stream-icons img{
+      height:22px;
+      width:auto;
+      display:block;
     }
 
     .meta{
@@ -542,25 +562,40 @@
       text-transform:uppercase;
     }
 
-    .coming-card{
+    .teaser-center{
       text-align:center;
-      padding:38px 28px;
+      padding:18px 0 8px;
     }
 
-    .coming-card p{
-      margin:0 auto;
-      max-width:720px;
+    .teaser-center .section-kicker{
+      margin-bottom:14px;
+    }
+
+    .teaser-center h2{
+      font-size:clamp(48px, 7vw, 76px);
+    }
+
+    .about-wrap{
+      text-align:center;
+    }
+
+    .about-wrap h2,
+    .about-wrap .section-kicker{
+      text-align:center;
+    }
+
+    .about-card{
+      margin:30px auto 0;
+      max-width:820px;
+    }
+
+    .about-copy{
+      font-size:20px;
       color:var(--muted);
-      font-size:21px;
+      max-width:700px;
+      margin:0 auto;
+      text-align:center;
     }
-
-   .about-copy{
-  font-size:20px;
-  color:var(--muted);
-  max-width:680px;
-  margin:0 auto;
-  text-align:center;
-}
 
     .contact{
       text-align:center;
@@ -622,6 +657,7 @@
       font-size:14px;
       position:relative;
       z-index:1;
+      text-align:center;
     }
 
     @keyframes fadeUp{
@@ -745,9 +781,13 @@
         width:100%;
       }
 
-      .stream-links{
-        gap:12px;
-        font-size:13px;
+      .stream-row{
+        gap:10px;
+        margin-bottom:20px;
+      }
+
+      .stream-icons img{
+        height:20px;
       }
 
       .meta{
@@ -775,8 +815,7 @@
         padding:22px;
       }
 
-      .about-copy,
-      .coming-card p{
+      .about-copy{
         font-size:18px;
       }
 
@@ -792,41 +831,7 @@
         font-size:20px;
         width:100%;
       }
-    }.stream-icons{
-  display:flex;
-  gap:16px;
-  margin:12px 0 26px;
-  align-items:center;
-}
-.stream-icons{
-  display:flex;
-  gap:18px;
-  margin:16px 0 28px;
-  align-items:center;
-}
-
-.stream-icons a{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:12px 18px;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,0.12);
-  background:rgba(255,255,255,0.03);
-  transition:transform .2s ease, background .2s ease, border .2s ease;
-}
-
-.stream-icons a:hover{
-  transform:translateY(-2px);
-  background:rgba(255,255,255,0.08);
-  border:1px solid rgba(255,255,255,0.25);
-}
-
-.stream-icons img{
-  height:22px;
-  width:auto;
-  display:block;
-}
+    }
   </style>
 </head>
 <body>
@@ -855,23 +860,25 @@
           <h1 class="hero-title">Money Honey</h1>
 
           <p class="hero-copy">
-          We’re The Quick Thrills. This is our latest single.
-          Turn it up and drive fast somewhere.
+            We’re The Quick Thrills. This is our latest single. Turn it up.
           </p>
 
           <div class="cta-row">
-           <a class="btn primary" href="#music">Listen to Our Latest Single</a>
-           <a class="btn secondary" href="#contact">How to Reach Us</a>
+            <a class="btn primary" href="YOUR_SPOTIFY_LINK" target="_blank">Listen to Our Latest Single</a>
+            <a class="btn secondary" href="#contact">Contact / Booking</a>
           </div>
 
-       <div class="stream-icons">
-  <a href="YOUR_SPOTIFY_LINK" target="_blank">
-    <img src="spotify.png" alt="Spotify">
-  </a>
-  <a href="YOUR_APPLE_LINK" target="_blank">
-    <img src="apple.png" alt="Apple Music">
-  </a>
-</div>
+          <div class="stream-row">
+            <span class="stream-label">Available on</span>
+            <div class="stream-icons">
+              <a href="YOUR_SPOTIFY_LINK" target="_blank" aria-label="Spotify">
+                <img src="spotify.png" alt="Spotify">
+              </a>
+              <a href="YOUR_APPLE_LINK" target="_blank" aria-label="Apple Music">
+                <img src="apple.png" alt="Apple Music">
+              </a>
+            </div>
+          </div>
 
           <div class="meta">
             <span>New single out now</span>
@@ -895,6 +902,7 @@
             <h2>Latest Release</h2>
           </div>
           <div class="section-note">
+            Add your Spotify or Apple Music embed here when ready.
           </div>
         </div>
 
@@ -914,7 +922,7 @@
             <div class="embed-box">
               <div>
                 <strong>Embed Your Stream</strong>
-                Paste your Spotify, Apple Music, or YouTube embed code here when ready.
+                Paste your Spotify or Apple Music embed code here when ready.
               </div>
             </div>
           </div>
@@ -922,29 +930,25 @@
       </div>
     </section>
 
-     <section id="coming-soon">
-  <div class="wrap" style="text-align:center; padding:120px 0;">
-    <div class="section-kicker">Next Release</div>
-    <h2 style="font-size:72px;">Album "Love, Money, and Trouble" Coming Soon</h2>
-  </div>
-</section>
+    <section id="coming-soon">
+      <div class="wrap teaser-center">
+        <div class="section-kicker">Next Release</div>
+        <h2>Album Coming Soon</h2>
+      </div>
+    </section>
 
-   <section id="about">
-  <div class="wrap" style="text-align:center;">
-    
-    <div class="section-kicker">About</div>
-    <h2>The Quick Thrills</h2>
+    <section id="about">
+      <div class="wrap about-wrap">
+        <div class="section-kicker">About</div>
+        <h2>The Quick Thrills</h2>
 
-    <div class="card" style="margin: 30px auto 0; max-width: 800px;">
-      <p class="about-copy">
-        We’re The Quick Thrills — an alternative rock project from Northern Ontario.
-        We make loud music for late nights, long drives, and bad decisions.
-        We release everything independently.
-      </p>
-    </div>
-
-  </div>
-</section>
+        <div class="card about-card">
+          <p class="about-copy">
+            We’re The Quick Thrills — a rock band from Northern Ontario. We make loud music for late nights, long drives, and bad decisions. We release everything independently.
+          </p>
+        </div>
+      </div>
+    </section>
 
     <section id="contact">
       <div class="wrap contact">
@@ -952,14 +956,14 @@
         <img class="contact-logo" src="logo.png" alt="The Quick Thrills logo">
         <a class="contact-mail" href="mailto:thequickthrills@proton.me">thequickthrills@proton.me</a>
         <p class="contact-copy">
-          For booking, press, or general inquiries, contact The Quick Thrills at thequickthrills@proton.me.
+          For booking, press, or general inquiries, reach us at thequickthrills@proton.me.
         </p>
 
         <div class="socials">
           <a class="social-link" href="https://www.instagram.com/thequickthrills/" target="_blank">Instagram</a>
           <a class="social-link" href="https://www.youtube.com/@thequickthrills" target="_blank">YouTube</a>
-          <a class="social-link" href="#" target="_blank">Spotify</a>
-          <a class="social-link" href="#" target="_blank">Apple Music</a>
+          <a class="social-link" href="YOUR_SPOTIFY_LINK" target="_blank">Spotify</a>
+          <a class="social-link" href="YOUR_APPLE_LINK" target="_blank">Apple Music</a>
         </div>
       </div>
     </section>
