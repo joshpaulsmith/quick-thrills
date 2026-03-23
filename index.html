@@ -5,122 +5,245 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>The Quick Thrills — Money Honey</title>
-  <meta name="description" content="Official website of The Quick Thrills. Listen to our latest single, Money Honey.">
+  <meta name="description" content="Official website of The Quick Thrills. Listen to our latest single, Money Honey. Alternative rock from Northern Ontario.">
 
   <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
 
   <meta property="og:title" content="The Quick Thrills — Money Honey" />
   <meta property="og:description" content="Listen to our latest single, Money Honey." />
-  <meta property="og:image" content="https://www.quickthrills.com/moneyhoney.jpg" />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.quickthrills.com" />
+  <meta property="og:image" content="https://www.quickthrills.com/moneyhoney.jpg" />
 
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo+Narrow:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --bg:#050404;
+      --bg-2:#0d0908;
       --panel:#14100e;
+      --panel-2:#1b1512;
       --line:rgba(255,255,255,.08);
       --text:#f3eadc;
       --muted:#c5ad96;
       --accent:#f3eadc;
       --accent-dark:#111;
+      --pink:rgba(255,70,160,.26);
+      --green:rgba(40,255,170,.22);
+      --warm:rgba(120,60,35,.18);
       --max:1180px;
+      --shadow:0 24px 70px rgba(0,0,0,.38);
     }
 
-    *{ box-sizing:border-box; }
+    *{
+      box-sizing:border-box;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
     body{
       margin:0;
       font-family:'Archivo Narrow', Arial, sans-serif;
       color:var(--text);
-      background:#050404;
-      background-image:radial-gradient(rgba(255,255,255,.05) 1px, transparent 1px);
-      background-size:4px 4px;
+      line-height:1.5;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+      overflow-x:hidden;
+      background:
+        radial-gradient(circle at 18% 16%, rgba(110,60,35,.18), transparent 20%),
+        radial-gradient(circle at 82% 24%, rgba(70,35,20,.18), transparent 24%),
+        radial-gradient(circle at 50% 80%, rgba(90,45,30,.10), transparent 24%),
+        linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 48%, #030303 100%);
+      background-attachment: fixed;
     }
 
-    a{ color:inherit; text-decoration:none; }
-    img{ max-width:100%; display:block; }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:-10%;
+      pointer-events:none;
+      opacity:.10;
+      background-image:radial-gradient(circle, rgba(255,255,255,.45) 1px, transparent 1px);
+      background-size:4px 4px;
+      mix-blend-mode:soft-light;
+      z-index:0;
+      animation:grainMove 8s steps(10) infinite;
+    }
 
-    h1, h2, h3, .btn, .nav-links{
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.015), transparent 18%, transparent 82%, rgba(0,0,0,.24)),
+        radial-gradient(circle at center, transparent 35%, rgba(0,0,0,.18) 100%);
+      z-index:0;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+    }
+
+    img{
+      max-width:100%;
+      display:block;
+    }
+
+    h1, h2, h3, .hero-title, .nav-links, .btn{
       font-family:'Bebas Neue', sans-serif;
-      letter-spacing:.05em;
     }
 
     .wrap{
       width:min(var(--max), calc(100% - 32px));
       margin:0 auto;
+      position:relative;
+      z-index:1;
     }
 
-    /* NAV */
     .nav{
+      position:sticky;
+      top:0;
+      z-index:100;
+      background:rgba(6,5,5,.84);
+      backdrop-filter:blur(12px);
       border-bottom:1px solid var(--line);
-      text-align:center;
-      padding:20px 0;
+    }
+
+    .nav-inner{
+      min-height:128px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:14px 0 16px;
     }
 
     .nav-logo{
-      height:80px;
-      margin:0 auto 10px;
+      height:92px;
+      width:auto;
+      object-fit:contain;
+      opacity:.98;
+      transition:transform .25s ease;
+      filter:drop-shadow(0 10px 20px rgba(0,0,0,.22));
+    }
+
+    .nav-logo:hover{
+      transform:scale(1.03);
     }
 
     .nav-tagline{
       font-size:11px;
-      letter-spacing:.25em;
+      letter-spacing:.28em;
       text-transform:uppercase;
       color:var(--muted);
-      margin-bottom:10px;
+      text-align:center;
     }
 
     .nav-links{
       display:flex;
+      align-items:center;
       justify-content:center;
-      gap:24px;
-      font-size:18px;
+      gap:28px;
+      font-size:17px;
+      letter-spacing:.16em;
       text-transform:uppercase;
       color:var(--muted);
     }
 
-    /* HERO */
+    .nav-links a{
+      transition:color .2s ease, transform .2s ease;
+    }
+
+    .nav-links a:hover{
+      color:var(--text);
+      transform:translateY(-1px);
+    }
+
     .hero{
-      padding:80px 0;
+      min-height:90vh;
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
       border-bottom:1px solid var(--line);
     }
 
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 72% 35%, rgba(120,60,35,.12), transparent 20%),
+        linear-gradient(180deg, rgba(255,255,255,.015), transparent 18%, rgba(0,0,0,.14));
+      pointer-events:none;
+    }
+
     .hero-inner{
+      position:relative;
+      z-index:2;
+      width:min(var(--max), calc(100% - 32px));
+      margin:0 auto;
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:60px;
+      gap:58px;
       align-items:center;
+      padding:76px 0 88px;
+    }
+
+    .eyebrow{
+      color:var(--muted);
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:.24em;
+      margin-bottom:18px;
+      animation:fadeUp .8s ease both;
     }
 
     .hero-title{
-      font-size:120px;
-      margin:0 0 10px;
-      line-height:.9;
+      margin:0 0 16px;
+      font-size:clamp(82px, 12vw, 182px);
+      line-height:.88;
+      letter-spacing:.02em;
+      text-transform:uppercase;
+      color:var(--text);
+      animation:fadeUp 1s ease both;
     }
 
     .hero-copy{
-      font-size:22px;
+      max-width:560px;
       color:var(--muted);
-      margin-bottom:25px;
+      font-size:24px;
+      margin:0 0 26px;
+      animation:fadeUp 1.2s ease both;
     }
 
     .cta-row{
       display:flex;
-      gap:12px;
-      margin-bottom:15px;
       flex-wrap:wrap;
+      gap:14px;
+      margin-bottom:14px;
+      animation:fadeUp 1.35s ease both;
     }
 
     .btn{
-      min-height:54px;
-      padding:0 22px;
+      min-height:58px;
+      padding:0 24px;
       border-radius:999px;
       display:inline-flex;
       align-items:center;
       justify-content:center;
       font-size:18px;
+      font-weight:400;
+      letter-spacing:.10em;
+      text-transform:uppercase;
       border:1px solid var(--line);
+      transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
     }
 
     .btn.primary{
@@ -129,15 +252,41 @@
       border-color:var(--accent);
     }
 
-    .btn.secondary{
-      background:transparent;
+    .btn.primary:hover{
+      transform:translateY(-1px);
     }
 
-    /* PLATFORM BUTTONS */
+    .btn.secondary{
+      color:var(--text);
+      background:rgba(255,255,255,.02);
+    }
+
+    .btn.secondary:hover{
+      background:rgba(255,255,255,.05);
+      transform:translateY(-1px);
+    }
+
+    .stream-row{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin:12px 0 24px;
+      flex-wrap:wrap;
+      animation:fadeUp 1.42s ease both;
+    }
+
+    .stream-label{
+      font-size:11px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--muted);
+    }
+
     .platform-row{
       display:flex;
       gap:12px;
-      margin:10px 0 20px;
+      flex-wrap:wrap;
+      align-items:center;
     }
 
     .platform-btn{
@@ -149,75 +298,188 @@
       border-radius:999px;
       border:1px solid rgba(255,255,255,.10);
       background:rgba(255,255,255,.02);
+      transition:transform .2s ease, background .2s ease, border-color .2s ease, opacity .2s ease;
+      opacity:.94;
+    }
+
+    .platform-btn:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.05);
+      border-color:rgba(255,255,255,.18);
+      opacity:1;
     }
 
     .platform-btn img{
       height:20px;
+      width:auto;
+      display:block;
     }
 
     .meta{
-      font-size:12px;
-      letter-spacing:.15em;
-      text-transform:uppercase;
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
       color:var(--muted);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      animation:fadeUp 1.5s ease both;
     }
 
-    /* PANEL */
     .hero-panel{
-      background:var(--panel);
-      border:1px solid var(--line);
-      border-radius:30px;
-      padding:30px;
-      text-align:center;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:34px;
+      background:
+        radial-gradient(circle at 30% 24%, rgba(120,60,35,.16), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
+        linear-gradient(180deg, var(--panel-2), var(--panel));
+      min-height:560px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px;
+      position:relative;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      animation:floatPanel 5s ease-in-out infinite;
+    }
+
+    .hero-panel::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      opacity:.08;
+      background-image:radial-gradient(circle, rgba(255,255,255,.5) 1px, transparent 1px);
+      background-size:4px 4px;
+      mix-blend-mode:soft-light;
+      pointer-events:none;
+    }
+
+    .hero-panel::after{
+      content:"";
+      position:absolute;
+      top:14%;
+      left:16%;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(120,60,35,.18), transparent 70%);
+      filter:blur(12px);
+      pointer-events:none;
+    }
+
+    .panel-art{
+      position:relative;
+      z-index:2;
+      width:100%;
+      max-width:420px;
+    }
+
+    .panel-art::before{
+      content:"";
+      position:absolute;
+      inset:-24px;
+      background:
+        radial-gradient(circle at 30% 35%, var(--green), transparent 40%),
+        radial-gradient(circle at 70% 70%, var(--pink), transparent 40%);
+      filter:blur(42px);
+      z-index:1;
+      pointer-events:none;
     }
 
     .panel-art img{
+      position:relative;
+      z-index:2;
+      width:100%;
+      aspect-ratio:1 / 1;
+      object-fit:cover;
       border-radius:20px;
+      box-shadow:0 18px 40px rgba(0,0,0,.35);
     }
 
     .panel-badge{
-      margin-top:10px;
-      font-size:12px;
-      letter-spacing:.15em;
+      position:absolute;
+      left:18px;
+      bottom:18px;
+      z-index:3;
+      background:rgba(10,8,7,.78);
+      border:1px solid var(--line);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:14px;
+      letter-spacing:.12em;
       text-transform:uppercase;
-      color:var(--muted);
+      backdrop-filter:blur(8px);
     }
 
-    /* SECTIONS */
     section{
-      padding:80px 0;
+      padding:88px 0;
       border-bottom:1px solid var(--line);
+      position:relative;
+      z-index:1;
     }
 
     .section-kicker{
       color:var(--muted);
       font-size:12px;
-      letter-spacing:.25em;
       text-transform:uppercase;
-      text-align:center;
+      letter-spacing:.24em;
       margin-bottom:10px;
+      text-align:center;
     }
 
     h2{
-      text-align:center;
-      font-size:48px;
       margin:0;
+      font-size:clamp(34px, 4vw, 48px);
+      line-height:.95;
+      letter-spacing:.03em;
+      text-transform:uppercase;
+      text-align:center;
+    }
+
+    .teaser-center{
+      text-align:center;
+      padding:18px 0 8px;
+    }
+
+    .teaser-center .section-kicker{
+      margin-bottom:14px;
+      animation:fadeUp .8s ease both;
+    }
+
+    .teaser-center h2{
+      font-size:clamp(44px, 6vw, 72px);
+      animation:fadeUp 1s ease both;
+    }
+
+    .about-wrap{
+      text-align:center;
+    }
+
+    .about-card{
+      margin:30px auto 0;
+      max-width:1220px;
+      animation:fadeUp .9s ease both;
     }
 
     .card{
-      background:var(--panel);
+      background:
+        radial-gradient(circle at 24% 18%, rgba(120,60,35,.10), transparent 20%),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
+        var(--panel);
       border:1px solid var(--line);
-      border-radius:20px;
+      border-radius:24px;
       padding:24px;
-      margin-top:25px;
+      box-shadow:0 14px 36px rgba(0,0,0,.16);
     }
 
     .about-copy{
-      text-align:center;
-      color:var(--muted);
       font-size:20px;
-      max-width:700px;
+      color:var(--muted);
+      max-width:860px;
       margin:0 auto;
+      text-align:center;
     }
 
     .contact{
@@ -225,111 +487,334 @@
     }
 
     .contact-logo{
-      width:320px;
-      margin:0 auto 20px;
+      width:min(100%, 520px);
+      margin:0 auto 26px;
+      opacity:.98;
+      filter:drop-shadow(0 12px 30px rgba(0,0,0,.22));
     }
 
     .contact-mail{
-      font-size:32px;
-      display:block;
-      margin-bottom:10px;
+      display:inline-block;
+      margin:8px 0 18px;
+      font-size:clamp(26px, 4vw, 44px);
+      letter-spacing:-.02em;
+      word-break:break-word;
+    }
+
+    .contact-copy{
+      max-width:640px;
+      margin:0 auto 24px;
+      color:var(--muted);
+      font-size:18px;
+    }
+
+    .socials{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px;
+    }
+
+    .social-link{
+      min-height:50px;
+      padding:0 18px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:999px;
+      border:1px solid var(--line);
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-size:18px;
+      transition:background .2s ease, color .2s ease, transform .2s ease;
+    }
+
+    .social-link:hover{
+      color:var(--text);
+      background:rgba(255,255,255,.03);
+      transform:translateY(-1px);
     }
 
     footer{
-      text-align:center;
-      padding:30px 0;
+      padding:28px 0 40px;
       color:var(--muted);
       font-size:14px;
+      position:relative;
+      z-index:1;
+      text-align:center;
     }
 
-    @media (max-width: 900px){
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(24px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @keyframes floatPanel{
+      0%,100%{
+        transform:translateY(0);
+      }
+      50%{
+        transform:translateY(-6px);
+      }
+    }
+
+    @keyframes grainMove{
+      0%{ transform:translate(0,0); }
+      10%{ transform:translate(-1%,-1%); }
+      20%{ transform:translate(1%,1%); }
+      30%{ transform:translate(-2%,1%); }
+      40%{ transform:translate(2%,-1%); }
+      50%{ transform:translate(-1%,2%); }
+      60%{ transform:translate(1%,-2%); }
+      70%{ transform:translate(-2%,0); }
+      80%{ transform:translate(2%,0); }
+      90%{ transform:translate(0,2%); }
+      100%{ transform:translate(0,0); }
+    }
+
+    @media (max-width: 920px){
       .hero-inner{
         grid-template-columns:1fr;
       }
 
+      .hero{
+        min-height:auto;
+      }
+
+      .hero-inner{
+        gap:32px;
+        padding:48px 0 64px;
+      }
+
+      .hero-panel{
+        min-height:380px;
+      }
+    }
+
+    @media (max-width: 700px){
+      .nav-inner{
+        min-height:auto;
+        gap:10px;
+        padding:12px 0 16px;
+      }
+
+      .nav-logo{
+        height:84px;
+      }
+
+      .nav-links{
+        gap:22px;
+        font-size:18px;
+        width:100%;
+      }
+
+      .nav-tagline{
+        font-size:10px;
+        letter-spacing:.22em;
+      }
+
+      .hero{
+        min-height:auto;
+      }
+
+      .hero-inner{
+        gap:24px;
+        padding:36px 0 48px;
+      }
+
+      .eyebrow{
+        font-size:11px;
+        margin-bottom:14px;
+      }
+
       .hero-title{
-        font-size:70px;
+        font-size:clamp(62px, 22vw, 110px);
+        line-height:.9;
+        margin-bottom:12px;
+      }
+
+      .hero-copy{
+        font-size:20px;
+        margin-bottom:22px;
+      }
+
+      .cta-row{
+        gap:12px;
+      }
+
+      .btn{
+        min-height:56px;
+        padding:0 22px;
+        font-size:18px;
+        width:100%;
+      }
+
+      .stream-row{
+        gap:10px;
+        margin-bottom:20px;
+        align-items:flex-start;
+      }
+
+      .stream-label{
+        width:100%;
+      }
+
+      .platform-btn{
+        min-height:42px;
+        padding:0 16px;
+      }
+
+      .platform-btn img{
+        height:18px;
+      }
+
+      .meta{
+        gap:10px;
+        font-size:10px;
+      }
+
+      .hero-panel{
+        min-height:280px;
+        padding:24px;
+        border-radius:24px;
+      }
+
+      section{
+        padding:64px 0;
+      }
+
+      .card{
+        padding:20px;
+      }
+
+      .about-copy{
+        font-size:18px;
+      }
+
+      .contact-logo{
+        width:min(100%, 360px);
+      }
+
+      .contact-copy{
+        font-size:17px;
+      }
+
+      .social-link{
+        font-size:20px;
+        width:100%;
       }
     }
   </style>
 </head>
-
 <body>
 
   <nav class="nav">
-    <img class="nav-logo" src="logo2.png" alt="The Quick Thrills logo">
-    <div class="nav-tagline">Love, Money, and Trouble</div>
-    <div class="nav-links">
-      <a href="#music">Music</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
+    <div class="wrap nav-inner">
+      <a href="#top" aria-label="The Quick Thrills home">
+        <img class="nav-logo" src="logo2.png" alt="The Quick Thrills QT logo">
+      </a>
+
+      <div class="nav-tagline">Love, Money, and Trouble</div>
+
+      <div class="nav-links">
+        <a href="#music">Music</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
     </div>
   </nav>
 
-  <section class="hero">
-    <div class="wrap hero-inner">
-      <div>
-        <h1 class="hero-title">Money Honey</h1>
-        <p class="hero-copy">
-          We’re The Quick Thrills. This is our latest single. Turn it up.
+  <main id="top">
+    <section class="hero">
+      <div class="hero-inner wrap">
+        <div>
+          <div class="eyebrow">Alternative Rock / Northern Ontario</div>
+
+          <h1 class="hero-title">Money Honey</h1>
+
+          <p class="hero-copy">
+            We’re The Quick Thrills. This is our latest single. Turn it up.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn primary" href="YOUR_SPOTIFY_LINK" target="_blank">Listen to Our Latest Single</a>
+            <a class="btn secondary" href="#contact">Contact / Booking</a>
+          </div>
+
+          <div class="stream-row">
+            <span class="stream-label">Available on</span>
+            <div class="platform-row">
+              <a class="platform-btn" href="YOUR_SPOTIFY_LINK" target="_blank" aria-label="Spotify">
+                <img src="spotify.png" alt="Spotify">
+              </a>
+              <a class="platform-btn" href="YOUR_APPLE_LINK" target="_blank" aria-label="Apple Music">
+                <img src="apple.png" alt="Apple Music">
+              </a>
+            </div>
+          </div>
+
+          <div class="meta">
+            <span>New single out now</span>
+          </div>
+        </div>
+
+        <div class="hero-panel">
+          <div class="panel-art">
+            <img src="moneyhoney.jpg" alt="Money Honey cover art by The Quick Thrills">
+            <div class="panel-badge">Featured Release — Money Honey</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="coming-soon">
+      <div class="wrap teaser-center">
+        <div class="section-kicker">Next Release</div>
+        <h2>New Album "Love, Money, and Trouble" Coming Soon</h2>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about-wrap">
+        <div class="section-kicker">About</div>
+        <h2>The Quick Thrills</h2>
+
+        <div class="card about-card">
+          <p class="about-copy">
+            We’re The Quick Thrills — a rock band from Northern Ontario. We make loud music for late nights, long drives, and bad decisions. We release everything independently.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap contact">
+        <div class="section-kicker">Contact</div>
+        <img class="contact-logo" src="logo.png" alt="The Quick Thrills logo">
+        <a class="contact-mail" href="mailto:thequickthrills@proton.me">thequickthrills@proton.me</a>
+        <p class="contact-copy">
+          For booking, press, or general inquiries, reach us at thequickthrills@proton.me.
         </p>
 
-        <div class="cta-row">
-          <a class="btn primary" href="YOUR_SPOTIFY_LINK" target="_blank">Listen to Our Latest Single</a>
-          <a class="btn secondary" href="#contact">Contact / Booking</a>
+        <div class="socials">
+          <a class="social-link" href="https://www.instagram.com/thequickthrills/" target="_blank">Instagram</a>
+          <a class="social-link" href="https://www.youtube.com/@thequickthrills" target="_blank">YouTube</a>
+          <a class="social-link" href="YOUR_SPOTIFY_LINK" target="_blank">Spotify</a>
+          <a class="social-link" href="YOUR_APPLE_LINK" target="_blank">Apple Music</a>
         </div>
-
-        <div class="platform-row">
-          <a class="platform-btn" href="YOUR_SPOTIFY_LINK" target="_blank">
-            <img src="spotify.png" alt="Spotify">
-          </a>
-          <a class="platform-btn" href="YOUR_APPLE_LINK" target="_blank">
-            <img src="apple.png" alt="Apple Music">
-          </a>
-        </div>
-
-        <div class="meta">New Single Out Now</div>
       </div>
-
-      <div class="hero-panel">
-        <div class="panel-art">
-          <img src="moneyhoney.jpg" alt="Money Honey cover">
-        </div>
-        <div class="panel-badge">Featured Release — Money Honey</div>
-      </div>
-    </div>
-  </section>
-
-  <section id="coming-soon">
-    <div class="wrap">
-      <div class="section-kicker">Next Release</div>
-      <h2>Album Coming Soon</h2>
-    </div>
-  </section>
-
-  <section id="about">
-    <div class="wrap">
-      <div class="section-kicker">About</div>
-      <h2>The Quick Thrills</h2>
-      <div class="card">
-        <p class="about-copy">
-          We’re The Quick Thrills — a rock band from Northern Ontario. We make loud music for late nights, long drives, and bad decisions. We release everything independently.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <div class="wrap contact">
-      <div class="section-kicker">Contact</div>
-      <img class="contact-logo" src="logo.png" alt="The Quick Thrills logo">
-      <a class="contact-mail" href="mailto:thequickthrills@proton.me">thequickthrills@proton.me</a>
-      <p>For booking, press, or general inquiries, reach out anytime.</p>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <footer>
-    © 2026 The Quick Thrills
+    <div class="wrap">© 2026 The Quick Thrills</div>
   </footer>
 
 </body>
