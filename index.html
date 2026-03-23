@@ -289,31 +289,36 @@
       align-items:center;
     }
 
-    .platform-btn{
-      min-height:46px;
-      padding:0 18px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.02);
-      transition:transform .2s ease, background .2s ease, border-color .2s ease, opacity .2s ease;
-      opacity:.94;
-    }
+   .platform-row{
+  display:flex;
+  gap:14px;
+  margin:14px 0 26px;
+  flex-wrap:wrap;
+}
 
-    .platform-btn:hover{
-      transform:translateY(-1px);
-      background:rgba(255,255,255,.05);
-      border-color:rgba(255,255,255,.18);
-      opacity:1;
-    }
+.platform-btn{
+  height:52px;
+  padding:0 22px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.12);
+  background:rgba(255,255,255,.03);
+  transition:transform .2s ease, background .2s ease, border-color .2s ease;
+}
 
-    .platform-btn img{
-      height:20px;
-      width:auto;
-      display:block;
-    }
+.platform-btn:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,.06);
+  border-color:rgba(255,255,255,.22);
+}
+
+.platform-btn img{
+  height:26px;
+  width:auto;
+  display:block;
+}
 
     .meta{
       display:flex;
