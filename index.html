@@ -792,7 +792,25 @@
         font-size:20px;
         width:100%;
       }
-    }
+    }.stream-icons{
+  display:flex;
+  gap:22px;
+  margin:12px 0 26px;
+  align-items:center;
+}
+
+.stream-icons img{
+  height:30px;
+  width:auto;
+  opacity:.85;
+  transition:transform .2s ease, opacity .2s ease;
+  filter:brightness(0) invert(1);
+}
+
+.stream-icons img:hover{
+  transform:scale(1.08);
+  opacity:1;
+}
   </style>
 </head>
 <body>
