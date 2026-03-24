@@ -568,13 +568,19 @@
       }
     }
 
-    @keyframes floatPanel{
-      0%,100%{
-        transform:translateY(0);
-      }
-      50%{
-        transform:translateY(-6px);
-      }
+   @keyframes floatPanel{
+  0%{ transform:translateY(0px); }
+  50%{ transform:translateY(-12px); }
+  100%{ transform:translateY(0px); }
+}.hero-title{
+  animation:fadeUp 1s ease both, glowPulse 4s ease-in-out infinite;
+}
+
+@keyframes glowPulse{
+  0%{ text-shadow:0 0 0px rgba(243,234,220,0); }
+  50%{ text-shadow:0 0 18px rgba(243,234,220,.15); }
+  100%{ text-shadow:0 0 0px rgba(243,234,220,0); }
+}
     }
 
     @keyframes grainMove{
@@ -772,6 +778,29 @@
     gap: 10px;
     align-items: center;
   }
+    .nav-logo{
+  height:92px;
+  width:auto;
+  object-fit:contain;
+  opacity:.98;
+  transition:transform .25s ease, filter .25s ease;
+  filter:drop-shadow(0 10px 20px rgba(0,0,0,.22));
+}
+
+.nav-logo:hover{
+  transform:scale(1.05);
+  filter:drop-shadow(0 0 18px rgba(243,234,220,.35));
+}.btn.primary:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 18px rgba(243,234,220,.35);
+}
+
+.platform-btn:hover{
+  transform:translateY(-3px);
+  background:rgba(255,255,255,.08);
+  border-color:rgba(255,255,255,.30);
+  box-shadow:0 0 14px rgba(255,255,255,.15);
+}
 
 }
   </style>
@@ -890,6 +919,27 @@
   <footer>
     <div class="wrap">© 2026 The Quick Thrills</div>
   </footer>
+  <script>
+const sections = document.querySelectorAll("section");
 
+const reveal = () => {
+  sections.forEach(section => {
+    const top = section.getBoundingClientRect().top;
+    if(top < window.innerHeight - 100){
+      section.style.opacity = 1;
+      section.style.transform = "translateY(0)";
+    }
+  });
+};
+
+sections.forEach(section => {
+  section.style.opacity = 0;
+  section.style.transform = "translateY(40px)";
+  section.style.transition = "all 1s ease";
+});
+
+window.addEventListener("scroll", reveal);
+reveal();
+</script>
 </body>
 </html>
