@@ -282,40 +282,36 @@
       color:var(--muted);
     }
 
-    .platform-row{
-      display:flex;
-      gap:12px;
-      flex-wrap:wrap;
-      align-items:center;
-    }
+/* ===== BIGGER SPOTIFY & APPLE BUTTONS ===== */
 
-   .platform-row{
+.platform-row{
   display:flex;
-  gap:14px;
-  margin:14px 0 26px;
+  gap:18px;
+  margin:18px 0 28px;
   flex-wrap:wrap;
+  align-items:center;
 }
 
 .platform-btn{
-  height:52px;
-  padding:0 22px;
+  height:64px;
+  padding:0 28px;
   display:inline-flex;
   align-items:center;
   justify-content:center;
   border-radius:999px;
-  border:1px solid rgba(255,255,255,.12);
-  background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(255,255,255,.04);
   transition:transform .2s ease, background .2s ease, border-color .2s ease;
 }
 
 .platform-btn:hover{
-  transform:translateY(-2px);
-  background:rgba(255,255,255,.06);
-  border-color:rgba(255,255,255,.22);
+  transform:translateY(-3px);
+  background:rgba(255,255,255,.08);
+  border-color:rgba(255,255,255,.30);
 }
 
 .platform-btn img{
-  height:26px;
+  height:32px;
   width:auto;
   display:block;
 }
@@ -671,14 +667,14 @@
         width:100%;
       }
 
-      .platform-btn{
-        min-height:42px;
-        padding:0 16px;
-      }
+   .platform-btn{
+  min-height:56px;
+  padding:0 20px;
+}
 
-      .platform-btn img{
-        height:18px;
-      }
+.platform-btn img{
+  height:24px;
+}
 
       .meta{
         gap:10px;
