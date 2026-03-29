@@ -26,6 +26,19 @@ body {
   position: relative;
 
   background: url("background.jpg") center center / cover no-repeat fixed;
+}body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 0;
+}
+
+.wrap,
+.site-header,
+footer {
+  position: relative;
+  z-index: 1;
 }
 }
 
