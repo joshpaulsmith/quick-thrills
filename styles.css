@@ -2,10 +2,10 @@ body {
   margin: 0;
   background: #0a0a0a;
   color: #f1ead7;
-  font-family: "Archivo Narrow", sans-serif;
+  font-family: "La Belle Aurore", cursive;
 }
 
-/* subtle chalk/grain texture */
+/* chalk/grain texture */
 body::after {
   content: "";
   position: fixed;
@@ -51,25 +51,18 @@ body::after {
   margin: 0 auto;
 }
 
-.logo {
-  width: 90px;
-  margin: 0 auto 24px;
-}
-
-/* band name */
+/* band name handwritten */
 .band-name {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 30px;
-  letter-spacing: 0.14em;
+  font-family: "La Belle Aurore", cursive;
+  font-size: 42px;
   margin: 0;
 }
 
-/* MONEY HONEY chalk font */
+/* album name */
 .album-name {
   font-family: "Cedarville Cursive", cursive;
   font-size: 72px;
   margin: 10px 0 25px;
-  color: #f1ead7;
 }
 
 /* divider */
@@ -83,33 +76,31 @@ body::after {
 
 /* out now */
 .out-now {
-  font-size: 13px;
-  letter-spacing: 0.35em;
-  text-transform: uppercase;
+  font-size: 20px;
+  margin: 0;
 }
 
 /* links */
 .links {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 14px;
+  margin-top: 10px;
 }
 
 .links a {
   text-decoration: none;
   color: #f1ead7;
-  font-size: 20px;
-  letter-spacing: 0.08em;
+  font-size: 26px;
 }
 
 .links a:hover {
   opacity: 0.6;
 }
 
-/* email chalk style */
+/* email */
 .email {
   margin-top: 40px;
-  font-family: "Cedarville Cursive", cursive;
   font-size: 32px;
 }
 
@@ -118,12 +109,11 @@ body::after {
   text-decoration: none;
 }
 
-/* footer bigger */
+/* footer */
 .footer {
   text-align: center;
   padding: 36px 20px 40px;
-  font-size: 14px;
-  letter-spacing: 0.15em;
+  font-size: 18px;
   opacity: 0.6;
 }
 
@@ -143,15 +133,15 @@ body::after {
     max-width: 90%;
   }
 
-  .logo {
-    width: 70px;
-  }
-
   .album-name {
     font-size: 56px;
   }
 
+  .links a {
+    font-size: 24px;
+  }
+
   .email {
-    font-size: 36px;
+    font-size: 34px;
   }
 }
