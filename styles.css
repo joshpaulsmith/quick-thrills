@@ -120,11 +120,12 @@ h2 {
 
 /* retro title */
 .hero-title {
-  font-family: "Sarina", cursive;
-  font-size: clamp(72px, 7vw, 120px);
+  font-family: "Neonderthaw", cursive;
+  font-size: clamp(90px, 7vw, 150px);
   line-height: 0.9;
-  margin: 0 0 10px;
+  margin: 0 0 20px;
   transform: rotate(-2deg);
+  letter-spacing: 0.03em;
 }
 
 .hero-title span {
