@@ -1,7 +1,7 @@
 :root {
-  --bg: #d8ccb8;
-  --bg-2: #cbbca5;
-  --grain: rgba(35, 24, 16, 0.06);
+  --bg: #b8943a;
+  --bg-2: #a8842f;
+  --grain: rgba(35, 24, 16, 0.08);
 
   --card: #17110f;
   --card-2: #211916;
@@ -12,11 +12,12 @@
   --muted-light: #d2bfaa;
   --muted-dark: #5e493a;
 
-  --accent-mustard: #b08a2e;
+  --accent-mustard: #c49a2f;
+  --accent-mustard-dark: #9f7a1f;
   --accent-rust: #8f4a31;
   --accent-olive: #5c6543;
 
-  --line-dark: rgba(24, 16, 11, 0.12);
+  --line-dark: rgba(24, 16, 11, 0.16);
   --line-light: rgba(244, 234, 219, 0.14);
 
   --max: 1280px;
