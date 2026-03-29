@@ -1,17 +1,17 @@
-/* COLORS + BASE */
 body {
   margin: 0;
-  background: #0b0b0b; /* black background */
-  color: #e8dcc2; /* off cream text */
+  background: #0b0b0b;
+  color: #e8dcc2;
   font-family: "Archivo Narrow", sans-serif;
+  text-rendering: optimizeLegibility;
 }
 
-/* layout */
 .simple-layout {
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 90px);
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 40px 0;
 }
 
 .simple-inner {
@@ -22,7 +22,6 @@ body {
   align-items: center;
 }
 
-/* album cover */
 .cover {
   display: flex;
   justify-content: center;
@@ -31,17 +30,16 @@ body {
 .cover img {
   width: 100%;
   max-width: 520px;
-  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
 }
 
-/* right side */
 .release-info {
   text-align: center;
 }
 
 .logo {
   width: 90px;
-  margin: 0 auto 25px;
+  margin: 0 auto 24px;
 }
 
 .band-name {
@@ -52,9 +50,11 @@ body {
 }
 
 .album-name {
-  font-family: "Bebas Neue", sans-serif;
-  font-size: 52px;
+  font-family: "Caveat", cursive;
+  font-size: 64px;
+  letter-spacing: 0.03em;
   margin: 10px 0 25px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
 }
 
 .divider {
@@ -69,9 +69,9 @@ body {
   font-size: 13px;
   letter-spacing: 0.35em;
   text-transform: uppercase;
+  margin: 0;
 }
 
-/* links */
 .links {
   display: flex;
   flex-direction: column;
@@ -89,11 +89,12 @@ body {
   opacity: 0.7;
 }
 
-/* EMAIL BIGGER */
 .email {
   margin-top: 40px;
-  font-size: 18px;
-  letter-spacing: 0.05em;
+  font-family: "Caveat", cursive;
+  font-size: 28px;
+  letter-spacing: 0.03em;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.6);
 }
 
 .email a {
@@ -101,20 +102,18 @@ body {
   text-decoration: none;
 }
 
-/* FOOTER BIGGER */
 .footer {
   text-align: center;
-  padding: 40px 20px;
+  padding: 36px 20px 40px;
   font-size: 14px;
   letter-spacing: 0.15em;
   opacity: 0.6;
 }
 
-/* fade in animation */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
-  transition: 1s ease;
+  transition: opacity 0.9s ease, transform 0.9s ease;
 }
 
 .fade-in.visible {
@@ -122,7 +121,6 @@ body {
   transform: translateY(0);
 }
 
-/* MOBILE */
 @media (max-width: 800px) {
   .simple-inner {
     grid-template-columns: 1fr;
@@ -142,11 +140,24 @@ body {
     width: 70px;
   }
 
+  .band-name {
+    font-size: 26px;
+  }
+
   .album-name {
-    font-size: 40px;
+    font-size: 48px;
+  }
+
+  .links a {
+    font-size: 19px;
   }
 
   .email {
-    font-size: 20px;
+    font-size: 30px;
+  }
+
+  .footer {
+    padding: 30px 20px 34px;
+    font-size: 13px;
   }
 }
