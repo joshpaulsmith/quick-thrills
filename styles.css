@@ -3,175 +3,129 @@ body {
   background: #050505;
   color: #f1ead7;
   font-family: "La Belle Aurore", cursive;
-  min-height: 100vh;
+  text-align: center;
 }
 
-/* subtle texture */
+/* subtle grain */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.06;
+  opacity: 0.05;
   background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
 }
 
-.release-page {
-  min-height: calc(100vh - 90px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 36px 20px 20px;
-}
-
-.release-inner {
-  width: min(760px, 100%);
-  text-align: center;
-}
-
-.cover-wrap {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 34px;
-}
-
-.cover-art {
-  width: min(100%, 520px);
-  display: block;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
-}
-
-.text-wrap {
+.poster {
   max-width: 700px;
-  margin: 0 auto;
+  margin: auto;
+  padding: 60px 20px 20px;
 }
 
-.band-name {
-  margin: 0 0 18px;
-  font-family: "La Belle Aurore", cursive;
-  font-size: clamp(34px, 5vw, 52px);
-  font-weight: 400;
-  color: #f1ead7;
+/* band name */
+.band {
+  font-size: 42px;
+  margin-bottom: 30px;
 }
 
-.album-name {
+/* money honey */
+.title {
+  font-size: 110px;
+  line-height: 0.9;
   margin: 0 0 20px;
-  line-height: 0.95;
-  font-family: "Caveat", cursive;
-  font-weight: 700;
-  font-size: clamp(64px, 10vw, 112px);
-  letter-spacing: 0.01em;
 }
 
-.album-name span {
+.title span {
   display: block;
 }
 
+/* colors */
 .money {
-  color: #78d98f;
-  text-shadow:
-    0 0 10px rgba(120, 217, 143, 0.22),
-    0 0 22px rgba(120, 217, 143, 0.10);
+  color: #79d98a;
+  text-shadow: 0 0 10px rgba(121, 217, 138, 0.25);
 }
 
 .honey {
   color: #f08ac5;
-  text-shadow:
-    0 0 10px rgba(240, 138, 197, 0.22),
-    0 0 22px rgba(240, 138, 197, 0.10);
+  text-shadow: 0 0 10px rgba(240, 138, 197, 0.25);
 }
 
+/* divider */
 .divider {
-  width: min(560px, 100%);
   height: 1px;
-  margin: 20px auto;
-  background: rgba(241, 234, 215, 0.55);
+  background: #f1ead7;
+  opacity: 0.5;
+  margin: 30px auto;
+  width: 80%;
 }
 
+/* out now */
 .out-now {
-  margin: 0 0 18px;
-  font-family: "La Belle Aurore", cursive;
-  font-size: clamp(28px, 4vw, 40px);
-  color: #f1ead7;
+  font-size: 36px;
+  margin-bottom: 20px;
 }
 
-.player-wrap {
-  width: min(560px, 100%);
-  margin: 0 auto 8px;
+/* spotify player */
+.player {
+  max-width: 500px;
+  margin: 0 auto 10px;
 }
 
-.player-wrap iframe {
-  display: block;
-  width: 100%;
-}
-
+/* links */
 .links {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
 .links a {
+  display: block;
+  font-size: 32px;
   color: #f1ead7;
   text-decoration: none;
-  font-size: clamp(28px, 3.6vw, 42px);
-  line-height: 1.1;
+  margin: 10px 0;
 }
 
 .links a:hover {
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
+/* email */
 .email {
-  margin-top: 34px;
+  margin-top: 40px;
 }
 
 .email a {
+  font-size: 40px;
   color: #f1ead7;
   text-decoration: none;
-  font-size: clamp(30px, 4.4vw, 48px);
-  line-height: 1.1;
 }
 
+/* footer */
 .footer {
-  text-align: center;
-  padding: 26px 20px 34px;
+  margin-top: 60px;
+  padding-bottom: 30px;
   font-size: 18px;
-  color: rgba(241, 234, 215, 0.72);
+  opacity: 0.6;
 }
 
-.fade-in {
-  opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-@media (max-width: 700px) {
-  .release-page {
-    padding-top: 24px;
+/* mobile */
+@media (max-width: 600px) {
+  .title {
+    font-size: 70px;
   }
 
-  .cover-wrap {
-    margin-bottom: 28px;
+  .band {
+    font-size: 34px;
   }
 
-  .cover-art {
-    width: min(100%, 92vw);
+  .out-now {
+    font-size: 28px;
   }
 
-  .divider,
-  .player-wrap {
-    width: 100%;
+  .links a {
+    font-size: 26px;
   }
 
-  .footer {
-    padding: 22px 20px 28px;
-    font-size: 16px;
+  .email a {
+    font-size: 30px;
   }
 }
