@@ -1,312 +1,125 @@
-:root {
-  --bg: #2b2b2b;
-  --bg-2: #1c1c1c;
-  --text: #f3e7d7;
-  --muted: #c9b7a2;
-  --cream: #f1e7d2;
-  --green: #63b97c;
-  --pink: #e070a8;
-  --max: 1280px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
 body {
   margin: 0;
-  font-family: "Archivo Narrow", Arial, sans-serif;
-  color: var(--text);
-  line-height: 1.45;
-  overflow-x: hidden;
-  position: relative;
-  background: url("background.jpg") center center / cover no-repeat fixed;
-}
-
-/* dark overlay */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.6);
-  z-index: 0;
-}
-
-/* grain texture */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.15;
-  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
-}
-
-.wrap,
-.site-header,
-footer {
-  position: relative;
-  z-index: 2;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-h1,
-h2 {
-  font-family: "Bebas Neue", sans-serif;
-}
-
-.wrap {
-  width: min(var(--max), calc(100% - 40px));
-  margin: 0 auto;
-}
-
-/* header */
-.site-header {
-  background: rgba(20, 20, 20, 0.85);
-  border-bottom: 1px solid rgba(255,255,255,0.08);
-}
-
-.header-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px 0 8px;
-}
-
-.header-logo {
-  width: 68px;
-}
-
-.header-subtitle {
-  margin: 5px 0 0;
-  font-size: 8px;
-  letter-spacing: 0.24em;
-  text-transform: uppercase;
-  color: rgba(243,231,215,0.82);
+  background: #efe6d3; /* cream background */
+  color: #111;
+  font-family: "Archivo Narrow", sans-serif;
 }
 
 /* layout */
-.one-screen-layout {
-  min-height: calc(100vh - 66px);
+.simple-layout {
+  min-height: calc(100vh - 60px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.simple-inner {
+  width: min(1100px, 90%);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* album cover */
+.cover img {
+  width: 100%;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+}
+
+/* right side */
+.release-info {
+  text-align: center;
+}
+
+.logo {
+  width: 90px;
+  margin: 0 auto 20px;
+}
+
+.band-name {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 28px;
+  letter-spacing: 0.08em;
+  margin: 0;
+}
+
+.album-name {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 46px;
+  margin: 10px 0 20px;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background: #111;
+  margin: 20px 0;
+}
+
+.out-now {
+  font-size: 13px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.links {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-}
-
-.hero-one-screen {
-  padding: 24px 0 12px;
-}
-
-.hero-one-screen-inner {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 30px;
-  align-items: center;
-}
-
-/* retro title */
-.hero-title {
-  font-family: "Neonderthaw", cursive;
-  font-size: clamp(90px, 7vw, 150px);
-  line-height: 0.9;
-  margin: 0 0 20px;
-  transform: rotate(-2deg);
-  letter-spacing: 0.03em;
-}
-
-.hero-title span {
-  display: block;
-  width: fit-content;
-}
-
-/* MONEY - GREEN NEON */
-.money {
-  color: #ffffff;
-  text-shadow:
-    0 0 2px #78f08d,
-    0 0 6px #78f08d,
-    0 0 12px #78f08d,
-    0 0 22px #78f08d,
-    0 0 38px #78f08d,
-    0 0 60px rgba(120,240,141,0.6),
-    2px 2px 4px rgba(0,0,0,0.8);
-}
-
-/* HONEY - PINK NEON */
-.honey {
-  margin-top: -8px;
-  margin-left: 8px;
-  color: #ffffff;
-  text-shadow:
-    0 0 2px #ff7bc4,
-    0 0 6px #ff7bc4,
-    0 0 12px #ff7bc4,
-    0 0 22px #ff7bc4,
-    0 0 38px #ff7bc4,
-    0 0 60px rgba(255,123,196,0.6),
-    2px 2px 4px rgba(0,0,0,0.8);
-}
-/* platform buttons */
-.platform-row {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.platform-btn {
-  height: 44px;
-  padding: 0 16px;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  border: 1px solid rgba(241,231,210,0.2);
-  background: rgba(0,0,0,0.25);
-  font-size: 13px;
-}
-
-.platform-btn:hover {
-  background: rgba(255,255,255,0.08);
-}
-
-.platform-btn img {
-  height: 18px;
-}
-
-/* album art */
-.panel-art img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border: 1px solid rgba(243,231,215,0.15);
-  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
-}
-
-.panel-badge {
-  position: absolute;
-  left: 12px;
-  bottom: 12px;
-  background: var(--cream);
-  color: #1a130f;
-  padding: 7px 10px;
-  font-size: 11px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-}
-
-/* bottom section */
-.bottom-links {
-  text-align: center;
-  padding: 30px 0 10px;
-}
-
-.bottom-email {
-  display: block;
-  font-size: 20px;
-  margin-bottom: 16px;
-}
-
-.bottom-socials {
-  display: flex;
-  justify-content: center;
   gap: 14px;
-  flex-wrap: wrap;
 }
 
-.bottom-socials a {
-  border: 1px solid rgba(241,231,210,0.2);
-  padding: 10px 14px;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-  background: rgba(0,0,0,0.3);
+.links a {
+  text-decoration: none;
+  color: #111;
+  font-size: 18px;
 }
 
-.bottom-socials a:hover {
-  background: rgba(255,255,255,0.1);
+.links a:hover {
+  text-decoration: underline;
+}
+
+.email {
+  margin-top: 30px;
+  font-size: 14px;
+}
+
+.email a {
+  color: #111;
+  text-decoration: none;
 }
 
 /* footer */
-footer {
-  padding: 12px 0 14px;
-  font-size: 10px;
+.footer {
   text-align: center;
-  border-top: 1px solid rgba(255,255,255,0.08);
-  background: rgba(20,20,20,0.85);
+  padding: 20px;
+  font-size: 12px;
+}
+
+/* fade in animation */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 1s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* mobile */
-@media (max-width: 920px) {
-  .hero-one-screen-inner {
+@media (max-width: 800px) {
+  .simple-inner {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
 
-  .hero-title {
-    font-size: clamp(56px, 18vw, 96px);
+  .logo {
+    width: 70px;
   }
 
-  .bottom-socials {
-    flex-direction: column;
-  }
-
-  .bottom-socials a {
-    width: 100%;
-  }
-}/* mobile */
-@media (max-width: 920px) {
-  .hero-one-screen-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-title {
-    font-size: clamp(56px, 18vw, 96px);
-  }
-
-  .bottom-socials {
-    flex-direction: column;
-  }
-
-  .bottom-socials a {
-    width: 100%;
-  }
-}
-
-/* ========================= */
-/* NEON FLICKER EFFECT */
-/* ========================= */
-
-@keyframes neonFlicker {
-  0%, 18%, 22%, 25%, 53%, 57%, 100% {
-    opacity: 1;
-  }
-  20%, 24%, 55% {
-    opacity: 0.85;
-  }
-}
-
-.money, .honey {
-  animation: neonFlicker 6s infinite;
-}@media (max-width: 700px) {
-  .hero-title {
-    font-size: 64px;
-    line-height: 0.95;
-  }
-
-  .honey {
-    margin-top: -6px;
-    margin-left: 6px;
+  .album-name {
+    font-size: 36px;
   }
 }
