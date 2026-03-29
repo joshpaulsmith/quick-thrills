@@ -16,606 +16,17 @@
   <meta property="og:url" content="https://www.quickthrills.com" />
   <meta property="og:image" content="https://www.quickthrills.com/moneyhoney.jpg" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo+Narrow:wght@400;600;700&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --bg:#090706;
-      --bg-2:#120d0b;
-      --panel:#17110e;
-      --panel-2:#211713;
-      --line:rgba(255,255,255,.08);
-      --text:#f3eadc;
-      --muted:#c9b29a;
-      --accent:#f3eadc;
-      --accent-dark:#111;
-      --warm:rgba(120,60,35,.18);
-      --max:1180px;
-      --shadow:0 24px 70px rgba(0,0,0,.38);
-    }
-
-    *{
-      box-sizing:border-box;
-    }
-
-    html{
-      scroll-behavior:smooth;
-    }
-
-    body{
-      margin:0;
-      font-family:'Archivo Narrow', Arial, sans-serif;
-      color:var(--text);
-      line-height:1.5;
-      -webkit-font-smoothing:antialiased;
-      text-rendering:optimizeLegibility;
-      overflow-x:hidden;
-      background:
-        radial-gradient(circle at 18% 16%, rgba(110,60,35,.18), transparent 20%),
-        radial-gradient(circle at 82% 24%, rgba(70,35,20,.18), transparent 24%),
-        radial-gradient(circle at 50% 80%, rgba(90,45,30,.10), transparent 24%),
-        linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 48%, #030303 100%);
-      background-attachment: fixed;
-    }
-
-    body::before{
-      content:"";
-      position:fixed;
-      inset:-10%;
-      pointer-events:none;
-      opacity:.20;
-      background-image:radial-gradient(circle, rgba(255,255,255,.45) 1px, transparent 1px);
-      background-size:4px 4px;
-      mix-blend-mode:soft-light;
-      z-index:0;
-      animation:grainMove 8s steps(10) infinite;
-    }
-
-    body::after{
-      content:"";
-      position:fixed;
-      inset:0;
-      pointer-events:none;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.015), transparent 18%, transparent 82%, rgba(0,0,0,.24)),
-        radial-gradient(circle at center, transparent 35%, rgba(0,0,0,.18) 100%);
-      z-index:0;
-    }
-
-    a{
-      color:inherit;
-      text-decoration:none;
-    }
-
-    img{
-      max-width:100%;
-      display:block;
-    }
-
-    h1, h2, h3, .hero-title, .btn, .section-kicker{
-      font-family:'Bebas Neue', sans-serif;
-    }
-
-    .wrap{
-      width:min(var(--max), calc(100% - 32px));
-      margin:0 auto;
-      position:relative;
-      z-index:1;
-    }
-
-    .hero{
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      position:relative;
-      overflow:hidden;
-      border-bottom:1px solid var(--line);
-    }
-
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(circle at 72% 35%, rgba(120,60,35,.12), transparent 20%),
-        linear-gradient(180deg, rgba(255,255,255,.015), transparent 18%, rgba(0,0,0,.14));
-      pointer-events:none;
-    }
-
-    .hero-inner{
-      position:relative;
-      z-index:2;
-      width:min(var(--max), calc(100% - 32px));
-      margin:0 auto;
-      display:grid;
-      grid-template-columns:1.1fr .9fr;
-      gap:58px;
-      align-items:center;
-      padding:70px 0;
-    }
-
-    .eyebrow{
-      color:var(--muted);
-      font-size:13px;
-      text-transform:uppercase;
-      letter-spacing:.24em;
-      margin-bottom:18px;
-      animation:fadeUp .8s ease both;
-    }
-
-    .hero-title{
-      margin:0 0 18px;
-      font-size:clamp(90px, 14vw, 210px);
-      line-height:.86;
-      letter-spacing:.01em;
-      text-transform:uppercase;
-      color:var(--text);
-      animation:fadeUp 1s ease both, glowPulse 4s ease-in-out infinite;
-    }
-
-    .hero-copy{
-      max-width:560px;
-      color:var(--muted);
-      font-size:24px;
-      margin:0 0 26px;
-      animation:fadeUp 1.2s ease both;
-    }
-
-    .cta-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap:14px;
-      margin-bottom:18px;
-      animation:fadeUp 1.35s ease both;
-    }
-
-    .btn{
-      min-height:58px;
-      padding:0 24px;
-      border-radius:999px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      font-size:18px;
-      font-weight:400;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      border:1px solid var(--line);
-      transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
-    }
-
-    .btn.primary{
-      background:var(--accent);
-      color:var(--accent-dark);
-      border-color:var(--accent);
-    }
-
-    .btn.primary:hover{
-      transform:translateY(-2px);
-      box-shadow:0 0 18px rgba(243,234,220,.20);
-    }
-
-    .btn.secondary{
-      color:var(--text);
-      background:rgba(255,255,255,.03);
-    }
-
-    .btn.secondary:hover{
-      background:rgba(255,255,255,.08);
-      transform:translateY(-2px);
-    }
-
-    .stream-row{
-      display:flex;
-      align-items:center;
-      gap:16px;
-      margin:12px 0 24px;
-      flex-wrap:wrap;
-      animation:fadeUp 1.42s ease both;
-    }
-
-    .stream-label{
-      font-size:11px;
-      letter-spacing:.22em;
-      text-transform:uppercase;
-      color:var(--muted);
-      width:100%;
-    }
-
-    .platform-row{
-      display:flex;
-      gap:18px;
-      margin:0;
-      flex-wrap:wrap;
-      align-items:center;
-    }
-
-    .platform-btn{
-      height:64px;
-      padding:0 28px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.18);
-      background:rgba(255,255,255,.04);
-      transition:transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
-    }
-
-    .platform-btn:hover{
-      transform:translateY(-3px);
-      background:rgba(255,255,255,.08);
-      border-color:rgba(255,255,255,.30);
-      box-shadow:0 0 14px rgba(255,255,255,.12);
-    }
-
-    .platform-btn img{
-      height:32px;
-      width:auto;
-      display:block;
-    }
-
-    .spotify-embed{
-      margin:12px 0 24px;
-      max-width:540px;
-      animation:fadeUp 1.45s ease both;
-    }
-
-    .spotify-embed iframe{
-      width:100%;
-      display:block;
-      box-shadow:0 12px 28px rgba(0,0,0,.22);
-    }
-
-    .meta{
-      display:flex;
-      flex-wrap:wrap;
-      gap:18px;
-      color:var(--muted);
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.16em;
-      animation:fadeUp 1.5s ease both;
-    }
-
-    .hero-panel{
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:34px;
-      background:
-        radial-gradient(circle at 30% 24%, rgba(120,60,35,.16), transparent 24%),
-        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
-        linear-gradient(180deg, var(--panel-2), var(--panel));
-      min-height:560px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:40px;
-      position:relative;
-      overflow:hidden;
-      box-shadow:var(--shadow);
-      animation:floatPanel 5s ease-in-out infinite;
-    }
-
-    .hero-panel::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      opacity:.08;
-      background-image:radial-gradient(circle, rgba(255,255,255,.5) 1px, transparent 1px);
-      background-size:4px 4px;
-      mix-blend-mode:soft-light;
-      pointer-events:none;
-    }
-
-    .hero-panel::after{
-      content:"";
-      position:absolute;
-      top:14%;
-      left:16%;
-      width:220px;
-      height:220px;
-      border-radius:50%;
-      background:radial-gradient(circle, rgba(120,60,35,.18), transparent 70%);
-      filter:blur(12px);
-      pointer-events:none;
-    }
-
-    .panel-art{
-      position:relative;
-      z-index:2;
-      width:100%;
-      max-width:420px;
-    }
-
-    .panel-art img{
-      position:relative;
-      z-index:2;
-      width:100%;
-      aspect-ratio:1 / 1;
-      object-fit:cover;
-      border-radius:20px;
-      box-shadow:0 18px 40px rgba(0,0,0,.35);
-      filter:saturate(.88) contrast(1.04);
-    }
-
-    .panel-badge{
-      position:absolute;
-      left:18px;
-      bottom:18px;
-      z-index:3;
-      background:rgba(10,8,7,.78);
-      border:1px solid var(--line);
-      color:var(--text);
-      padding:10px 14px;
-      border-radius:999px;
-      font-size:14px;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-      backdrop-filter:blur(8px);
-    }
-
-    section{
-      padding:88px 0;
-      border-bottom:1px solid var(--line);
-      position:relative;
-      z-index:1;
-    }
-
-    .section-kicker{
-      color:var(--muted);
-      font-size:12px;
-      text-transform:uppercase;
-      letter-spacing:.24em;
-      margin-bottom:10px;
-      text-align:center;
-    }
-
-    h2{
-      margin:0;
-      font-size:clamp(40px, 5vw, 62px);
-      line-height:.95;
-      letter-spacing:.03em;
-      text-transform:uppercase;
-      text-align:center;
-      color:var(--text);
-    }
-
-    .about-wrap,
-    .contact{
-      text-align:center;
-    }
-
-    .about-card,
-    .contact-card{
-      margin:30px auto 0;
-      max-width:1000px;
-      animation:fadeUp .9s ease both;
-    }
-
-    .card{
-      background:
-        radial-gradient(circle at 24% 18%, rgba(120,60,35,.10), transparent 20%),
-        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
-        var(--panel);
-      border:1px solid var(--line);
-      border-radius:24px;
-      padding:28px;
-      box-shadow:0 14px 36px rgba(0,0,0,.16);
-    }
-
-    .about-copy,
-    .contact-copy{
-      font-size:21px;
-      color:var(--muted);
-      max-width:860px;
-      margin:0 auto;
-      text-align:center;
-    }
-
-    .contact-logo{
-      width:min(100%, 460px);
-      margin:0 auto 26px;
-      opacity:.98;
-      filter:drop-shadow(0 12px 30px rgba(0,0,0,.22));
-    }
-
-    .contact-mail{
-      display:inline-block;
-      margin:8px 0 18px;
-      font-size:clamp(26px, 4vw, 44px);
-      letter-spacing:-.02em;
-      word-break:break-word;
-    }
-
-    .socials{
-      display:flex;
-      justify-content:center;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top:22px;
-    }
-
-    .social-link{
-      min-height:50px;
-      padding:0 18px;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      border-radius:999px;
-      border:1px solid var(--line);
-      color:var(--muted);
-      text-transform:uppercase;
-      letter-spacing:.12em;
-      font-size:18px;
-      transition:background .2s ease, color .2s ease, transform .2s ease;
-    }
-
-    .social-link:hover{
-      color:var(--text);
-      background:rgba(255,255,255,.03);
-      transform:translateY(-1px);
-    }
-
-    footer{
-      padding:28px 0 40px;
-      color:var(--muted);
-      font-size:14px;
-      position:relative;
-      z-index:1;
-      text-align:center;
-    }
-
-    @keyframes fadeUp{
-      from{
-        opacity:0;
-        transform:translateY(24px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
-    @keyframes floatPanel{
-      0%{ transform:translateY(0px); }
-      50%{ transform:translateY(-12px); }
-      100%{ transform:translateY(0px); }
-    }
-
-    @keyframes glowPulse{
-      0%{ text-shadow:0 0 0px rgba(243,234,220,0); }
-      50%{ text-shadow:0 0 18px rgba(243,234,220,.15); }
-      100%{ text-shadow:0 0 0px rgba(243,234,220,0); }
-    }
-
-    @keyframes grainMove{
-      0%{ transform:translate(0,0); }
-      10%{ transform:translate(-1%,-1%); }
-      20%{ transform:translate(1%,1%); }
-      30%{ transform:translate(-2%,1%); }
-      40%{ transform:translate(2%,-1%); }
-      50%{ transform:translate(-1%,2%); }
-      60%{ transform:translate(1%,-2%); }
-      70%{ transform:translate(-2%,0); }
-      80%{ transform:translate(2%,0); }
-      90%{ transform:translate(0,2%); }
-      100%{ transform:translate(0,0); }
-    }
-
-    @media (max-width: 920px){
-      .hero-inner{
-        grid-template-columns:1fr;
-        gap:32px;
-        padding:48px 0 64px;
-      }
-
-      .hero{
-        min-height:auto;
-      }
-
-      .hero-panel{
-        min-height:380px;
-      }
-    }
-
-    @media (max-width: 700px){
-      .hero{
-        min-height:auto;
-      }
-
-      .hero-inner{
-        gap:24px;
-        padding:36px 0 48px;
-      }
-
-      .eyebrow{
-        font-size:11px;
-        margin-bottom:14px;
-      }
-
-      .hero-title{
-        font-size:clamp(62px, 22vw, 110px);
-        line-height:.9;
-        margin-bottom:12px;
-      }
-
-      .hero-copy{
-        font-size:20px;
-        margin-bottom:22px;
-      }
-
-      .cta-row{
-        gap:12px;
-      }
-
-      .btn{
-        min-height:56px;
-        padding:0 22px;
-        font-size:18px;
-        width:100%;
-      }
-
-      .platform-row{
-        flex-direction:column;
-        width:100%;
-      }
-
-      .platform-btn{
-        min-height:56px;
-        padding:0 20px;
-        width:100%;
-      }
-
-      .platform-btn img{
-        height:24px;
-      }
-
-      .spotify-embed{
-        max-width:100%;
-        margin:10px 0 20px;
-      }
-
-      .meta{
-        gap:10px;
-        font-size:10px;
-      }
-
-      .hero-panel{
-        min-height:280px;
-        padding:24px;
-        border-radius:24px;
-      }
-
-      section{
-        padding:64px 0;
-      }
-
-      .card{
-        padding:20px;
-      }
-
-      .about-copy,
-      .contact-copy{
-        font-size:18px;
-      }
-
-      .contact-logo{
-        width:min(100%, 320px);
-      }
-
-      .social-link{
-        font-size:20px;
-        width:100%;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <main id="top">
-    <section class="hero">
+    <section class="hero reveal">
       <div class="hero-inner wrap">
-        <div>
+        <div class="hero-content">
           <div class="eyebrow">Alternative Rock / Northern Ontario, Canada</div>
 
           <h1 class="hero-title">The Quick Thrills</h1>
@@ -631,21 +42,23 @@
 
           <div class="stream-row">
             <span class="stream-label">Listen</span>
+
             <div class="platform-row">
-              <a class="platform-btn" href="YOUR_SPOTIFY_LINK" target="_blank">
+              <a class="platform-btn" href="YOUR_SPOTIFY_LINK" target="_blank" rel="noopener noreferrer">
                 <img src="spotify.png" alt="Spotify">
-                <span style="margin-left:10px;">Spotify</span>
+                <span>Spotify</span>
               </a>
 
-              <a class="platform-btn" href="YOUR_APPLE_LINK" target="_blank">
+              <a class="platform-btn" href="YOUR_APPLE_LINK" target="_blank" rel="noopener noreferrer">
                 <img src="apple.png" alt="Apple Music">
-                <span style="margin-left:10px;">Apple Music</span>
+                <span>Apple Music</span>
               </a>
             </div>
           </div>
 
           <div class="spotify-embed">
-            <iframe style="border-radius:12px"
+            <iframe
+              style="border-radius:12px"
               src="YOUR_SPOTIFY_EMBED_LINK"
               width="100%"
               height="152"
@@ -672,35 +85,43 @@
       </div>
     </section>
 
-    <section id="about">
+    <section id="about" class="about reveal">
       <div class="wrap about-wrap">
         <div class="section-kicker">About</div>
         <h2>The Quick Thrills</h2>
 
         <div class="card about-card">
           <p class="about-copy">
-            We’re The Quick Thrills — a rock band from Northern Ontario, Canada. We make loud music with a raw edge and a late-night pulse. Everything we release is independent, built for people who still want songs that feel dangerous, alive, and a little worn around the edges.
+            We’re The Quick Thrills — a rock band from Northern Ontario, Canada.
+            We make loud music with a raw edge and a late-night pulse. Everything
+            we release is independent, built for people who still want songs that
+            feel dangerous, alive, and a little worn around the edges.
           </p>
         </div>
       </div>
     </section>
 
-    <section id="contact">
-      <div class="wrap contact">
+    <section id="contact" class="contact reveal">
+      <div class="wrap contact-wrap">
         <div class="section-kicker">Contact</div>
         <h2>Get in Touch</h2>
 
         <div class="card contact-card">
           <img class="contact-logo" src="logo.png" alt="The Quick Thrills logo">
-          <a class="contact-mail" href="mailto:thequickthrills@proton.me">thequickthrills@proton.me</a>
+
+          <a class="contact-mail" href="mailto:thequickthrills@proton.me">
+            thequickthrills@proton.me
+          </a>
+
           <p class="contact-copy">
-            For booking, general inquiries, or anything else, reach out by email or follow along below.
+            For booking, general inquiries, or anything else, reach out by email
+            or follow along below.
           </p>
 
           <div class="socials">
-            <a class="social-link" href="https://www.instagram.com/thequickthrills/" target="_blank">Instagram</a>
-            <a class="social-link" href="YOUR_SPOTIFY_LINK" target="_blank">Spotify</a>
-            <a class="social-link" href="YOUR_APPLE_LINK" target="_blank">Apple Music</a>
+            <a class="social-link" href="https://www.instagram.com/thequickthrills/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a class="social-link" href="YOUR_SPOTIFY_LINK" target="_blank" rel="noopener noreferrer">Spotify</a>
+            <a class="social-link" href="YOUR_APPLE_LINK" target="_blank" rel="noopener noreferrer">Apple Music</a>
           </div>
         </div>
       </div>
@@ -711,27 +132,6 @@
     <div class="wrap">© 2026 The Quick Thrills</div>
   </footer>
 
-  <script>
-    const sections = document.querySelectorAll("section");
-
-    const reveal = () => {
-      sections.forEach(section => {
-        const top = section.getBoundingClientRect().top;
-        if (top < window.innerHeight - 100) {
-          section.style.opacity = 1;
-          section.style.transform = "translateY(0)";
-        }
-      });
-    };
-
-    sections.forEach(section => {
-      section.style.opacity = 0;
-      section.style.transform = "translateY(40px)";
-      section.style.transition = "all 1s ease";
-    });
-
-    window.addEventListener("scroll", reveal);
-    reveal();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
