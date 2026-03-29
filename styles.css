@@ -121,34 +121,66 @@ h2 {
 /* retro title */
 .hero-title {
   font-family: "Sarina", cursive;
-  font-size: clamp(70px, 6vw, 120px);
-  line-height: 0.9;
-  margin: 0 0 14px;
+  font-size: clamp(78px, 6.8vw, 132px);
+  line-height: 0.86;
+  margin: 0 0 18px;
   transform: rotate(-2deg);
+  letter-spacing: 0.01em;
+  position: relative;
 }
 
+.hero-title span {
+  display: block;
+  width: fit-content;
+  position: relative;
+  -webkit-text-stroke: 1.5px rgba(255,255,255,0.08);
+}
+
+/* GREEN MONEY */
 .money {
-  color: var(--green);
-  text-shadow: 0 0 14px rgba(99,185,124,0.4);
+  color: #78f08d;
+  text-shadow:
+    0 0 2px rgba(120,240,141,0.95),
+    0 0 6px rgba(120,240,141,0.95),
+    0 0 12px rgba(120,240,141,0.85),
+    0 0 22px rgba(120,240,141,0.65),
+    0 0 40px rgba(120,240,141,0.35),
+    2px 2px 0 rgba(0,0,0,0.55),
+    5px 5px 10px rgba(0,0,0,0.28);
 }
 
+/* PINK HONEY */
 .honey {
-  color: var(--pink);
-  text-shadow: 0 0 14px rgba(224,112,168,0.4);
+  margin-top: -10px;
+  margin-left: 10px;
+  color: #ff7bc4;
+  text-shadow:
+    0 0 2px rgba(255,123,196,0.95),
+    0 0 6px rgba(255,123,196,0.95),
+    0 0 12px rgba(255,123,196,0.85),
+    0 0 22px rgba(255,123,196,0.65),
+    0 0 40px rgba(255,123,196,0.35),
+    2px 2px 0 rgba(0,0,0,0.55),
+    5px 5px 10px rgba(0,0,0,0.28);
 }
 
-.eyebrow {
-  color: var(--muted);
-  font-size: 10px;
-  text-transform: uppercase;
-  letter-spacing: 0.24em;
-  margin-bottom: 12px;
+/* blurred glow behind text */
+.money::before,
+.honey::before {
+  content: attr(data-glow);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  filter: blur(10px);
+  opacity: 0.55;
 }
 
-.hero-copy {
-  max-width: 480px;
-  font-size: 16px;
-  margin-bottom: 18px;
+.money::before {
+  color: #78f08d;
+}
+
+.honey::before {
+  color: #ff7bc4;
 }
 
 /* platform buttons */
