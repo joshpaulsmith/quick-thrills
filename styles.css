@@ -226,14 +226,14 @@ h1, h2, .hero-title, .btn, .section-kicker {
 }
 
 .hero-title {
-  margin: 0 0 6px;
-  font-size: clamp(66px, 9vw, 126px);
-  line-height: 0.88;
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-  color: var(--text-light);
-  position: relative;
-  z-index: 1;
+  font-family: "Sarina", cursive;
+  font-size: clamp(64px, 6vw, 110px);
+  line-height: 1;
+  margin: 0 0 14px;
+  color: #f4eadb;
+  letter-spacing: 0.02em;
+  transform: rotate(-2deg);
+}
 }
 
 .hero-copy {
