@@ -233,6 +233,10 @@ h1, h2, .hero-title, .btn, .section-kicker {
   color: #f4eadb;
   letter-spacing: 0.02em;
   transform: rotate(-2deg);
+}.hero-title {
+  text-shadow:
+    2px 2px 0 rgba(0,0,0,0.25),
+    6px 6px 0 rgba(0,0,0,0.08);
 }
 }
 
