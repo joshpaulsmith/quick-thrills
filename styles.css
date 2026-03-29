@@ -1,13 +1,14 @@
+/* COLORS + BASE */
 body {
   margin: 0;
-  background: #efe6d3; /* cream background */
-  color: #111;
+  background: #0b0b0b; /* black background */
+  color: #e8dcc2; /* off cream text */
   font-family: "Archivo Narrow", sans-serif;
 }
 
 /* layout */
 .simple-layout {
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - 100px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,14 +18,20 @@ body {
   width: min(1100px, 90%);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
+  gap: 70px;
   align-items: center;
 }
 
 /* album cover */
+.cover {
+  display: flex;
+  justify-content: center;
+}
+
 .cover img {
   width: 100%;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+  max-width: 520px;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.6);
 }
 
 /* right side */
@@ -34,66 +41,73 @@ body {
 
 .logo {
   width: 90px;
-  margin: 0 auto 20px;
+  margin: 0 auto 25px;
 }
 
 .band-name {
   font-family: "Bebas Neue", sans-serif;
-  font-size: 28px;
-  letter-spacing: 0.08em;
+  font-size: 30px;
+  letter-spacing: 0.12em;
   margin: 0;
 }
 
 .album-name {
   font-family: "Bebas Neue", sans-serif;
-  font-size: 46px;
-  margin: 10px 0 20px;
+  font-size: 52px;
+  margin: 10px 0 25px;
 }
 
 .divider {
   width: 100%;
   height: 1px;
-  background: #111;
-  margin: 20px 0;
+  background: #e8dcc2;
+  opacity: 0.5;
+  margin: 22px 0;
 }
 
 .out-now {
   font-size: 13px;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.35em;
   text-transform: uppercase;
 }
 
+/* links */
 .links {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
 .links a {
   text-decoration: none;
-  color: #111;
-  font-size: 18px;
+  color: #e8dcc2;
+  font-size: 20px;
+  letter-spacing: 0.08em;
 }
 
 .links a:hover {
-  text-decoration: underline;
+  opacity: 0.7;
 }
 
+/* EMAIL BIGGER */
 .email {
-  margin-top: 30px;
-  font-size: 14px;
+  margin-top: 40px;
+  font-size: 18px;
+  letter-spacing: 0.05em;
 }
 
 .email a {
-  color: #111;
+  color: #e8dcc2;
   text-decoration: none;
 }
 
-/* footer */
+/* FOOTER BIGGER */
 .footer {
   text-align: center;
-  padding: 20px;
-  font-size: 12px;
+  padding: 40px 20px;
+  font-size: 14px;
+  letter-spacing: 0.15em;
+  opacity: 0.6;
 }
 
 /* fade in animation */
@@ -108,11 +122,20 @@ body {
   transform: translateY(0);
 }
 
-/* mobile */
+/* MOBILE */
 @media (max-width: 800px) {
   .simple-inner {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 40px;
+  }
+
+  .cover {
+    order: -1;
+    justify-content: center;
+  }
+
+  .cover img {
+    max-width: 90%;
   }
 
   .logo {
@@ -120,6 +143,10 @@ body {
   }
 
   .album-name {
-    font-size: 36px;
+    font-size: 40px;
+  }
+
+  .email {
+    font-size: 20px;
   }
 }
