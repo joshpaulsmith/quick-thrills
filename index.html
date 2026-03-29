@@ -3,341 +3,735 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Quick Thrills</title>
+
+  <title>The Quick Thrills</title>
+  <meta name="description" content="Official website of The Quick Thrills. Alternative rock from Northern Ontario.">
+
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+
+  <meta property="og:title" content="The Quick Thrills" />
+  <meta property="og:description" content="Official website of The Quick Thrills." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.quickthrills.com" />
+  <meta property="og:image" content="https://www.quickthrills.com/moneyhoney.jpg" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Archivo+Narrow:wght@400;600;700&display=swap" rel="stylesheet">
+
   <style>
-    :root {
-      --cream: #efe3cf;
-      --tan: #d7c1a1;
-      --brown: #6f4e37;
-      --dark-brown: #3f2a1f;
-      --brick-light: #8a5a44;
-      --brick-dark: #6b4331;
-      --gold: #b8894c;
-      --shadow: rgba(45, 25, 12, 0.28);
+    :root{
+      --bg:#090706;
+      --bg-2:#120d0b;
+      --panel:#17110e;
+      --panel-2:#211713;
+      --line:rgba(255,255,255,.08);
+      --text:#f3eadc;
+      --muted:#c9b29a;
+      --accent:#f3eadc;
+      --accent-dark:#111;
+      --warm:rgba(120,60,35,.18);
+      --max:1180px;
+      --shadow:0 24px 70px rgba(0,0,0,.38);
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
+    *{
+      box-sizing:border-box;
     }
 
-    html {
-      scroll-behavior: smooth;
+    html{
+      scroll-behavior:smooth;
     }
 
-    body {
-      font-family: Georgia, "Times New Roman", serif;
-      color: var(--dark-brown);
+    body{
+      margin:0;
+      font-family:'Archivo Narrow', Arial, sans-serif;
+      color:var(--text);
+      line-height:1.5;
+      -webkit-font-smoothing:antialiased;
+      text-rendering:optimizeLegibility;
+      overflow-x:hidden;
       background:
-        linear-gradient(rgba(239, 227, 207, 0.8), rgba(239, 227, 207, 0.86)),
-        linear-gradient(90deg, rgba(255,255,255,0.03) 0, rgba(255,255,255,0.03) 1px, transparent 1px, transparent 120px),
-        linear-gradient(rgba(0,0,0,0.04) 0, rgba(0,0,0,0.04) 1px, transparent 1px, transparent 62px),
-        linear-gradient(90deg, var(--brick-light) 0%, var(--brick-dark) 100%);
-      background-size: auto, 120px 62px, 120px 62px, cover;
-      background-position: 0 0, 0 0, 0 0, center;
-      min-height: 100vh;
-      overflow-x: hidden;
-      animation: wallDrift 28s linear infinite;
+        radial-gradient(circle at 18% 16%, rgba(110,60,35,.18), transparent 20%),
+        radial-gradient(circle at 82% 24%, rgba(70,35,20,.18), transparent 24%),
+        radial-gradient(circle at 50% 80%, rgba(90,45,30,.10), transparent 24%),
+        linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 48%, #030303 100%);
+      background-attachment: fixed;
     }
 
-    @keyframes wallDrift {
-      0% {
-        background-position: 0 0, 0 0, 0 0, center;
-      }
-      100% {
-        background-position: 0 0, 120px 62px, 120px 62px, center;
-      }
+    body::before{
+      content:"";
+      position:fixed;
+      inset:-10%;
+      pointer-events:none;
+      opacity:.20;
+      background-image:radial-gradient(circle, rgba(255,255,255,.45) 1px, transparent 1px);
+      background-size:4px 4px;
+      mix-blend-mode:soft-light;
+      z-index:0;
+      animation:grainMove 8s steps(10) infinite;
     }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      pointer-events:none;
       background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.08), transparent 30%),
-        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.05), transparent 25%),
-        radial-gradient(circle at 50% 80%, rgba(0,0,0,0.05), transparent 30%);
-      mix-blend-mode: soft-light;
-      opacity: 0.8;
+        linear-gradient(180deg, rgba(255,255,255,.015), transparent 18%, transparent 82%, rgba(0,0,0,.24)),
+        radial-gradient(circle at center, transparent 35%, rgba(0,0,0,.18) 100%);
+      z-index:0;
     }
 
-    .wrap {
-      width: min(1100px, 92%);
-      margin: 0 auto;
-      padding: 48px 0 72px;
+    a{
+      color:inherit;
+      text-decoration:none;
     }
 
-    .hero {
-      min-height: 80vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
+    img{
+      max-width:100%;
+      display:block;
     }
 
-    .hero-inner {
-      max-width: 850px;
-      padding: 48px 28px;
-      background: rgba(239, 227, 207, 0.84);
-      border: 2px solid rgba(63, 42, 31, 0.18);
-      box-shadow:
-        0 20px 50px var(--shadow),
-        inset 0 0 0 2px rgba(255,255,255,0.18);
-      position: relative;
+    h1, h2, h3, .hero-title, .btn, .section-kicker{
+      font-family:'Bebas Neue', sans-serif;
     }
 
-    .hero-inner::before,
-    .hero-inner::after {
-      content: "";
-      position: absolute;
-      width: 26px;
-      height: 26px;
-      border: 2px solid var(--brown);
-      opacity: 0.7;
+    .wrap{
+      width:min(var(--max), calc(100% - 32px));
+      margin:0 auto;
+      position:relative;
+      z-index:1;
     }
 
-    .hero-inner::before {
-      top: 12px;
-      left: 12px;
-      border-right: none;
-      border-bottom: none;
+    .hero{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      position:relative;
+      overflow:hidden;
+      border-bottom:1px solid var(--line);
     }
 
-    .hero-inner::after {
-      bottom: 12px;
-      right: 12px;
-      border-left: none;
-      border-top: none;
+    .hero::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        radial-gradient(circle at 72% 35%, rgba(120,60,35,.12), transparent 20%),
+        linear-gradient(180deg, rgba(255,255,255,.015), transparent 18%, rgba(0,0,0,.14));
+      pointer-events:none;
     }
 
-    h1, h2 {
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
+    .hero-inner{
+      position:relative;
+      z-index:2;
+      width:min(var(--max), calc(100% - 32px));
+      margin:0 auto;
+      display:grid;
+      grid-template-columns:1.1fr .9fr;
+      gap:58px;
+      align-items:center;
+      padding:70px 0;
     }
 
-    h1 {
-      font-size: clamp(3rem, 8vw, 6rem);
-      line-height: 0.95;
-      color: var(--dark-brown);
-      margin-bottom: 18px;
-      text-shadow: 2px 2px 0 rgba(255,255,255,0.18);
+    .eyebrow{
+      color:var(--muted);
+      font-size:13px;
+      text-transform:uppercase;
+      letter-spacing:.24em;
+      margin-bottom:18px;
+      animation:fadeUp .8s ease both;
     }
 
-    .tagline {
-      font-size: clamp(1rem, 2vw, 1.35rem);
-      color: var(--brown);
-      max-width: 700px;
-      margin: 0 auto 28px;
-      line-height: 1.7;
+    .hero-title{
+      margin:0 0 18px;
+      font-size:clamp(90px, 14vw, 210px);
+      line-height:.86;
+      letter-spacing:.01em;
+      text-transform:uppercase;
+      color:var(--text);
+      animation:fadeUp 1s ease both, glowPulse 4s ease-in-out infinite;
     }
 
-    .hero-links {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 24px;
+    .hero-copy{
+      max-width:560px;
+      color:var(--muted);
+      font-size:24px;
+      margin:0 0 26px;
+      animation:fadeUp 1.2s ease both;
     }
 
-    .btn {
-      display: inline-block;
-      text-decoration: none;
-      color: var(--cream);
-      background: var(--dark-brown);
-      border: 2px solid var(--dark-brown);
-      padding: 12px 22px;
-      font-size: 0.95rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
-      box-shadow: 0 8px 20px rgba(63, 42, 31, 0.2);
+    .cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      margin-bottom:18px;
+      animation:fadeUp 1.35s ease both;
     }
 
-    .btn:hover {
-      transform: translateY(-2px);
-      background: var(--brown);
-      border-color: var(--brown);
+    .btn{
+      min-height:58px;
+      padding:0 24px;
+      border-radius:999px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size:18px;
+      font-weight:400;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+      border:1px solid var(--line);
+      transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
     }
 
-    .btn.alt {
-      background: transparent;
-      color: var(--dark-brown);
+    .btn.primary{
+      background:var(--accent);
+      color:var(--accent-dark);
+      border-color:var(--accent);
     }
 
-    .btn.alt:hover {
-      background: rgba(111, 78, 55, 0.08);
+    .btn.primary:hover{
+      transform:translateY(-2px);
+      box-shadow:0 0 18px rgba(243,234,220,.20);
     }
 
-    section {
-      padding: 48px 0;
+    .btn.secondary{
+      color:var(--text);
+      background:rgba(255,255,255,.03);
     }
 
-    .panel {
-      background: rgba(239, 227, 207, 0.9);
-      border: 2px solid rgba(63, 42, 31, 0.15);
-      box-shadow: 0 18px 40px var(--shadow);
-      padding: 34px 28px;
+    .btn.secondary:hover{
+      background:rgba(255,255,255,.08);
+      transform:translateY(-2px);
     }
 
-    .section-title {
-      font-size: clamp(1.6rem, 3vw, 2.5rem);
-      margin-bottom: 18px;
-      color: var(--dark-brown);
+    .stream-row{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      margin:12px 0 24px;
+      flex-wrap:wrap;
+      animation:fadeUp 1.42s ease both;
     }
 
-    .section-title::after {
-      content: "";
-      display: block;
-      width: 72px;
-      height: 2px;
-      background: var(--gold);
-      margin-top: 12px;
+    .stream-label{
+      font-size:11px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color:var(--muted);
+      width:100%;
     }
 
-    .about p,
-    .contact p {
-      font-size: 1.08rem;
-      line-height: 1.9;
-      color: #4b372a;
-      max-width: 820px;
+    .platform-row{
+      display:flex;
+      gap:18px;
+      margin:0;
+      flex-wrap:wrap;
+      align-items:center;
     }
 
-    .about p + p,
-    .contact p + p {
-      margin-top: 16px;
+    .platform-btn{
+      height:64px;
+      padding:0 28px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.04);
+      transition:transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
     }
 
-    .contact-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px;
-      margin-top: 22px;
+    .platform-btn:hover{
+      transform:translateY(-3px);
+      background:rgba(255,255,255,.08);
+      border-color:rgba(255,255,255,.30);
+      box-shadow:0 0 14px rgba(255,255,255,.12);
     }
 
-    .contact-card {
-      background: rgba(215, 193, 161, 0.28);
-      border: 1px solid rgba(63, 42, 31, 0.14);
-      padding: 20px;
+    .platform-btn img{
+      height:32px;
+      width:auto;
+      display:block;
     }
 
-    .contact-card h3 {
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-size: 0.95rem;
-      margin-bottom: 10px;
-      color: var(--brown);
+    .spotify-embed{
+      margin:12px 0 24px;
+      max-width:540px;
+      animation:fadeUp 1.45s ease both;
     }
 
-    .contact-card a {
-      color: var(--dark-brown);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(63, 42, 31, 0.35);
+    .spotify-embed iframe{
+      width:100%;
+      display:block;
+      box-shadow:0 12px 28px rgba(0,0,0,.22);
     }
 
-    .contact-card a:hover {
-      color: var(--brown);
-      border-bottom-color: var(--brown);
+    .meta{
+      display:flex;
+      flex-wrap:wrap;
+      gap:18px;
+      color:var(--muted);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.16em;
+      animation:fadeUp 1.5s ease both;
     }
 
-    footer {
-      text-align: center;
-      padding: 36px 0 20px;
-      font-size: 0.9rem;
-      color: rgba(63, 42, 31, 0.8);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
+    .hero-panel{
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:34px;
+      background:
+        radial-gradient(circle at 30% 24%, rgba(120,60,35,.16), transparent 24%),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
+        linear-gradient(180deg, var(--panel-2), var(--panel));
+      min-height:560px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:40px;
+      position:relative;
+      overflow:hidden;
+      box-shadow:var(--shadow);
+      animation:floatPanel 5s ease-in-out infinite;
     }
 
-    @media (max-width: 768px) {
-      .wrap {
-        width: min(94%, 1100px);
-        padding-top: 28px;
+    .hero-panel::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      opacity:.08;
+      background-image:radial-gradient(circle, rgba(255,255,255,.5) 1px, transparent 1px);
+      background-size:4px 4px;
+      mix-blend-mode:soft-light;
+      pointer-events:none;
+    }
+
+    .hero-panel::after{
+      content:"";
+      position:absolute;
+      top:14%;
+      left:16%;
+      width:220px;
+      height:220px;
+      border-radius:50%;
+      background:radial-gradient(circle, rgba(120,60,35,.18), transparent 70%);
+      filter:blur(12px);
+      pointer-events:none;
+    }
+
+    .panel-art{
+      position:relative;
+      z-index:2;
+      width:100%;
+      max-width:420px;
+    }
+
+    .panel-art img{
+      position:relative;
+      z-index:2;
+      width:100%;
+      aspect-ratio:1 / 1;
+      object-fit:cover;
+      border-radius:20px;
+      box-shadow:0 18px 40px rgba(0,0,0,.35);
+      filter:saturate(.88) contrast(1.04);
+    }
+
+    .panel-badge{
+      position:absolute;
+      left:18px;
+      bottom:18px;
+      z-index:3;
+      background:rgba(10,8,7,.78);
+      border:1px solid var(--line);
+      color:var(--text);
+      padding:10px 14px;
+      border-radius:999px;
+      font-size:14px;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+      backdrop-filter:blur(8px);
+    }
+
+    section{
+      padding:88px 0;
+      border-bottom:1px solid var(--line);
+      position:relative;
+      z-index:1;
+    }
+
+    .section-kicker{
+      color:var(--muted);
+      font-size:12px;
+      text-transform:uppercase;
+      letter-spacing:.24em;
+      margin-bottom:10px;
+      text-align:center;
+    }
+
+    h2{
+      margin:0;
+      font-size:clamp(40px, 5vw, 62px);
+      line-height:.95;
+      letter-spacing:.03em;
+      text-transform:uppercase;
+      text-align:center;
+      color:var(--text);
+    }
+
+    .about-wrap,
+    .contact{
+      text-align:center;
+    }
+
+    .about-card,
+    .contact-card{
+      margin:30px auto 0;
+      max-width:1000px;
+      animation:fadeUp .9s ease both;
+    }
+
+    .card{
+      background:
+        radial-gradient(circle at 24% 18%, rgba(120,60,35,.10), transparent 20%),
+        linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
+        var(--panel);
+      border:1px solid var(--line);
+      border-radius:24px;
+      padding:28px;
+      box-shadow:0 14px 36px rgba(0,0,0,.16);
+    }
+
+    .about-copy,
+    .contact-copy{
+      font-size:21px;
+      color:var(--muted);
+      max-width:860px;
+      margin:0 auto;
+      text-align:center;
+    }
+
+    .contact-logo{
+      width:min(100%, 460px);
+      margin:0 auto 26px;
+      opacity:.98;
+      filter:drop-shadow(0 12px 30px rgba(0,0,0,.22));
+    }
+
+    .contact-mail{
+      display:inline-block;
+      margin:8px 0 18px;
+      font-size:clamp(26px, 4vw, 44px);
+      letter-spacing:-.02em;
+      word-break:break-word;
+    }
+
+    .socials{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:22px;
+    }
+
+    .social-link{
+      min-height:50px;
+      padding:0 18px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:999px;
+      border:1px solid var(--line);
+      color:var(--muted);
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      font-size:18px;
+      transition:background .2s ease, color .2s ease, transform .2s ease;
+    }
+
+    .social-link:hover{
+      color:var(--text);
+      background:rgba(255,255,255,.03);
+      transform:translateY(-1px);
+    }
+
+    footer{
+      padding:28px 0 40px;
+      color:var(--muted);
+      font-size:14px;
+      position:relative;
+      z-index:1;
+      text-align:center;
+    }
+
+    @keyframes fadeUp{
+      from{
+        opacity:0;
+        transform:translateY(24px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @keyframes floatPanel{
+      0%{ transform:translateY(0px); }
+      50%{ transform:translateY(-12px); }
+      100%{ transform:translateY(0px); }
+    }
+
+    @keyframes glowPulse{
+      0%{ text-shadow:0 0 0px rgba(243,234,220,0); }
+      50%{ text-shadow:0 0 18px rgba(243,234,220,.15); }
+      100%{ text-shadow:0 0 0px rgba(243,234,220,0); }
+    }
+
+    @keyframes grainMove{
+      0%{ transform:translate(0,0); }
+      10%{ transform:translate(-1%,-1%); }
+      20%{ transform:translate(1%,1%); }
+      30%{ transform:translate(-2%,1%); }
+      40%{ transform:translate(2%,-1%); }
+      50%{ transform:translate(-1%,2%); }
+      60%{ transform:translate(1%,-2%); }
+      70%{ transform:translate(-2%,0); }
+      80%{ transform:translate(2%,0); }
+      90%{ transform:translate(0,2%); }
+      100%{ transform:translate(0,0); }
+    }
+
+    @media (max-width: 920px){
+      .hero-inner{
+        grid-template-columns:1fr;
+        gap:32px;
+        padding:48px 0 64px;
       }
 
-      .hero {
-        min-height: auto;
-        padding: 36px 0 10px;
+      .hero{
+        min-height:auto;
       }
 
-      .hero-inner,
-      .panel {
-        padding: 28px 20px;
+      .hero-panel{
+        min-height:380px;
+      }
+    }
+
+    @media (max-width: 700px){
+      .hero{
+        min-height:auto;
       }
 
-      .contact-grid {
-        grid-template-columns: 1fr;
+      .hero-inner{
+        gap:24px;
+        padding:36px 0 48px;
       }
 
-      .tagline,
-      .about p,
-      .contact p {
-        font-size: 1rem;
+      .eyebrow{
+        font-size:11px;
+        margin-bottom:14px;
+      }
+
+      .hero-title{
+        font-size:clamp(62px, 22vw, 110px);
+        line-height:.9;
+        margin-bottom:12px;
+      }
+
+      .hero-copy{
+        font-size:20px;
+        margin-bottom:22px;
+      }
+
+      .cta-row{
+        gap:12px;
+      }
+
+      .btn{
+        min-height:56px;
+        padding:0 22px;
+        font-size:18px;
+        width:100%;
+      }
+
+      .platform-row{
+        flex-direction:column;
+        width:100%;
+      }
+
+      .platform-btn{
+        min-height:56px;
+        padding:0 20px;
+        width:100%;
+      }
+
+      .platform-btn img{
+        height:24px;
+      }
+
+      .spotify-embed{
+        max-width:100%;
+        margin:10px 0 20px;
+      }
+
+      .meta{
+        gap:10px;
+        font-size:10px;
+      }
+
+      .hero-panel{
+        min-height:280px;
+        padding:24px;
+        border-radius:24px;
+      }
+
+      section{
+        padding:64px 0;
+      }
+
+      .card{
+        padding:20px;
+      }
+
+      .about-copy,
+      .contact-copy{
+        font-size:18px;
+      }
+
+      .contact-logo{
+        width:min(100%, 320px);
+      }
+
+      .social-link{
+        font-size:20px;
+        width:100%;
       }
     }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="hero" id="intro">
-      <div class="hero-inner">
-        <h1>Quick Thrills</h1>
-        <p class="tagline">
-          Loud guitars, late nights, and songs that hit like they were found
-          on a forgotten record under neon lights. Quick Thrills brings a raw,
-          retro sound with just enough chaos to keep it alive.
-        </p>
-        <div class="hero-links">
-          <a href="#about" class="btn">About the Band</a>
-          <a href="#contact" class="btn alt">Contact</a>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-inner wrap">
+        <div>
+          <div class="eyebrow">Alternative Rock / Northern Ontario, Canada</div>
+
+          <h1 class="hero-title">The Quick Thrills</h1>
+
+          <p class="hero-copy">
+            Loud music for late nights, long drives, and bad decisions.
+          </p>
+
+          <div class="cta-row">
+            <a class="btn primary" href="#about">About the Band</a>
+            <a class="btn secondary" href="#contact">Contact</a>
+          </div>
+
+          <div class="stream-row">
+            <span class="stream-label">Listen</span>
+            <div class="platform-row">
+              <a class="platform-btn" href="YOUR_SPOTIFY_LINK" target="_blank">
+                <img src="spotify.png" alt="Spotify">
+                <span style="margin-left:10px;">Spotify</span>
+              </a>
+
+              <a class="platform-btn" href="YOUR_APPLE_LINK" target="_blank">
+                <img src="apple.png" alt="Apple Music">
+                <span style="margin-left:10px;">Apple Music</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="spotify-embed">
+            <iframe style="border-radius:12px"
+              src="YOUR_SPOTIFY_EMBED_LINK"
+              width="100%"
+              height="152"
+              frameborder="0"
+              allowfullscreen=""
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy">
+            </iframe>
+          </div>
+
+          <div class="meta">
+            <span>Independent</span>
+            <span>Northern Ontario</span>
+            <span>Alternative Rock</span>
+          </div>
+        </div>
+
+        <div class="hero-panel">
+          <div class="panel-art">
+            <img src="moneyhoney.jpg" alt="The Quick Thrills cover art">
+            <div class="panel-badge">Featured Release</div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="about" id="about">
-      <div class="panel">
-        <h2 class="section-title">About the Band</h2>
-        <p>
-          Quick Thrills is built on grit, volume, and that worn-in feeling of
-          rock and roll that never really goes out of style. The sound leans
-          vintage without feeling stuck in the past — sharp riffs, driving
-          rhythm, and a live energy that feels immediate.
-        </p>
-        <p>
-          This isn’t meant to feel polished or corporate. It’s meant to feel
-          real. Like a basement show flyer, an old venue wall covered in posters,
-          or a record sleeve that looks better because it’s a little rough around
-          the edges.
-        </p>
-      </div>
-    </section>
+    <section id="about">
+      <div class="wrap about-wrap">
+        <div class="section-kicker">About</div>
+        <h2>The Quick Thrills</h2>
 
-    <section class="contact" id="contact">
-      <div class="panel">
-        <h2 class="section-title">Contact</h2>
-        <p>
-          For booking, questions, collaborations, or anything else, reach out
-          below.
-        </p>
-
-        <div class="contact-grid">
-          <div class="contact-card">
-            <h3>Email</h3>
-            <p><a href="mailto:your@email.com">your@email.com</a></p>
-          </div>
-
-          <div class="contact-card">
-            <h3>Instagram</h3>
-            <p><a href="https://instagram.com/" target="_blank">@quickthrills</a></p>
-          </div>
+        <div class="card about-card">
+          <p class="about-copy">
+            We’re The Quick Thrills — a rock band from Northern Ontario, Canada. We make loud music with a raw edge and a late-night pulse. Everything we release is independent, built for people who still want songs that feel dangerous, alive, and a little worn around the edges.
+          </p>
         </div>
       </div>
     </section>
 
-    <footer>
-      Quick Thrills
-    </footer>
+    <section id="contact">
+      <div class="wrap contact">
+        <div class="section-kicker">Contact</div>
+        <h2>Get in Touch</h2>
+
+        <div class="card contact-card">
+          <img class="contact-logo" src="logo.png" alt="The Quick Thrills logo">
+          <a class="contact-mail" href="mailto:thequickthrills@proton.me">thequickthrills@proton.me</a>
+          <p class="contact-copy">
+            For booking, general inquiries, or anything else, reach out by email or follow along below.
+          </p>
+
+          <div class="socials">
+            <a class="social-link" href="https://www.instagram.com/thequickthrills/" target="_blank">Instagram</a>
+            <a class="social-link" href="YOUR_SPOTIFY_LINK" target="_blank">Spotify</a>
+            <a class="social-link" href="YOUR_APPLE_LINK" target="_blank">Apple Music</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer>
+    <div class="wrap">© 2026 The Quick Thrills</div>
+  </footer>
+
+  <script>
+    const sections = document.querySelectorAll("section");
+
+    const reveal = () => {
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if (top < window.innerHeight - 100) {
+          section.style.opacity = 1;
+          section.style.transform = "translateY(0)";
+        }
+      });
+    };
+
+    sections.forEach(section => {
+      section.style.opacity = 0;
+      section.style.transform = "translateY(40px)";
+      section.style.transition = "all 1s ease";
+    });
+
+    window.addEventListener("scroll", reveal);
+    reveal();
+  </script>
 </body>
 </html>
