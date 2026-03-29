@@ -20,20 +20,20 @@
 
   <style>
     :root{
-      --bg:#050404;
-      --bg-2:#0d0908;
-      --panel:#14100e;
-      --panel-2:#1b1512;
-      --line:rgba(255,255,255,.08);
-      --text:#f3eadc;
-      --muted:#c5ad96;
-      --accent:#f3eadc;
-      --accent-dark:#111;
-      --pink:rgba(255,70,160,.26);
-      --green:rgba(40,255,170,.22);
-      --warm:rgba(120,60,35,.18);
+      --bg:#030509;
+      --bg-2:#07111a;
+      --panel:#0d1720;
+      --panel-2:#13212b;
+      --line:rgba(180,220,255,.10);
+      --text:#eef6ff;
+      --muted:#a8bfd3;
+      --accent:#8fd3ff;
+      --accent-dark:#081018;
+      --pink:rgba(120,80,255,.18);
+      --green:rgba(0,220,255,.14);
+      --warm:rgba(70,120,255,.10);
       --max:1180px;
-      --shadow:0 24px 70px rgba(0,0,0,.38);
+      --shadow:0 24px 70px rgba(0,0,0,.42);
     }
 
     *{
@@ -53,11 +53,13 @@
       text-rendering:optimizeLegibility;
       overflow-x:hidden;
       background:
-        radial-gradient(circle at 18% 16%, rgba(110,60,35,.18), transparent 20%),
-        radial-gradient(circle at 82% 24%, rgba(70,35,20,.18), transparent 24%),
-        radial-gradient(circle at 50% 80%, rgba(90,45,30,.10), transparent 24%),
-        linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 48%, #030303 100%);
-      background-attachment: fixed;
+        radial-gradient(circle at 15% 20%, rgba(0,180,255,.16), transparent 22%),
+        radial-gradient(circle at 80% 18%, rgba(90,70,255,.16), transparent 24%),
+        radial-gradient(circle at 50% 78%, rgba(0,140,255,.12), transparent 26%),
+        linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 48%, #020308 100%);
+      background-size:120% 120%;
+      background-attachment:fixed;
+      animation:bgShift 18s ease-in-out infinite alternate;
     }
 
     body::before{
@@ -65,7 +67,7 @@
       position:fixed;
       inset:-10%;
       pointer-events:none;
-      opacity:.25;
+      opacity:.35;
       background-image:radial-gradient(circle, rgba(255,255,255,.45) 1px, transparent 1px);
       background-size:4px 4px;
       mix-blend-mode:soft-light;
@@ -97,17 +99,18 @@
     h1, h2, h3, .hero-title, .nav-links, .btn{
       font-family:'Bebas Neue', sans-serif;
     }
-    .spotify-embed{
-  margin:12px 0 24px;
-  max-width:540px;
-  animation:fadeUp 1.45s ease both;
-}
 
-.spotify-embed iframe{
-  width:100%;
-  display:block;
-  box-shadow:0 12px 28px rgba(0,0,0,.22);
-}
+    .spotify-embed{
+      margin:12px 0 24px;
+      max-width:540px;
+      animation:fadeUp 1.45s ease both;
+    }
+
+    .spotify-embed iframe{
+      width:100%;
+      display:block;
+      box-shadow:0 12px 28px rgba(0,0,0,.22);
+    }
 
     .wrap{
       width:min(var(--max), calc(100% - 32px));
@@ -120,7 +123,7 @@
       position:sticky;
       top:0;
       z-index:100;
-      background:rgba(6,5,5,.84);
+      background:rgba(4,8,14,.84);
       backdrop-filter:blur(12px);
       border-bottom:1px solid var(--line);
     }
@@ -140,12 +143,13 @@
       width:auto;
       object-fit:contain;
       opacity:.98;
-      transition:transform .25s ease;
+      transition:transform .25s ease, filter .25s ease;
       filter:drop-shadow(0 10px 20px rgba(0,0,0,.22));
     }
 
     .nav-logo:hover{
-      transform:scale(1.03);
+      transform:scale(1.05);
+      filter:drop-shadow(0 0 18px rgba(143,211,255,.25));
     }
 
     .nav-tagline{
@@ -190,7 +194,7 @@
       position:absolute;
       inset:0;
       background:
-        radial-gradient(circle at 72% 35%, rgba(120,60,35,.12), transparent 20%),
+        radial-gradient(circle at 72% 35%, rgba(70,140,255,.10), transparent 20%),
         linear-gradient(180deg, rgba(255,255,255,.015), transparent 18%, rgba(0,0,0,.14));
       pointer-events:none;
     }
@@ -223,7 +227,7 @@
       letter-spacing:.01em;
       text-transform:uppercase;
       color:var(--text);
-      animation:fadeUp 1s ease both;
+      animation:fadeUp 1s ease both, glowPulse 4s ease-in-out infinite;
     }
 
     .hero-copy{
@@ -254,17 +258,19 @@
       letter-spacing:.10em;
       text-transform:uppercase;
       border:1px solid var(--line);
-      transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease;
+      transition:transform .2s ease, background .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
     }
 
     .btn.primary{
       background:var(--accent);
       color:var(--accent-dark);
       border-color:var(--accent);
+      box-shadow:0 0 20px rgba(143,211,255,.18);
     }
 
     .btn.primary:hover{
-      transform:translateY(-1px);
+      transform:translateY(-2px);
+      box-shadow:0 0 24px rgba(143,211,255,.28);
     }
 
     .btn.secondary{
@@ -293,39 +299,38 @@
       color:var(--muted);
     }
 
-/* ===== BIGGER SPOTIFY & APPLE BUTTONS ===== */
+    .platform-row{
+      display:flex;
+      gap:18px;
+      margin:18px 0 28px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
 
-.platform-row{
-  display:flex;
-  gap:18px;
-  margin:18px 0 28px;
-  flex-wrap:wrap;
-  align-items:center;
-}
+    .platform-btn{
+      height:64px;
+      padding:0 28px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.18);
+      background:rgba(255,255,255,.04);
+      transition:transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
 
-.platform-btn{
-  height:64px;
-  padding:0 28px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:999px;
-  border:1px solid rgba(255,255,255,.18);
-  background:rgba(255,255,255,.04);
-  transition:transform .2s ease, background .2s ease, border-color .2s ease;
-}
+    .platform-btn:hover{
+      transform:translateY(-3px);
+      background:rgba(255,255,255,.08);
+      border-color:rgba(143,211,255,.45);
+      box-shadow:0 0 18px rgba(143,211,255,.18);
+    }
 
-.platform-btn:hover{
-  transform:translateY(-3px);
-  background:rgba(255,255,255,.08);
-  border-color:rgba(255,255,255,.30);
-}
-
-.platform-btn img{
-  height:32px;
-  width:auto;
-  display:block;
-}
+    .platform-btn img{
+      height:32px;
+      width:auto;
+      display:block;
+    }
 
     .meta{
       display:flex;
@@ -339,10 +344,10 @@
     }
 
     .hero-panel{
-      border:1px solid rgba(255,255,255,.08);
+      border:1px solid rgba(180,220,255,.12);
       border-radius:34px;
       background:
-        radial-gradient(circle at 30% 24%, rgba(120,60,35,.16), transparent 24%),
+        radial-gradient(circle at 30% 24%, rgba(70,140,255,.18), transparent 24%),
         linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
         linear-gradient(180deg, var(--panel-2), var(--panel));
       min-height:560px;
@@ -352,7 +357,7 @@
       padding:40px;
       position:relative;
       overflow:hidden;
-      box-shadow:var(--shadow);
+      box-shadow:0 24px 70px rgba(0,0,0,.45);
       animation:floatPanel 5s ease-in-out infinite;
     }
 
@@ -375,7 +380,7 @@
       width:220px;
       height:220px;
       border-radius:50%;
-      background:radial-gradient(circle, rgba(120,60,35,.18), transparent 70%);
+      background:radial-gradient(circle, rgba(70,140,255,.18), transparent 70%);
       filter:blur(12px);
       pointer-events:none;
     }
@@ -414,7 +419,7 @@
       left:18px;
       bottom:18px;
       z-index:3;
-      background:rgba(10,8,7,.78);
+      background:rgba(6,10,16,.78);
       border:1px solid var(--line);
       color:var(--text);
       padding:10px 14px;
@@ -477,7 +482,7 @@
 
     .card{
       background:
-        radial-gradient(circle at 24% 18%, rgba(120,60,35,.10), transparent 20%),
+        radial-gradient(circle at 24% 18%, rgba(70,120,255,.10), transparent 20%),
         linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.01)),
         var(--panel);
       border:1px solid var(--line);
@@ -539,13 +544,15 @@
       text-transform:uppercase;
       letter-spacing:.12em;
       font-size:18px;
-      transition:background .2s ease, color .2s ease, transform .2s ease;
+      transition:background .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease, border-color .2s ease;
     }
 
     .social-link:hover{
       color:var(--text);
       background:rgba(255,255,255,.03);
       transform:translateY(-1px);
+      border-color:rgba(143,211,255,.30);
+      box-shadow:0 0 14px rgba(143,211,255,.12);
     }
 
     footer{
@@ -568,19 +575,16 @@
       }
     }
 
-   @keyframes floatPanel{
-  0%{ transform:translateY(0px); }
-  50%{ transform:translateY(-12px); }
-  100%{ transform:translateY(0px); }
-}.hero-title{
-  animation:fadeUp 1s ease both, glowPulse 4s ease-in-out infinite;
-}
+    @keyframes floatPanel{
+      0%{ transform:translateY(0px); }
+      50%{ transform:translateY(-12px); }
+      100%{ transform:translateY(0px); }
+    }
 
-@keyframes glowPulse{
-  0%{ text-shadow:0 0 0px rgba(243,234,220,0); }
-  50%{ text-shadow:0 0 18px rgba(243,234,220,.15); }
-  100%{ text-shadow:0 0 0px rgba(243,234,220,0); }
-}
+    @keyframes glowPulse{
+      0%{ text-shadow:0 0 0px rgba(143,211,255,0); }
+      50%{ text-shadow:0 0 18px rgba(143,211,255,.18); }
+      100%{ text-shadow:0 0 0px rgba(143,211,255,0); }
     }
 
     @keyframes grainMove{
@@ -595,6 +599,15 @@
       80%{ transform:translate(2%,0); }
       90%{ transform:translate(0,2%); }
       100%{ transform:translate(0,0); }
+    }
+
+    @keyframes bgShift{
+      0%{
+        background-position:0% 0%, 100% 0%, 50% 100%, 0% 0%;
+      }
+      100%{
+        background-position:8% 4%, 92% 6%, 48% 92%, 0% 0%;
+      }
     }
 
     @media (max-width: 920px){
@@ -684,14 +697,14 @@
         width:100%;
       }
 
-   .platform-btn{
-  min-height:56px;
-  padding:0 20px;
-}
+      .platform-btn{
+        min-height:56px;
+        padding:0 20px;
+      }
 
-.platform-btn img{
-  height:24px;
-}
+      .platform-btn img{
+        height:24px;
+      }
 
       .meta{
         gap:10px;
@@ -728,81 +741,40 @@
         font-size:20px;
         width:100%;
       }
-    }/* MOBILE FIX */
-@media (max-width: 768px) {
+    }
 
-  /* Make header smaller on mobile */
-  header {
-    padding: 20px 0 10px 0;
-  .spotify-embed{
-  max-width:100%;
-  margin:10px 0 20px;
-}
+    @media (max-width: 768px){
+      .spotify-embed{
+        max-width:100%;
+        margin:10px 0 20px;
+      }
 
-  /* Make logo slightly smaller on mobile */
-  .logo img {
-    width: 70px;
-  }
+      .nav-logo{
+        height:92px;
+        width:auto;
+        object-fit:contain;
+        opacity:.98;
+        transition:transform .25s ease, filter .25s ease;
+        filter:drop-shadow(0 10px 20px rgba(0,0,0,.22));
+      }
 
-  /* Reduce space above hero */
-  .hero {
-    padding-top: 40px;
-    padding-bottom: 40px;
-  }
+      .nav-logo:hover{
+        transform:scale(1.05);
+        filter:drop-shadow(0 0 18px rgba(143,211,255,.35));
+      }
 
-  /* Make MONEY HONEY big on mobile */
-  .hero h1 {
-    font-size: 48px;
-    line-height: 1.0;
-    margin-bottom: 20px;
-  }
+      .btn.primary:hover{
+        transform:translateY(-2px);
+        box-shadow:0 0 18px rgba(143,211,255,.35);
+      }
 
-  /* Make sub text readable */
-  .hero p {
-    font-size: 16px;
-    line-height: 1.4;
-  }
-
-  /* Make button bigger */
-  .cta-button {
-    font-size: 16px;
-    padding: 16px 20px;
-    width: 100%;
-    max-width: 320px;
-  }
-
-  /* Stack Spotify / Apple buttons */
-  .platforms {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-  }
-    .nav-logo{
-  height:92px;
-  width:auto;
-  object-fit:contain;
-  opacity:.98;
-  transition:transform .25s ease, filter .25s ease;
-  filter:drop-shadow(0 10px 20px rgba(0,0,0,.22));
-}
-
-.nav-logo:hover{
-  transform:scale(1.05);
-  filter:drop-shadow(0 0 18px rgba(243,234,220,.35));
-}.btn.primary:hover{
-  transform:translateY(-2px);
-  box-shadow:0 0 18px rgba(243,234,220,.35);
-}
-
-.platform-btn:hover{
-  transform:translateY(-3px);
-  background:rgba(255,255,255,.08);
-  border-color:rgba(255,255,255,.30);
-  box-shadow:0 0 14px rgba(255,255,255,.15);
-}
-
-}
+      .platform-btn:hover{
+        transform:translateY(-3px);
+        background:rgba(255,255,255,.08);
+        border-color:rgba(143,211,255,.30);
+        box-shadow:0 0 14px rgba(143,211,255,.15);
+      }
+    }
   </style>
 </head>
 <body>
@@ -837,32 +809,32 @@
             <a class="btn primary" href="YOUR_SPOTIFY_LINK" target="_blank">Listen to Our Latest Single</a>
           </div>
 
-        <div class="stream-row">
-  <span class="stream-label">Available on</span>
-  <div class="platform-row">
-    <a class="platform-btn" href="YOUR_SPOTIFY_LINK" target="_blank">
-      <img src="spotify.png" alt="Spotify">
-      <span style="margin-left:10px;">Spotify</span>
-    </a>
+          <div class="stream-row">
+            <span class="stream-label">Available on</span>
+            <div class="platform-row">
+              <a class="platform-btn" href="YOUR_SPOTIFY_LINK" target="_blank">
+                <img src="spotify.png" alt="Spotify">
+                <span style="margin-left:10px;">Spotify</span>
+              </a>
 
-    <a class="platform-btn" href="YOUR_APPLE_LINK" target="_blank">
-      <img src="apple.png" alt="Apple Music">
-      <span style="margin-left:10px;">Apple Music</span>
-    </a>
-  </div>
-</div>
+              <a class="platform-btn" href="YOUR_APPLE_LINK" target="_blank">
+                <img src="apple.png" alt="Apple Music">
+                <span style="margin-left:10px;">Apple Music</span>
+              </a>
+            </div>
+          </div>
 
-<div class="spotify-embed">
-  <iframe style="border-radius:12px"
-    src="YOUR_SPOTIFY_EMBED_LINK"
-    width="100%"
-    height="152"
-    frameBorder="0"
-    allowfullscreen=""
-    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-    loading="lazy">
-  </iframe>
-</div>
+          <div class="spotify-embed">
+            <iframe style="border-radius:12px"
+              src="YOUR_SPOTIFY_EMBED_LINK"
+              width="100%"
+              height="152"
+              frameborder="0"
+              allowfullscreen=""
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy">
+            </iframe>
+          </div>
 
           <div class="meta">
             <span>New single out now</span>
@@ -919,27 +891,28 @@
   <footer>
     <div class="wrap">© 2026 The Quick Thrills</div>
   </footer>
+
   <script>
-const sections = document.querySelectorAll("section");
+    const sections = document.querySelectorAll("section");
 
-const reveal = () => {
-  sections.forEach(section => {
-    const top = section.getBoundingClientRect().top;
-    if(top < window.innerHeight - 100){
-      section.style.opacity = 1;
-      section.style.transform = "translateY(0)";
-    }
-  });
-};
+    const reveal = () => {
+      sections.forEach(section => {
+        const top = section.getBoundingClientRect().top;
+        if(top < window.innerHeight - 100){
+          section.style.opacity = 1;
+          section.style.transform = "translateY(0)";
+        }
+      });
+    };
 
-sections.forEach(section => {
-  section.style.opacity = 0;
-  section.style.transform = "translateY(40px)";
-  section.style.transition = "all 1s ease";
-});
+    sections.forEach(section => {
+      section.style.opacity = 0;
+      section.style.transform = "translateY(40px)";
+      section.style.transition = "all 1s ease";
+    });
 
-window.addEventListener("scroll", reveal);
-reveal();
-</script>
+    window.addEventListener("scroll", reveal);
+    reveal();
+  </script>
 </body>
 </html>
