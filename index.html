@@ -12,14 +12,10 @@
   <div class="paper-grain"></div>
 
   <main class="container">
-    <div class="title-wrap">
-      <svg class="hh-svg" viewBox="0 0 900 240" preserveAspectRatio="xMidYMid meet" aria-label="Money Honey">
-        <text x="80" y="125" class="hh-text money-text">Money</text>
-        <text x="470" y="125" class="hh-text honey-text">Honey</text>
-      </svg>
-    </div>
 
-    <p class="out-now">out now</p>
+    <h1 class="poster-title">Money Honey</h1>
+    <p class="subtitle">a single by The Quick Thrills</p>
+    <p class="listen">listen now</p>
 
     <div class="player">
       <iframe
@@ -41,27 +37,7 @@
     <section class="contact">
       <p><a href="mailto:thequickthrills@proton.me">thequickthrills@proton.me</a></p>
     </section>
+
   </main>
-
-  <script>
-    window.addEventListener('load', () => {
-      const money = document.querySelector('.money-text');
-      const honey = document.querySelector('.honey-text');
-
-      if (money) {
-        const len = money.getComputedTextLength();
-        money.style.strokeDasharray = len;
-        money.style.strokeDashoffset = len;
-        money.classList.add('animate');
-      }
-
-      if (honey) {
-        const len = honey.getComputedTextLength();
-        honey.style.strokeDasharray = len;
-        honey.style.strokeDashoffset = len;
-        honey.classList.add('animate');
-      }
-    });
-  </script>
 </body>
 </html>
