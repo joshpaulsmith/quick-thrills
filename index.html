@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Quick Thrills</title>
+  <title>Money Honey — The Quick Thrills</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=La+Belle+Aurore&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
@@ -12,40 +12,56 @@
   <div class="paper-grain"></div>
 
   <main class="container">
-  <h1 class="band-name">The Quick Thrills</h1>
+    <div class="title-wrap">
+      <svg class="hh-svg" viewBox="0 0 900 240" preserveAspectRatio="xMidYMid meet" aria-label="Money Honey">
+        <text x="80" y="125" class="hh-text money-text">Money</text>
+        <text x="470" y="125" class="hh-text honey-text">Honey</text>
+      </svg>
+    </div>
 
-  <div class="title-wrap">
-    <svg class="hh-svg" viewBox="0 0 900 240" preserveAspectRatio="xMidYMid meet" aria-label="Money Honey">
-      <text x="80" y="125" class="hh-text money-text">Money</text>
-      <text x="470" y="125" class="hh-text honey-text">Honey</text>
-    </svg>
-  </div>
+    <p class="out-now">out now</p>
 
-  <p class="out-now">out now</p>
+    <div class="player">
+      <iframe
+        src="https://open.spotify.com/embed/track/yourtrackid"
+        width="100%"
+        height="152"
+        frameborder="0"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+      </iframe>
+    </div>
 
-  <div class="player">
-    <iframe
-      style="border-radius:12px"
-      src="https://open.spotify.com/embed/track/yourtrackid"
-      width="100%"
-      height="152"
-      frameborder="0"
-      allowfullscreen=""
-      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-    </iframe>
-  </div>
+    <div class="buttons">
+      <a href="#" class="btn btn-1">Spotify</a>
+      <a href="#" class="btn btn-2">Apple Music</a>
+      <a href="#" class="btn btn-3">Instagram</a>
+    </div>
 
-  <div class="buttons">
-    <a href="#" class="btn btn-1">Spotify</a>
-    <a href="#" class="btn btn-2">Apple Music</a>
-    <a href="#" class="btn btn-3">Instagram</a>
-  </div>
+    <section class="contact">
+      <p><a href="mailto:thequickthrills@proton.me">thequickthrills@proton.me</a></p>
+    </section>
+  </main>
 
-  <section class="contact">
-    <p><a href="mailto:thequickthrillsband@gmail.com">thequickthrillsband@gmail.com</a></p>
-  </section>
-</main>
+  <script>
+    window.addEventListener('load', () => {
+      const money = document.querySelector('.money-text');
+      const honey = document.querySelector('.honey-text');
 
-  <script src="script.js"></script>
+      if (money) {
+        const len = money.getComputedTextLength();
+        money.style.strokeDasharray = len;
+        money.style.strokeDashoffset = len;
+        money.classList.add('animate');
+      }
+
+      if (honey) {
+        const len = honey.getComputedTextLength();
+        honey.style.strokeDasharray = len;
+        honey.style.strokeDashoffset = len;
+        honey.classList.add('animate');
+      }
+    });
+  </script>
 </body>
 </html>
