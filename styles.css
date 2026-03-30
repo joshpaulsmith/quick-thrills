@@ -70,6 +70,14 @@ body::after {
   stroke-width: 1.8;
   stroke-linecap: round;
   stroke-linejoin: round;
+}@keyframes scribbleFloat {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(0.5px) rotate(-0.15deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.scribble-divider {
+  animation: scribbleFloat 5s ease-in-out infinite;
 }
 
 /* Out now */
