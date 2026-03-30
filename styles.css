@@ -2,11 +2,11 @@ body {
   margin: 0;
   background: #050505;
   color: #f1ead7;
-  font-family: "La Belle Aurore", cursive;
   text-align: center;
+  font-family: "La Belle Aurore", cursive;
 }
 
-/* subtle grain */
+/* subtle grain texture */
 body::after {
   content: "";
   position: fixed;
@@ -19,18 +19,19 @@ body::after {
 .poster {
   max-width: 700px;
   margin: auto;
-  padding: 60px 20px 20px;
+  padding: 70px 20px 20px;
 }
 
-/* band name */
+/* Band name */
 .band {
-  font-size: 42px;
+  font-size: 46px;
   margin-bottom: 30px;
 }
 
-/* money honey */
+/* Money Honey title */
 .title {
-  font-size: 110px;
+  font-family: "Cedarville Cursive", cursive;
+  font-size: 120px;
   line-height: 0.9;
   margin: 0 0 20px;
 }
@@ -39,18 +40,18 @@ body::after {
   display: block;
 }
 
-/* colors */
+/* Colors */
 .money {
   color: #79d98a;
-  text-shadow: 0 0 10px rgba(121, 217, 138, 0.25);
+  text-shadow: 0 0 10px rgba(121, 217, 138, 0.3);
 }
 
 .honey {
   color: #f08ac5;
-  text-shadow: 0 0 10px rgba(240, 138, 197, 0.25);
+  text-shadow: 0 0 10px rgba(240, 138, 197, 0.3);
 }
 
-/* divider */
+/* Divider */
 .divider {
   height: 1px;
   background: #f1ead7;
@@ -59,66 +60,62 @@ body::after {
   width: 80%;
 }
 
-/* out now */
+/* Out now */
 .out-now {
-  font-size: 36px;
+  font-size: 40px;
   margin-bottom: 20px;
 }
 
-/* spotify player */
+/* Spotify player */
 .player {
   max-width: 500px;
   margin: 0 auto 10px;
 }
 
-/* links */
-.links {
-  margin-top: 10px;
-}
-
+/* Links */
 .links a {
   display: block;
-  font-size: 32px;
+  font-size: 34px;
   color: #f1ead7;
   text-decoration: none;
-  margin: 10px 0;
+  margin: 12px 0;
 }
 
 .links a:hover {
   opacity: 0.6;
 }
 
-/* email */
+/* Email */
 .email {
   margin-top: 40px;
 }
 
 .email a {
-  font-size: 40px;
+  font-size: 42px;
   color: #f1ead7;
   text-decoration: none;
 }
 
-/* footer */
+/* Footer */
 .footer {
-  margin-top: 60px;
+  margin-top: 70px;
   padding-bottom: 30px;
   font-size: 18px;
   opacity: 0.6;
 }
 
-/* mobile */
+/* Mobile */
 @media (max-width: 600px) {
   .title {
-    font-size: 70px;
+    font-size: 72px;
   }
 
   .band {
-    font-size: 34px;
+    font-size: 36px;
   }
 
   .out-now {
-    font-size: 28px;
+    font-size: 30px;
   }
 
   .links a {
