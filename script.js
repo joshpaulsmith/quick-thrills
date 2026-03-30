@@ -5,4 +5,10 @@ window.addEventListener("load", () => {
       el.classList.add("visible");
     }, i * 180);
   });
+
+  const scribbles = document.querySelectorAll(".scribble-divider path");
+  scribbles.forEach((path) => {
+    const yOffset = (Math.random() * 2 - 1).toFixed(2);
+    path.style.transform = `translateY(${yOffset}px)`;
+  });
 });
