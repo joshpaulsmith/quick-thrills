@@ -24,7 +24,7 @@ body {
   overflow-x: hidden;
 }
 
-/* subtle grain on black */
+/* subtle grain */
 .paper-grain {
   position: fixed;
   inset: 0;
@@ -45,22 +45,13 @@ body {
   z-index: 1;
   max-width: 760px;
   margin: 0 auto;
-  padding: 22px 20px 34px;
-}
-
-.band-name {
-  margin: 0 0 8px;
-  font-family: 'La Belle Aurore', cursive;
-  font-size: clamp(1.9rem, 4.4vw, 3.1rem);
-  font-weight: normal;
-  line-height: 1.05;
-  color: var(--text);
+  padding: 10px 20px 24px;
 }
 
 .title-wrap {
   width: 100%;
   max-width: 760px;
-  margin: 0 auto 0;
+  margin: 0 auto -10px;
 }
 
 .hh-svg {
@@ -118,16 +109,16 @@ body {
 }
 
 .out-now {
-  margin: 2px 0 14px;
+  margin: -8px 0 10px;
   font-family: 'La Belle Aurore', cursive;
-  font-size: clamp(1.45rem, 3.4vw, 2.2rem);
+  font-size: clamp(1.4rem, 3vw, 2rem);
   line-height: 1;
   color: var(--text);
 }
 
 .player {
   max-width: 540px;
-  margin: 0 auto 18px;
+  margin: 0 auto 14px;
 }
 
 .player iframe {
@@ -141,8 +132,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
-  margin-top: 0;
+  gap: 10px;
+  margin-top: 4px;
 }
 
 /* ripped paper buttons */
@@ -209,7 +200,7 @@ body {
 }
 
 .contact {
-  margin-top: 18px;
+  margin-top: 12px;
 }
 
 .contact p {
@@ -220,7 +211,7 @@ body {
   color: var(--text);
   text-decoration: none;
   font-family: 'La Belle Aurore', cursive;
-  font-size: clamp(1.2rem, 2.7vw, 1.9rem);
+  font-size: 1.5rem;
 }
 
 .contact a:hover {
@@ -229,16 +220,11 @@ body {
 
 @media (max-width: 640px) {
   .container {
-    padding: 14px 16px 26px;
-  }
-
-  .band-name {
-    margin-bottom: 4px;
-    font-size: 1.9rem;
+    padding: 6px 16px 18px;
   }
 
   .title-wrap {
-    margin-bottom: 0;
+    margin: 0 auto -14px;
   }
 
   .hh-text {
@@ -247,16 +233,17 @@ body {
   }
 
   .out-now {
-    margin: 0 0 12px;
-    font-size: 1.45rem;
+    margin: -12px 0 10px;
+    font-size: 1.35rem;
   }
 
   .player {
-    margin-bottom: 16px;
+    margin: 0 auto 12px;
   }
 
   .buttons {
-    gap: 10px;
+    gap: 9px;
+    margin-top: 2px;
   }
 
   .btn {
@@ -266,10 +253,10 @@ body {
   }
 
   .contact {
-    margin-top: 14px;
+    margin-top: 10px;
   }
 
   .contact a {
-    font-size: 1.6rem;
+    font-size: 1.35rem;
   }
 }
