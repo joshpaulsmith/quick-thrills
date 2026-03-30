@@ -2,67 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Quick Thrills</title>
 
-  <title>The Quick Thrills — Money Honey</title>
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=La+Belle+Aurore&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=La+Belle+Aurore&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="paper-grain"></div>
 
-  <main class="poster">
+  <main class="container">
+    <h1 class="band-name">The Quick Thrills</h1>
 
-    <h1 class="band">The Quick Thrills</h1>
+    <div class="scribble" aria-hidden="true"></div>
 
-    <h2 class="title">
+    <h2 class="song-title">
       <span class="money">Money</span>
       <span class="honey">Honey</span>
     </h2>
 
-  <div class="divider scribble-divider" aria-hidden="true">
-  <svg viewBox="0 0 600 24" preserveAspectRatio="none">
-    <path d="M6 12 C 60 6, 110 18, 165 12 S 275 6, 330 12 S 440 18, 495 12 S 555 8, 594 12" />
-    <path d="M6 14 C 58 10, 112 20, 168 14 S 276 10, 332 14 S 440 20, 496 14 S 554 10, 594 14" />
-  </svg>
-</div>
-
-    <div class="out-now">Out Now</div>
+    <p class="out-now">OUT NOW</p>
 
     <div class="player">
       <iframe
         style="border-radius:12px"
-        src="YOUR_SPOTIFY_EMBED_LINK"
+        src="https://open.spotify.com/embed/track/yourtrackid"
         width="100%"
         height="152"
         frameborder="0"
         allowfullscreen=""
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-        loading="lazy">
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
       </iframe>
     </div>
 
-    <div class="divider"></div>
+    <div class="scribble" aria-hidden="true"></div>
 
-    <div class="links">
-      <a href="YOUR_SPOTIFY_LINK" target="_blank">Spotify</a>
-      <a href="YOUR_APPLE_LINK" target="_blank">Apple Music</a>
-      <a href="https://www.instagram.com/thequickthrills/" target="_blank">Instagram</a>
+    <div class="buttons">
+      <a href="#" class="btn btn-1">Spotify</a>
+      <a href="#" class="btn btn-2">Apple Music</a>
+      <a href="#" class="btn btn-3">YouTube</a>
+      <a href="#" class="btn btn-4">Instagram</a>
     </div>
 
-    <div class="email">
-      <a href="mailto:thequickthrills@proton.me">thequickthrills@proton.me</a>
-    </div>
+    <div class="scribble" aria-hidden="true"></div>
 
+    <section class="contact">
+      <p><a href="mailto:thequickthrillsband@gmail.com">thequickthrillsband@gmail.com</a></p>
+    </section>
   </main>
 
-  <footer class="footer">
-    © 2026 The Quick Thrills
-  </footer>
-
+  <script src="script.js"></script>
 </body>
 </html>
