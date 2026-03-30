@@ -1,148 +1,110 @@
-body {
-  margin: 0;
-  background: #050505;
-  color: #f1ead7;
-  text-align: center;
-  font-family: "La Belle Aurore", cursive;
+:root {
+  --bg: #f6f0e4;
+  --text: #111111;
+  --cream: #f6f0e4;
+  --money: #2f9e44;
+  --honey: #f06292;
 }
 
-/* subtle grain texture */
-body::after {
-  content: "";
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  background: var(--bg);
+  color: var(--text);
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* Main paper grain overlay */
+.paper-grain {
   position: fixed;
   inset: 0;
   pointer-events: none;
-  opacity: 0.05;
-  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png");
+  z-index: 0;
+  opacity: 0.12;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(0,0,0,0.12) 0.5px, transparent 0.8px),
+    radial-gradient(circle at 80% 30%, rgba(0,0,0,0.10) 0.6px, transparent 1px),
+    radial-gradient(circle at 40% 70%, rgba(0,0,0,0.08) 0.5px, transparent 0.9px),
+    radial-gradient(circle at 70% 80%, rgba(0,0,0,0.09) 0.6px, transparent 1px);
+  background-size: 120px 120px, 180px 180px, 160px 160px, 140px 140px;
+  mix-blend-mode: multiply;
 }
 
-.poster {
-  max-width: 700px;
-  margin: auto;
-  padding: 70px 20px 20px;
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 56px 20px 80px;
 }
 
-/* Band name */
-.band {
-  font-size: 46px;
-  margin-bottom: 30px;
+.band-name {
+  font-family: 'La Belle Aurore', cursive;
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  font-weight: normal;
+  margin: 0 0 12px;
+  line-height: 1.1;
 }
 
-/* Money Honey title */
-.title {
-  font-family: "Cedarville Cursive", cursive;
-  font-size: 120px;
-  line-height: 0.9;
-  margin: 0 0 20px;
+.song-title {
+  margin: 14px 0 8px;
+  font-family: 'Cedarville Cursive', cursive;
+  font-size: clamp(3rem, 9vw, 5.5rem);
+  font-weight: normal;
+  line-height: 0.95;
 }
 
-.title span {
-  display: block;
-}
-
-/* Colors */
 .money {
-  color: #79d98a;
-  text-shadow: 0 0 10px rgba(121, 217, 138, 0.3);
+  color: var(--money);
 }
 
 .honey {
-  color: #f08ac5;
-  text-shadow: 0 0 10px rgba(240, 138, 197, 0.3);
+  color: var(--honey);
+  margin-left: 0.15em;
 }
 
-/* Divider */
-.divider {
-  width: min(560px, 100%);
-  margin: 26px auto;
-}
-
-.scribble-divider svg {
-  display: block;
-  width: 100%;
-  height: 24px;
-  overflow: visible;
-}
-
-.scribble-divider path {
-  fill: none;
-  stroke: rgba(241, 234, 215, 0.75);
-  stroke-width: 1.8;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}@keyframes scribbleFloat {
-  0% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(0.5px) rotate(-0.15deg); }
-  100% { transform: translateY(0px) rotate(0deg); }
-}
-
-.scribble-divider {
-  animation: scribbleFloat 5s ease-in-out infinite;
-}
-
-/* Out now */
 .out-now {
-  font-size: 40px;
-  margin-bottom: 20px;
+  margin: 10px 0 22px;
+  font-family: 'La Belle Aurore', cursive;
+  font-size: clamp(1.7rem, 4vw, 2.5rem);
+  line-height: 1;
 }
 
-/* Spotify player */
 .player {
-  max-width: 500px;
-  margin: 0 auto 10px;
+  max-width: 540px;
+  margin: 0 auto 14px;
 }
 
-/* Links */
-.links a {
-  display: block;
-  font-size: 34px;
-  color: #f1ead7;
+.scribble {
+  width: 100%;
+  height: 42px;
+  margin: 14px 0;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.btn {
+  display: inline-block;
+  min-width: 230px;
+  padding: 14px 26px;
+  background: #000;
+  color: var(--cream);
   text-decoration: none;
-  margin: 12px 0;
-}
-
-.links a:hover {
-  opacity: 0.6;
-}
-
-/* Email */
-.email {
-  margin-top: 40px;
-}
-
-.email a {
-  font-size: 42px;
-  color: #f1ead7;
-  text-decoration: none;
-}
-
-/* Footer */
-.footer {
-  margin-top: 70px;
-  padding-bottom: 30px;
-  font-size: 18px;
-  opacity: 0.6;
-}
-
-/* Mobile */
-@media (max-width: 600px) {
-  .title {
-    font-size: 72px;
-  }
-
-  .band {
-    font-size: 36px;
-  }
-
-  .out-now {
-    font-size: 30px;
-  }
-
-  .links a {
-    font-size: 26px;
-  }
-
-  .email a {
-    font-size: 30px;
-  }
-}
+  font-family: 'Cedarville Cursive', cursive;
+  font-size
