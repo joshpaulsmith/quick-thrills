@@ -545,4 +545,23 @@ body.is-loaded .hero {
   .btn {
     transform: none !important;
   }
+}.btn {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-ripple {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: scale(0);
+  background: rgba(255,255,255,0.28);
+  animation: btnRipple 0.5s ease-out forwards;
+}
+
+@keyframes btnRipple {
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
 }
