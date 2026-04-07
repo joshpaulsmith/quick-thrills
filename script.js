@@ -225,4 +225,31 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.classList.remove("is-pressed");
     }, 500);
   });
+});let lastMoveTime = Date.now();
+let idleTick;
+
+window.addEventListener("mousemove", () => {
+  lastMoveTime = Date.now();
 });
+
+function animateIdle() {
+  if (!reducedMotion && isDesktopQuery.matches) {
+    const idleFor = Date.now() - lastMoveTime;
+
+    if (idleFor > 1200) {
+      const t = Date.now() * 0.001;
+
+      if (hero) {
+        hero.style.transform = `translate3d(${Math.sin(t) * 4}px, ${Math.cos(t * 0.8) * 4}px, 0)`;
+      }
+
+      if (headerLogo) {
+        headerLogo.style.transform = `translate3d(${Math.sin(t * 0.9) * 2}px, ${Math.cos(t * 0.7) * 2}px, 0)`;
+      }
+    }
+
+    idleTick = requestAnimationFrame(animateIdle);
+  }
+}
+
+animateIdle();
