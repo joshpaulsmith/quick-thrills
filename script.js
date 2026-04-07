@@ -260,4 +260,22 @@ animateIdle();buttons.forEach((btn) => {
   btn.addEventListener("touchend", () => {
     setTimeout(() => btn.classList.remove("is-touched"), 120);
   }, { passive: true });
+});buttons.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const rect = btn.getBoundingClientRect();
+    const burstX = e.clientX - rect.left;
+    const burstY = e.clientY - rect.top;
+
+    for (let i = 0; i < 6; i++) {
+      const spark = document.createElement("span");
+      spark.className = "spark";
+      spark.style.left = `${burstX}px`;
+      spark.style.top = `${burstY}px`;
+      spark.style.setProperty("--dx", `${(Math.random() - 0.5) * 60}px`);
+      spark.style.setProperty("--dy", `${(Math.random() - 0.5) * 60}px`);
+      btn.appendChild(spark);
+
+      setTimeout(() => spark.remove(), 500);
+    }
+  });
 });
