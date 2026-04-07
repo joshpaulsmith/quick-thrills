@@ -564,4 +564,15 @@ body.is-loaded .hero {
     transform: scale(2.6);
     opacity: 0;
   }
+}.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s var(--ease),
+    transform 0.8s var(--ease);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
