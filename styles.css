@@ -410,4 +410,61 @@ body.has-pointer .spotlight {
     opacity: 1;
     transform: none;
   }
+}/* animated swirling background */
+body::after {
+  content: "";
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 140vmax;
+  height: 140vmax;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.22;
+  background:
+    conic-gradient(
+      from 0deg,
+      rgba(255,255,255,0.00) 0deg,
+      rgba(241,231,213,0.10) 40deg,
+      rgba(216,203,184,0.04) 90deg,
+      rgba(255,255,255,0.00) 140deg,
+      rgba(241,231,213,0.08) 210deg,
+      rgba(255,255,255,0.00) 280deg,
+      rgba(216,203,184,0.06) 320deg,
+      rgba(255,255,255,0.00) 360deg
+    );
+  filter: blur(70px) saturate(120%);
+  mix-blend-mode: screen;
+  animation: swirlSpin 24s linear infinite;
+}
+
+body::before {
+  animation:
+    ambientShift 14s ease-in-out infinite alternate,
+    swirlFloat 18s ease-in-out infinite alternate;
+}
+
+@keyframes swirlSpin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) rotate(180deg) scale(1.08);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) scale(1);
+  }
+}
+
+@keyframes swirlFloat {
+  0% {
+    filter: blur(30px);
+  }
+  50% {
+    filter: blur(40px);
+  }
+  100% {
+    filter: blur(30px);
+  }
 }
