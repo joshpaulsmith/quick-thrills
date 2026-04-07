@@ -410,61 +410,64 @@ body.has-pointer .spotlight {
     opacity: 1;
     transform: none;
   }
-}/* animated swirling background */
+}/* stronger visible swirling background */
+body {
+  position: relative;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba(255,255,255,0.03), transparent 35%),
+    linear-gradient(180deg, #121923 0%, #0b1016 60%, #080c11 100%);
+  color: var(--cream);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  isolation: isolate;
+}
+
+/* existing glow stays */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05), transparent 22%),
+    radial-gradient(circle at 80% 30%, rgba(241,231,213,0.06), transparent 20%),
+    radial-gradient(circle at 50% 75%, rgba(216,203,184,0.04), transparent 24%);
+  filter: blur(30px);
+  animation: ambientShift 14s ease-in-out infinite alternate;
+  z-index: -2;
+}
+
+/* new swirl layer */
 body::after {
   content: "";
   position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 140vmax;
-  height: 140vmax;
-  transform: translate(-50%, -50%);
+  inset: -25vmax;
   pointer-events: none;
-  z-index: 0;
-  opacity: 0.22;
+  z-index: -1;
+  opacity: 0.55;
   background:
-    conic-gradient(
+    repeating-conic-gradient(
       from 0deg,
-      rgba(255,255,255,0.00) 0deg,
-      rgba(241,231,213,0.10) 40deg,
-      rgba(216,203,184,0.04) 90deg,
-      rgba(255,255,255,0.00) 140deg,
-      rgba(241,231,213,0.08) 210deg,
-      rgba(255,255,255,0.00) 280deg,
-      rgba(216,203,184,0.06) 320deg,
-      rgba(255,255,255,0.00) 360deg
+      rgba(241, 231, 213, 0.00) 0deg 18deg,
+      rgba(241, 231, 213, 0.12) 18deg 32deg,
+      rgba(216, 203, 184, 0.00) 32deg 52deg,
+      rgba(255, 255, 255, 0.08) 52deg 66deg,
+      rgba(241, 231, 213, 0.00) 66deg 90deg
     );
-  filter: blur(70px) saturate(120%);
-  mix-blend-mode: screen;
-  animation: swirlSpin 24s linear infinite;
-}
-
-body::before {
-  animation:
-    ambientShift 14s ease-in-out infinite alternate,
-    swirlFloat 18s ease-in-out infinite alternate;
+  filter: blur(90px) saturate(115%);
+  transform-origin: center center;
+  animation: swirlSpin 30s linear infinite;
 }
 
 @keyframes swirlSpin {
   0% {
-    transform: translate(-50%, -50%) rotate(0deg) scale(1);
+    transform: rotate(0deg) scale(1);
   }
   50% {
-    transform: translate(-50%, -50%) rotate(180deg) scale(1.08);
+    transform: rotate(180deg) scale(1.08);
   }
   100% {
-    transform: translate(-50%, -50%) rotate(360deg) scale(1);
-  }
-}
-
-@keyframes swirlFloat {
-  0% {
-    filter: blur(30px);
-  }
-  50% {
-    filter: blur(40px);
-  }
-  100% {
-    filter: blur(30px);
+    transform: rotate(360deg) scale(1);
   }
 }
