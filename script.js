@@ -252,4 +252,12 @@ function animateIdle() {
   }
 }
 
-animateIdle();
+animateIdle();buttons.forEach((btn) => {
+  btn.addEventListener("touchstart", () => {
+    btn.classList.add("is-touched");
+  }, { passive: true });
+
+  btn.addEventListener("touchend", () => {
+    setTimeout(() => btn.classList.remove("is-touched"), 120);
+  }, { passive: true });
+});
