@@ -201,4 +201,28 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("load", () => {
     body.classList.add("is-loaded");
   });
+});buttons.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+    const ripple = document.createElement("span");
+    ripple.className = "btn-ripple";
+
+    const rect = btn.getBoundingClientRect();
+    const size = Math.max(rect.width, rect.height);
+    const x = e.clientX - rect.left - size / 2;
+    const y = e.clientY - rect.top - size / 2;
+
+    ripple.style.width = `${size}px`;
+    ripple.style.height = `${size}px`;
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+
+    btn.appendChild(ripple);
+
+    btn.classList.add("is-pressed");
+
+    setTimeout(() => {
+      ripple.remove();
+      btn.classList.remove("is-pressed");
+    }, 500);
+  });
 });
