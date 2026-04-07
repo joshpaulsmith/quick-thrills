@@ -470,4 +470,79 @@ body::after {
   100% {
     transform: rotate(360deg) scale(1);
   }
+}.cursor-glow {
+  position: fixed;
+  width: 26px;
+  height: 26px;
+  left: 0;
+  top: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 45%, transparent 75%);
+  filter: blur(10px);
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.3s ease;
+}
+
+body.has-pointer .cursor-glow {
+  opacity: 1;
+}
+
+.hero,
+.header-logo {
+  transition: transform 0.25s ease;
+  will-change: transform;
+}
+
+.cover-art {
+  will-change: transform, filter, box-shadow;
+}
+
+.cover-art.is-hovered {
+  filter: brightness(1.05) saturate(1.04);
+}
+
+.btn {
+  will-change: transform, box-shadow;
+}
+
+.btn.is-pressed {
+  transform: scale(0.97) !important;
+}
+
+.btn.is-focused {
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.22),
+    0 16px 35px rgba(0,0,0,0.34),
+    inset 0 1px 0 rgba(255,255,255,0.7);
+}
+
+body.is-loaded .hero {
+  animation: heroSettle 0.9s cubic-bezier(.22, 1, .36, 1);
+}
+
+@keyframes heroSettle {
+  0% {
+    transform: translateY(10px) scale(0.99);
+    opacity: 0.96;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor-glow {
+    display: none;
+  }
+
+  .hero,
+  .header-logo,
+  .cover-art,
+  .btn {
+    transform: none !important;
+  }
 }
