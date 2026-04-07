@@ -7,7 +7,6 @@
   --paper-2: #fff8ef;
   --paper-text: #0d1015;
   --line: rgba(241, 231, 213, 0.12);
-  --glow: rgba(241, 231, 213, 0.08);
   --shadow: rgba(0, 0, 0, 0.34);
   --shadow-heavy: rgba(0, 0, 0, 0.5);
   --ease: cubic-bezier(.22, 1, .36, 1);
@@ -21,7 +20,8 @@ html {
   scroll-behavior: smooth;
 }
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
 }
@@ -29,12 +29,13 @@ html, body {
 body {
   position: relative;
   min-height: 100vh;
-  background:
-    radial-gradient(circle at top, rgba(255,255,255,0.03), transparent 35%),
-    linear-gradient(180deg, var(--bg-2) 0%, var(--bg) 60%, #080c11 100%);
+  overflow-x: hidden;
+  isolation: isolate;
   color: var(--cream);
   font-family: Arial, Helvetica, sans-serif;
-  overflow-x: hidden;
+  background:
+    radial-gradient(circle at top, rgba(255,255,255,0.03), transparent 35%),
+    linear-gradient(180deg, #121923 0%, #0b1016 60%, #080c11 100%);
 }
 
 /* background glow */
@@ -43,13 +44,35 @@ body::before {
   position: fixed;
   inset: -20%;
   pointer-events: none;
+  z-index: -2;
   background:
     radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05), transparent 22%),
     radial-gradient(circle at 80% 30%, rgba(241,231,213,0.06), transparent 20%),
     radial-gradient(circle at 50% 75%, rgba(216,203,184,0.04), transparent 24%);
   filter: blur(30px);
   animation: ambientShift 14s ease-in-out infinite alternate;
-  z-index: 0;
+}
+
+/* swirl layer */
+body::after {
+  content: "";
+  position: fixed;
+  inset: -25vmax;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.55;
+  background:
+    repeating-conic-gradient(
+      from 0deg,
+      rgba(241, 231, 213, 0.00) 0deg 18deg,
+      rgba(241, 231, 213, 0.12) 18deg 32deg,
+      rgba(216, 203, 184, 0.00) 32deg 52deg,
+      rgba(255, 255, 255, 0.08) 52deg 66deg,
+      rgba(241, 231, 213, 0.00) 66deg 90deg
+    );
+  filter: blur(90px) saturate(115%);
+  transform-origin: center center;
+  animation: swirlSpin 30s linear infinite;
 }
 
 @keyframes ambientShift {
@@ -61,11 +84,24 @@ body::before {
   }
 }
 
-/* subtle texture */
+@keyframes swirlSpin {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.08);
+  }
+  100% {
+    transform: rotate(360deg) scale(1);
+  }
+}
+
+/* texture */
 .grain {
   position: fixed;
   inset: 0;
   pointer-events: none;
+  z-index: 1;
   opacity: 0.12;
   background-image:
     radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05) 0.5px, transparent 1px),
@@ -73,7 +109,6 @@ body::before {
     radial-gradient(circle at 40% 70%, rgba(255,255,255,0.03) 0.5px, transparent 1px),
     radial-gradient(circle at 70% 80%, rgba(255,255,255,0.04) 0.6px, transparent 1px);
   background-size: 140px 140px, 180px 180px, 160px 160px, 150px 150px;
-  z-index: 1;
   animation: grainShift 8s steps(6) infinite;
 }
 
@@ -85,7 +120,7 @@ body::before {
   100% { transform: translate(0, 0); }
 }
 
-/* optional spotlight */
+/* pointer layers */
 .spotlight {
   position: fixed;
   width: 420px;
@@ -93,20 +128,37 @@ body::before {
   left: 0;
   top: 0;
   pointer-events: none;
+  z-index: 1;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 28%, transparent 70%);
-  filter: blur(18px);
   transform: translate(-50%, -50%);
   opacity: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0.03) 28%, transparent 70%);
+  filter: blur(18px);
   transition: opacity 0.4s ease;
-  z-index: 1;
 }
 
-body.has-pointer .spotlight {
+.cursor-glow {
+  position: fixed;
+  width: 26px;
+  height: 26px;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  z-index: 2;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 45%, transparent 75%);
+  filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+body.has-pointer .spotlight,
+body.has-pointer .cursor-glow {
   opacity: 1;
 }
 
-/* Header */
+/* layout */
 .site-header {
   position: relative;
   z-index: 2;
@@ -119,15 +171,14 @@ body.has-pointer .spotlight {
 .header-logo {
   width: 160px;
   filter: drop-shadow(0 10px 20px rgba(0,0,0,0.25));
-  transition: transform 0.5s var(--ease), filter 0.5s var(--ease);
+  transition: transform 0.35s var(--ease), filter 0.35s var(--ease);
+  will-change: transform;
 }
 
 .header-logo:hover {
-  transform: translateY(-2px) scale(1.02);
   filter: drop-shadow(0 18px 28px rgba(0,0,0,0.32));
 }
 
-/* Layout */
 .page {
   position: relative;
   z-index: 2;
@@ -136,17 +187,21 @@ body.has-pointer .spotlight {
 }
 
 .hero {
+  position: relative;
+  z-index: 2;
   max-width: 560px;
   margin: 0 auto;
-  text-align: center;
   padding: 12px 0 30px;
+  text-align: center;
+  transition: transform 0.25s ease;
+  will-change: transform;
 }
 
-/* Text */
+/* text entry */
 .eyebrow,
 .title,
 .listen,
-.cover-art,
+.cover-wrap,
 .buttons,
 .contact {
   opacity: 0;
@@ -157,7 +212,7 @@ body.has-pointer .spotlight {
 .eyebrow { animation-delay: 0.1s; }
 .title { animation-delay: 0.2s; }
 .listen { animation-delay: 0.35s; }
-.cover-art { animation-delay: 0.5s; }
+.cover-wrap { animation-delay: 0.5s; }
 .buttons { animation-delay: 0.65s; }
 .contact { animation-delay: 0.8s; }
 
@@ -169,18 +224,19 @@ body.has-pointer .spotlight {
 }
 
 .eyebrow {
-  font-family: 'La Belle Aurore', cursive;
-  color: var(--cream-soft);
-  font-size: 1.1rem;
   margin-bottom: 6px;
+  color: var(--cream-soft);
+  font-family: 'La Belle Aurore', cursive;
+  font-size: 1.1rem;
   letter-spacing: 0.02em;
   text-shadow: 0 1px 0 rgba(0,0,0,0.15);
 }
 
 .title {
+  position: relative;
+  margin: 0;
   font-family: 'Shrikhand', serif;
   font-size: 3.5rem;
-  margin: 0;
   line-height: 0.95;
   letter-spacing: 0.01em;
   text-shadow:
@@ -188,25 +244,53 @@ body.has-pointer .spotlight {
     0 12px 30px rgba(0,0,0,0.24);
 }
 
-.listen {
-  font-family: 'La Belle Aurore', cursive;
-  font-size: 1.3rem;
-  margin: 10px 0 22px;
-  color: var(--cream-soft);
+.title::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    rgba(255,255,255,0.16) 45%,
+    transparent 70%
+  );
+  transform: translateX(-140%);
+  animation: titleShimmer 7s ease-in-out infinite;
 }
 
-/* Cover art */
+@keyframes titleShimmer {
+  0%, 70%, 100% {
+    transform: translateX(-140%);
+  }
+  82% {
+    transform: translateX(140%);
+  }
+}
+
+.listen {
+  margin: 10px 0 22px;
+  color: var(--cream-soft);
+  font-family: 'La Belle Aurore', cursive;
+  font-size: 1.3rem;
+}
+
+/* cover */
 .cover-wrap {
   display: flex;
   justify-content: center;
   perspective: 1200px;
   margin-bottom: 24px;
+  animation:
+    revealUp 0.9s var(--ease) forwards,
+    floatCover 5.5s ease-in-out 1.2s infinite;
 }
 
 .cover-art {
+  display: block;
   width: 100%;
   max-width: 420px;
-  display: block;
   border-radius: 18px;
   border: 1px solid rgba(255,255,255,0.07);
   box-shadow:
@@ -214,21 +298,19 @@ body.has-pointer .spotlight {
     0 0 0 1px rgba(255,255,255,0.04),
     0 0 40px rgba(255,255,255,0.03);
   transform-style: preserve-3d;
+  will-change: transform, filter, box-shadow;
   transition:
     transform 0.22s ease,
     box-shadow 0.35s ease,
     filter 0.35s ease;
-  animation:
-    revealUp 0.9s var(--ease) forwards,
-    floatCover 5.5s ease-in-out 1.2s infinite;
 }
 
-.cover-art:hover {
+.cover-art.is-hovered {
+  filter: brightness(1.05) saturate(1.04);
   box-shadow:
     0 28px 60px rgba(0,0,0,0.58),
     0 0 0 1px rgba(255,255,255,0.06),
     0 0 60px rgba(255,255,255,0.05);
-  filter: brightness(1.03);
 }
 
 @keyframes floatCover {
@@ -240,28 +322,29 @@ body.has-pointer .spotlight {
   }
 }
 
-/* Buttons */
+/* buttons */
 .buttons {
   display: flex;
   flex-direction: column;
-  gap: 14px;
   align-items: center;
+  gap: 14px;
   margin-bottom: 20px;
 }
 
 .btn {
   position: relative;
+  overflow: hidden;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   min-width: 240px;
-  background: linear-gradient(180deg, var(--paper-2) 0%, var(--paper) 100%);
+  padding: 15px 28px;
   color: var(--paper-text);
   text-decoration: none;
-  padding: 15px 28px;
   font-family: 'La Belle Aurore', cursive;
   font-size: 1.75rem;
   line-height: 1;
+  background: linear-gradient(180deg, var(--paper-2) 0%, var(--paper) 100%);
   box-shadow:
     0 10px 25px rgba(0,0,0,0.25),
     inset 0 1px 0 rgba(255,255,255,0.6);
@@ -275,7 +358,7 @@ body.has-pointer .spotlight {
     transform 0.18s ease,
     box-shadow 0.25s ease,
     filter 0.25s ease;
-  overflow: hidden;
+  will-change: transform, box-shadow;
 }
 
 .btn::before {
@@ -287,16 +370,15 @@ body.has-pointer .spotlight {
   transition: transform 0.7s var(--ease);
 }
 
+.btn:hover::before {
+  transform: translateX(140%);
+}
+
 .btn:hover {
-  transform: translateY(-4px) scale(1.02);
   box-shadow:
     0 16px 35px rgba(0,0,0,0.34),
     inset 0 1px 0 rgba(255,255,255,0.7);
   filter: brightness(1.02);
-}
-
-.btn:hover::before {
-  transform: translateX(140%);
 }
 
 .btn:active {
@@ -308,7 +390,39 @@ body.has-pointer .spotlight {
   outline-offset: 4px;
 }
 
-/* Email */
+.btn.is-pressed {
+  transform: scale(0.97) !important;
+}
+
+.btn.is-focused {
+  box-shadow:
+    0 0 0 2px rgba(255,255,255,0.22),
+    0 16px 35px rgba(0,0,0,0.34),
+    inset 0 1px 0 rgba(255,255,255,0.7);
+}
+
+.btn.is-touched {
+  transform: scale(0.985);
+  filter: brightness(1.03);
+}
+
+.btn-ripple {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  transform: scale(0);
+  background: rgba(255,255,255,0.28);
+  animation: btnRipple 0.5s ease-out forwards;
+}
+
+@keyframes btnRipple {
+  to {
+    transform: scale(2.6);
+    opacity: 0;
+  }
+}
+
+/* contact */
 .contact {
   margin-top: 6px;
 }
@@ -316,8 +430,8 @@ body.has-pointer .spotlight {
 .contact a {
   position: relative;
   color: var(--cream);
-  font-family: 'La Belle Aurore', cursive;
   text-decoration: none;
+  font-family: 'La Belle Aurore', cursive;
   font-size: 1.2rem;
   transition: opacity 0.25s ease, letter-spacing 0.25s ease;
 }
@@ -356,7 +470,37 @@ body.has-pointer .spotlight {
   background: linear-gradient(90deg, transparent, var(--line), transparent);
 }
 
-/* Desktop */
+/* optional reveal utility */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition:
+    opacity 0.8s var(--ease),
+    transform 0.8s var(--ease);
+}
+
+.reveal-on-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* page load polish */
+body.is-loaded .hero {
+  animation: heroSettle 0.9s cubic-bezier(.22, 1, .36, 1);
+}
+
+@keyframes heroSettle {
+  0% {
+    transform: translateY(10px) scale(0.99);
+    opacity: 0.96;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+/* desktop */
 @media (min-width: 768px) {
   .site-header {
     padding-top: 38px;
@@ -388,7 +532,7 @@ body.has-pointer .spotlight {
   }
 }
 
-/* Reduced motion */
+/* reduced motion */
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -401,142 +545,20 @@ body.has-pointer .spotlight {
     transition: none !important;
   }
 
+  .cursor-glow,
+  .spotlight {
+    display: none;
+  }
+
   .eyebrow,
   .title,
   .listen,
-  .cover-art,
+  .cover-wrap,
   .buttons,
-  .contact {
+  .contact,
+  .reveal-on-scroll {
     opacity: 1;
     transform: none;
-  }
-}/* stronger visible swirling background */
-body {
-  position: relative;
-  min-height: 100vh;
-  background:
-    radial-gradient(circle at top, rgba(255,255,255,0.03), transparent 35%),
-    linear-gradient(180deg, #121923 0%, #0b1016 60%, #080c11 100%);
-  color: var(--cream);
-  font-family: Arial, Helvetica, sans-serif;
-  overflow-x: hidden;
-  isolation: isolate;
-}
-
-/* existing glow stays */
-body::before {
-  content: "";
-  position: fixed;
-  inset: -20%;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 20% 20%, rgba(255,255,255,0.05), transparent 22%),
-    radial-gradient(circle at 80% 30%, rgba(241,231,213,0.06), transparent 20%),
-    radial-gradient(circle at 50% 75%, rgba(216,203,184,0.04), transparent 24%);
-  filter: blur(30px);
-  animation: ambientShift 14s ease-in-out infinite alternate;
-  z-index: -2;
-}
-
-/* new swirl layer */
-body::after {
-  content: "";
-  position: fixed;
-  inset: -25vmax;
-  pointer-events: none;
-  z-index: -1;
-  opacity: 0.55;
-  background:
-    repeating-conic-gradient(
-      from 0deg,
-      rgba(241, 231, 213, 0.00) 0deg 18deg,
-      rgba(241, 231, 213, 0.12) 18deg 32deg,
-      rgba(216, 203, 184, 0.00) 32deg 52deg,
-      rgba(255, 255, 255, 0.08) 52deg 66deg,
-      rgba(241, 231, 213, 0.00) 66deg 90deg
-    );
-  filter: blur(90px) saturate(115%);
-  transform-origin: center center;
-  animation: swirlSpin 30s linear infinite;
-}
-
-@keyframes swirlSpin {
-  0% {
-    transform: rotate(0deg) scale(1);
-  }
-  50% {
-    transform: rotate(180deg) scale(1.08);
-  }
-  100% {
-    transform: rotate(360deg) scale(1);
-  }
-}.cursor-glow {
-  position: fixed;
-  width: 26px;
-  height: 26px;
-  left: 0;
-  top: 0;
-  border-radius: 50%;
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  background: radial-gradient(circle, rgba(255,255,255,0.22) 0%, rgba(255,255,255,0.08) 45%, transparent 75%);
-  filter: blur(10px);
-  opacity: 0;
-  z-index: 2;
-  transition: opacity 0.3s ease;
-}
-
-body.has-pointer .cursor-glow {
-  opacity: 1;
-}
-
-.hero,
-.header-logo {
-  transition: transform 0.25s ease;
-  will-change: transform;
-}
-
-.cover-art {
-  will-change: transform, filter, box-shadow;
-}
-
-.cover-art.is-hovered {
-  filter: brightness(1.05) saturate(1.04);
-}
-
-.btn {
-  will-change: transform, box-shadow;
-}
-
-.btn.is-pressed {
-  transform: scale(0.97) !important;
-}
-
-.btn.is-focused {
-  box-shadow:
-    0 0 0 2px rgba(255,255,255,0.22),
-    0 16px 35px rgba(0,0,0,0.34),
-    inset 0 1px 0 rgba(255,255,255,0.7);
-}
-
-body.is-loaded .hero {
-  animation: heroSettle 0.9s cubic-bezier(.22, 1, .36, 1);
-}
-
-@keyframes heroSettle {
-  0% {
-    transform: translateY(10px) scale(0.99);
-    opacity: 0.96;
-  }
-  100% {
-    transform: translateY(0) scale(1);
-    opacity: 1;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .cursor-glow {
-    display: none;
   }
 
   .hero,
@@ -544,58 +566,5 @@ body.is-loaded .hero {
   .cover-art,
   .btn {
     transform: none !important;
-  }
-}.btn {
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-ripple {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  transform: scale(0);
-  background: rgba(255,255,255,0.28);
-  animation: btnRipple 0.5s ease-out forwards;
-}
-
-@keyframes btnRipple {
-  to {
-    transform: scale(2.6);
-    opacity: 0;
-  }
-}.reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(30px);
-  transition:
-    opacity 0.8s var(--ease),
-    transform 0.8s var(--ease);
-}
-
-.reveal-on-scroll.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}.btn.is-touched {
-  transform: scale(0.985);
-  filter: brightness(1.03);
-}.spark {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.85);
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  animation: sparkFly 0.5s ease-out forwards;
-}
-
-@keyframes sparkFly {
-  from {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(0.2);
   }
 }
