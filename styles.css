@@ -1,82 +1,5 @@
-Yes. Use these two files together.
+Yes. Paste **only this** into `styles.css`. Do not include markdown text, triple backticks, or the `css` label.
 
-**index.html**
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The Quick Thrills — Money Honey</title>
-  <meta
-    name="description"
-    content="Listen to Money Honey by The Quick Thrills. Stream on Spotify and Apple Music, follow on Instagram, and contact the band directly."
-  />
-
-  <!-- Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Shrikhand&family=La+Belle+Aurore&display=swap"
-    rel="stylesheet"
-  />
-
-  <link rel="stylesheet" href="styles.css" />
-</head>
-<body>
-  <div class="grain"></div>
-
-  <header class="site-header">
-    <img
-      src="logo2.png"
-      alt="The Quick Thrills logo"
-      class="header-logo"
-      loading="eager"
-      decoding="async"
-    />
-  </header>
-
-  <main class="page">
-    <section class="hero">
-      <p class="eyebrow">A new single from The Quick Thrills</p>
-      <h1 class="title">Money Honey</h1>
-      <p class="listen">Listen now</p>
-
-      <div class="spotify-embed" id="music">
-        <iframe
-          data-testid="embed-iframe"
-          style="border-radius:12px"
-          src="https://open.spotify.com/embed/track/4E9sY8fhqzswi2OUnjXy0O?utm_source=generator"
-          width="100%"
-          height="352"
-          frameborder="0"
-          allowfullscreen=""
-          allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-          loading="lazy"
-          title="Money Honey by The Quick Thrills on Spotify"
-        ></iframe>
-      </div>
-
-      <div class="buttons">
-        <a href="https://open.spotify.com/track/4E9sY8fhqzswi2OUnjXy0O?si=a61e740fc85c44fc" class="btn btn-1" target="_blank" rel="noopener noreferrer">Spotify</a>
-        <a href="https://music.apple.com/ca/album/money-honey/1892859365?i=6762089769" class="btn btn-2" target="_blank" rel="noopener noreferrer">Apple Music</a>
-        <a href="https://www.instagram.com/thequickthrills/?hl=en" class="btn btn-3" target="_blank" rel="noopener noreferrer">Instagram</a>
-      </div>
-
-      <div class="contact">
-        <a href="mailto:thequickthrills@proton.me" draggable="false">
-          thequickthrills@proton.me
-        </a>
-      </div>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
-</body>
-</html>
-```
-
-**styles.css**
 ```css
 :root {
   --embed-red: #982010;
@@ -113,14 +36,12 @@ body {
   background: var(--embed-red);
 }
 
-/* remove heavy animated layers */
 .grain,
 .spotlight,
 .cursor-glow {
   display: none !important;
 }
 
-/* layout */
 .site-header {
   display: flex;
   justify-content: center;
@@ -174,7 +95,6 @@ body {
   line-height: 1.35;
 }
 
-/* keeps the old cover art from breaking the live layout */
 .cover-wrap {
   display: none;
 }
@@ -197,7 +117,6 @@ body {
   background: var(--embed-red);
 }
 
-/* buttons */
 .buttons {
   display: flex;
   flex-direction: column;
@@ -223,7 +142,7 @@ body {
   border: 1px solid rgba(255, 248, 239, 0.55);
   box-shadow:
     0 10px 18px rgba(43, 5, 2, 0.22),
-    inset 0 1px 0 rgba(255,255,255,0.55);
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
@@ -234,7 +153,7 @@ body {
   transform: translateY(-1px);
   box-shadow:
     0 14px 22px rgba(43, 5, 2, 0.28),
-    inset 0 1px 0 rgba(255,255,255,0.55);
+    inset 0 1px 0 rgba(255, 255, 255, 0.55);
 }
 
 .btn:active {
@@ -242,11 +161,10 @@ body {
 }
 
 .btn:focus-visible {
-  outline: 2px solid rgba(255,255,255,0.75);
+  outline: 2px solid rgba(255, 255, 255, 0.75);
   outline-offset: 3px;
 }
 
-/* contact */
 .contact {
   margin-top: 6px;
 }
@@ -266,7 +184,6 @@ body {
   opacity: 0.9;
 }
 
-/* subtle divider */
 .hero::after {
   content: "";
   display: block;
@@ -276,7 +193,6 @@ body {
   background: linear-gradient(90deg, transparent, var(--line), transparent);
 }
 
-/* small fade-in only */
 .eyebrow,
 .title,
 .listen,
@@ -288,12 +204,29 @@ body {
   animation: fadeUp 0.6s var(--ease) forwards;
 }
 
-.eyebrow { animation-delay: 0.05s; }
-.title { animation-delay: 0.12s; }
-.listen { animation-delay: 0.2s; }
-.spotify-embed { animation-delay: 0.28s; }
-.buttons { animation-delay: 0.36s; }
-.contact { animation-delay: 0.44s; }
+.eyebrow {
+  animation-delay: 0.05s;
+}
+
+.title {
+  animation-delay: 0.12s;
+}
+
+.listen {
+  animation-delay: 0.2s;
+}
+
+.spotify-embed {
+  animation-delay: 0.28s;
+}
+
+.buttons {
+  animation-delay: 0.36s;
+}
+
+.contact {
+  animation-delay: 0.44s;
+}
 
 @keyframes fadeUp {
   to {
