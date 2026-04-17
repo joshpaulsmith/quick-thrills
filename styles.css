@@ -80,9 +80,10 @@ body {
 
 .title {
   margin: 0;
-  font-size: 3.1rem;
-  font-weight: 900;
-  line-height: 0.98;
+  font-family: 'Fugaz One', 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 3rem;
+  font-weight: 400;
+  line-height: 1;
   letter-spacing: 0;
   text-shadow: 0 3px 12px rgba(43, 5, 2, 0.28);
 }
@@ -236,7 +237,7 @@ body {
   }
 
   .title {
-    font-size: 4.1rem;
+    font-size: 4rem;
   }
 
   .listen {
