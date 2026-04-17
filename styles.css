@@ -1,4 +1,4 @@
-Here’s the full updated `styles.css`:
+Here’s the full corrected CSS. This version is safe even if the old `index.html` with the cover art is still live, because it hides the old cover block.
 
 ```css
 :root {
@@ -95,6 +95,17 @@ body {
   font-family: 'La Belle Aurore', cursive;
   font-size: 1.28rem;
   line-height: 1.35;
+}
+
+/* keeps the old cover art from breaking the live layout */
+.cover-wrap {
+  display: none;
+}
+
+.cover-art {
+  display: none;
+  max-width: 100%;
+  height: auto;
 }
 
 .spotify-embed {
