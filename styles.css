@@ -67,13 +67,14 @@ body {
 
 .eyebrow {
   max-width: 18rem;
-  margin: 0 auto 10px;
-  color: var(--cream-soft);
-  font-size: 0.82rem;
-  font-weight: 800;
-  line-height: 1.35;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  margin: 0 auto 8px;
+  color: var(--cream);
+  font-family: 'La Belle Aurore', cursive;
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: 0;
+  text-transform: none;
   text-wrap: balance;
 }
 
@@ -87,13 +88,14 @@ body {
 }
 
 .listen {
-  margin: 12px 0 20px;
-  color: var(--cream-soft);
-  font-size: 1rem;
-  font-weight: 800;
+  margin: 10px 0 20px;
+  color: var(--cream);
+  font-family: 'La Belle Aurore', cursive;
+  font-size: 1.45rem;
+  font-weight: 400;
   line-height: 1.35;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  letter-spacing: 0;
+  text-transform: none;
 }
 
 .cover-wrap {
@@ -135,11 +137,12 @@ body {
   padding: 11px 24px 12px;
   color: var(--paper-text);
   text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 900;
-  letter-spacing: 0.06em;
+  font-family: 'La Belle Aurore', cursive;
+  font-size: 1.45rem;
+  font-weight: 400;
+  letter-spacing: 0;
   line-height: 1;
-  text-transform: uppercase;
+  text-transform: none;
   background: linear-gradient(180deg, var(--paper-2) 0%, var(--paper) 100%);
   border-radius: 8px;
   border: 1px solid rgba(255, 248, 239, 0.55);
@@ -175,10 +178,11 @@ body {
 .contact a {
   color: var(--cream);
   text-decoration: none;
-  font-size: 0.9rem;
-  font-weight: 700;
+  font-family: 'La Belle Aurore', cursive;
+  font-size: 1.12rem;
+  font-weight: 400;
   line-height: 1.3;
-  letter-spacing: 0.02em;
+  letter-spacing: 0;
   border-bottom: 1px solid rgba(241, 231, 213, 0.55);
   padding-bottom: 2px;
   text-shadow: 0 2px 8px rgba(43, 5, 2, 0.24);
@@ -236,12 +240,12 @@ body {
   }
 
   .listen {
-    font-size: 1.05rem;
+    font-size: 1.55rem;
   }
 
   .btn {
     width: 270px;
-    font-size: 1rem;
+    font-size: 1.65rem;
   }
 }
 
