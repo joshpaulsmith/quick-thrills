@@ -1,6 +1,3 @@
-Yes. Paste **only this** into `styles.css`. Do not include markdown text, triple backticks, or the `css` label.
-
-```css
 :root {
   --embed-red: #982010;
   --cream: #f1e7d5;
