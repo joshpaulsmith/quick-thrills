@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://thequickthrills.com/sitemap.xml
+Sitemap: https://quickthrills.com/sitemap.xml

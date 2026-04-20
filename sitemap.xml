@@ -1,18 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://thequickthrills.com/</loc>
+    <loc>https://quickthrills.com/</loc>
   </url>
   <url>
-    <loc>https://thequickthrills.com/#music</loc>
+    <loc>https://quickthrills.com/#music</loc>
   </url>
   <url>
-    <loc>https://thequickthrills.com/#shows</loc>
-  </url>
-  <url>
-    <loc>https://thequickthrills.com/#about</loc>
-  </url>
-  <url>
-    <loc>https://thequickthrills.com/#contact</loc>
+    <loc>https://quickthrills.com/#contact</loc>
   </url>
 </urlset>

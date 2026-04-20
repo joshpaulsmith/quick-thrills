@@ -33,12 +33,14 @@ body {
   background: var(--embed-red);
 }
 
+/* remove heavy animated layers */
 .grain,
 .spotlight,
 .cursor-glow {
   display: none !important;
 }
 
+/* layout */
 .site-header {
   display: flex;
   justify-content: center;
@@ -88,6 +90,16 @@ body {
   text-shadow: 0 3px 12px rgba(43, 5, 2, 0.28);
 }
 
+.vibe {
+  max-width: 21rem;
+  margin: 12px auto 0;
+  color: var(--cream-soft);
+  font-size: 0.92rem;
+  font-weight: 800;
+  line-height: 1.45;
+  text-wrap: balance;
+}
+
 .listen {
   margin: 10px 0 20px;
   color: var(--cream);
@@ -121,6 +133,16 @@ body {
   background: var(--embed-red);
 }
 
+.embed-note {
+  max-width: 17rem;
+  margin: -4px auto 14px;
+  color: var(--cream-soft);
+  font-size: 0.72rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+/* buttons */
 .buttons {
   display: flex;
   flex-direction: column;
@@ -172,6 +194,7 @@ body {
   outline-offset: 3px;
 }
 
+/* contact */
 .contact {
   margin-top: 6px;
 }
@@ -193,6 +216,19 @@ body {
   opacity: 0.9;
 }
 
+.site-footer {
+  padding: 0 18px 24px;
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+/* subtle divider */
 .hero::after {
   content: "";
   display: block;
@@ -202,12 +238,16 @@ body {
   background: linear-gradient(90deg, transparent, var(--line), transparent);
 }
 
+/* small fade-in only */
 .eyebrow,
 .title,
+.vibe,
 .listen,
 .spotify-embed,
+.embed-note,
 .buttons,
-.contact {
+.contact,
+.site-footer {
   opacity: 0;
   transform: translateY(12px);
   animation: fadeUp 0.6s var(--ease) forwards;
@@ -215,10 +255,13 @@ body {
 
 .eyebrow { animation-delay: 0.05s; }
 .title { animation-delay: 0.12s; }
-.listen { animation-delay: 0.2s; }
-.spotify-embed { animation-delay: 0.28s; }
-.buttons { animation-delay: 0.36s; }
-.contact { animation-delay: 0.44s; }
+.vibe { animation-delay: 0.18s; }
+.listen { animation-delay: 0.24s; }
+.spotify-embed { animation-delay: 0.32s; }
+.embed-note { animation-delay: 0.38s; }
+.buttons { animation-delay: 0.44s; }
+.contact { animation-delay: 0.5s; }
+.site-footer { animation-delay: 0.56s; }
 
 @keyframes fadeUp {
   to {
@@ -238,6 +281,10 @@ body {
 
   .title {
     font-size: 4rem;
+  }
+
+  .vibe {
+    font-size: 1rem;
   }
 
   .listen {
@@ -264,10 +311,13 @@ body {
 
   .eyebrow,
   .title,
+  .vibe,
   .listen,
   .spotify-embed,
+  .embed-note,
   .buttons,
-  .contact {
+  .contact,
+  .site-footer {
     opacity: 1;
     transform: none;
   }
