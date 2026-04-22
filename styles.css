@@ -603,18 +603,18 @@ body::after {
   }
 
   .site-header {
-    padding: 58px clamp(34px, 4vw, 56px) 6px;
+    padding: 88px clamp(34px, 4vw, 56px) 8px;
     flex-direction: column;
   }
 
   .header-logo {
-    width: clamp(300px, 24vw, 390px);
+    width: clamp(340px, 27vw, 460px);
   }
 
   .site-header::after {
     display: block;
-    width: clamp(180px, 18vw, 260px);
-    margin-top: 12px;
+    width: clamp(210px, 20vw, 300px);
+    margin-top: 14px;
   }
 
   .page {
