@@ -332,20 +332,24 @@ body::after {
 
 .site-credit {
   display: inline-block;
-  color: rgba(255, 248, 239, 0.82);
+  color: rgba(255, 248, 239, 0.78);
   text-decoration: none;
-  font-family: 'Roboto Mono', 'Inter', Arial, Helvetica, sans-serif;
-  font-size: 0.74rem;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.68rem;
   font-weight: 400;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  line-height: 1.2;
-  transition: opacity 180ms ease, transform 180ms ease;
+  line-height: 1.25;
+  font-variant-ligatures: none;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: geometricPrecision;
+  opacity: 0.92;
+  transition: opacity 180ms ease, color 180ms ease;
 }
 
 .site-credit:hover {
   opacity: 1;
-  transform: translateY(-1px);
+  color: rgba(255, 248, 239, 0.92);
 }
 
 .site-credit:focus-visible {
