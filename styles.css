@@ -191,8 +191,8 @@ body::after {
 }
 
 .embed-stamp {
-  top: 8px;
-  right: 42px;
+  top: -12px;
+  right: 18px;
   min-width: 70px;
   min-height: 28px;
   padding: 4px 9px 5px;
@@ -283,8 +283,8 @@ body::after {
   filter: drop-shadow(0 18px 28px var(--shadow));
   transition: transform 220ms var(--ease), filter 220ms var(--ease);
   position: relative;
-  padding: 5px;
-  border-radius: 10px;
+  padding: 2px;
+  border-radius: 9px;
   background:
     linear-gradient(180deg, rgba(255, 248, 239, 0.06), rgba(255, 248, 239, 0.015)),
     linear-gradient(180deg, rgba(17, 17, 17, 0.82), rgba(34, 10, 8, 0.58));
@@ -298,8 +298,8 @@ body::after {
 .spotify-embed::before {
   content: "";
   position: absolute;
-  inset: 3px;
-  border-radius: 8px;
+  inset: 2px;
+  border-radius: 7px;
   border: 1px solid rgba(255, 248, 239, 0.1);
   pointer-events: none;
 }
@@ -622,20 +622,20 @@ body::after {
   }
 
   .spotify-embed {
-    width: min(100%, 372px);
+    width: min(100%, 360px);
     margin: 0;
     justify-self: end;
     align-self: center;
-    padding: 4px;
+    padding: 2px;
   }
 
   .spotify-embed iframe {
-    height: clamp(274px, 35vh, 308px);
+    height: clamp(270px, 34vh, 300px);
   }
 
   .embed-stamp {
-    top: 8px;
-    right: 40px;
+    top: -12px;
+    right: 16px;
   }
 
   .embed-note {
@@ -730,7 +730,7 @@ body::after {
 
 @media (max-width: 520px) {
   .embed-stamp {
-    top: 8px;
-    right: 34px;
+    top: -10px;
+    right: 14px;
   }
 }
