@@ -190,6 +190,17 @@ body::after {
   -webkit-backdrop-filter: blur(4px);
 }
 
+.embed-stamp {
+  top: 10px;
+  right: 10px;
+  min-width: 78px;
+  min-height: 28px;
+  padding: 5px 10px 6px;
+  font-size: 0.56rem;
+  transform: rotate(6deg);
+  z-index: 2;
+}
+
 .eyebrow {
   grid-area: eyebrow;
   max-width: 18rem;
@@ -272,7 +283,7 @@ body::after {
   filter: drop-shadow(0 18px 28px var(--shadow));
   transition: transform 220ms var(--ease), filter 220ms var(--ease);
   position: relative;
-  padding: 10px;
+  padding: 5px;
   border-radius: 10px;
   background:
     linear-gradient(180deg, rgba(255, 248, 239, 0.06), rgba(255, 248, 239, 0.015)),
@@ -287,9 +298,9 @@ body::after {
 .spotify-embed::before {
   content: "";
   position: absolute;
-  inset: 5px;
-  border-radius: 6px;
-  border: 1px solid rgba(255, 248, 239, 0.12);
+  inset: 3px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 248, 239, 0.1);
   pointer-events: none;
 }
 
@@ -520,11 +531,6 @@ body::after {
     width: 210px;
   }
 
-  .release-stamp {
-    top: -4px;
-    right: -36px;
-  }
-
   .vibe {
     font-size: 1rem;
   }
@@ -603,11 +609,6 @@ body::after {
     line-height: 0.88;
   }
 
-  .release-stamp {
-    top: 6px;
-    right: -56px;
-  }
-
   .vibe {
     max-width: 28rem;
     margin: 0;
@@ -625,11 +626,16 @@ body::after {
     margin: 0;
     justify-self: end;
     align-self: center;
-    padding: 8px;
+    padding: 4px;
   }
 
   .spotify-embed iframe {
     height: clamp(286px, 37vh, 328px);
+  }
+
+  .embed-stamp {
+    top: 10px;
+    right: 10px;
   }
 
   .embed-note {
@@ -656,7 +662,7 @@ body::after {
     font-size: 1.34rem;
   }
 
-  .contact {
+  .hero .contact {
     display: none;
   }
 
@@ -723,12 +729,8 @@ body::after {
 }
 
 @media (max-width: 520px) {
-  .release-stamp {
-    top: -14px;
-    right: 2px;
-    min-width: 78px;
-    min-height: 28px;
-    padding: 5px 10px 6px;
-    font-size: 0.56rem;
+  .embed-stamp {
+    top: 8px;
+    right: 8px;
   }
 }
