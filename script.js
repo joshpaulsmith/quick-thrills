@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   let pointerActive = false;
   let idleStart = performance.now();
+  let lastFlicker = 1;
 
   // simple loaded state if you want to target it later
   window.addEventListener("load", () => {
@@ -56,17 +57,28 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const idleMotion = (now) => {
+    const t = now / 1000;
+
+    if (!prefersReducedMotion.matches) {
+      const flicker = 0.985 + ((Math.sin(t * 1.7) + Math.sin(t * 3.9) * 0.35) * 0.018);
+      if (Math.abs(flicker - lastFlicker) > 0.003) {
+        root.style.setProperty("--poster-flicker", flicker.toFixed(3));
+        root.style.setProperty("--title-shadow-x", `${-10 + Math.sin(t * 0.8) * 1.5}px`);
+        root.style.setProperty("--title-shadow-y", `${9 + Math.cos(t * 0.65) * 1.2}px`);
+        lastFlicker = flicker;
+      }
+    }
+
     if (!prefersReducedMotion.matches && !pointerActive && hero) {
-      const t = (now - idleStart) / 1000;
-      root.style.setProperty("--bg-shift-x", `${Math.sin(t * 0.45) * 6}px`);
-      root.style.setProperty("--bg-shift-y", `${Math.cos(t * 0.3) * 4}px`);
-      root.style.setProperty("--hero-shift-x", `${Math.sin(t * 0.55) * -3}px`);
-      root.style.setProperty("--hero-shift-y", `${Math.cos(t * 0.45) * -2}px`);
-      root.style.setProperty("--hero-tilt-x", `${Math.cos(t * 0.4) * -1.2}deg`);
-      root.style.setProperty("--hero-tilt-y", `${Math.sin(t * 0.5) * 1.6}deg`);
-      root.style.setProperty("--spiral-rotation", `${t * 8}deg`);
+      const idleT = (now - idleStart) / 1000;
+      root.style.setProperty("--bg-shift-x", `${Math.sin(idleT * 0.45) * 6}px`);
+      root.style.setProperty("--bg-shift-y", `${Math.cos(idleT * 0.3) * 4}px`);
+      root.style.setProperty("--hero-shift-x", `${Math.sin(idleT * 0.55) * -3}px`);
+      root.style.setProperty("--hero-shift-y", `${Math.cos(idleT * 0.45) * -2}px`);
+      root.style.setProperty("--hero-tilt-x", `${Math.cos(idleT * 0.4) * -1.2}deg`);
+      root.style.setProperty("--hero-tilt-y", `${Math.sin(idleT * 0.5) * 1.6}deg`);
+      root.style.setProperty("--spiral-rotation", `${idleT * 8}deg`);
     } else if (!prefersReducedMotion.matches) {
-      const t = now / 1000;
       root.style.setProperty("--spiral-rotation", `${t * 8}deg`);
     }
 

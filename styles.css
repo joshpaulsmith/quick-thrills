@@ -15,6 +15,9 @@
   --hero-tilt-x: 0deg;
   --hero-tilt-y: 0deg;
   --spiral-rotation: 0deg;
+  --poster-flicker: 1;
+  --title-shadow-x: -10px;
+  --title-shadow-y: 9px;
 }
 
 * {
@@ -53,8 +56,11 @@ body::after {
 }
 
 body::before {
-  opacity: 0.12;
+  opacity: calc(0.12 * var(--poster-flicker));
   background:
+    radial-gradient(circle at 18% 16%, rgba(255, 248, 239, 0.06), transparent 28%),
+    radial-gradient(circle at 82% 22%, rgba(50, 7, 3, 0.16), transparent 24%),
+    radial-gradient(circle at 52% 82%, rgba(255, 248, 239, 0.03), transparent 18%),
     repeating-linear-gradient(
       45deg,
       rgba(255, 248, 239, 0.11) 0 22px,
@@ -69,8 +75,13 @@ body::before {
 }
 
 body::after {
-  opacity: 0.28;
+  opacity: calc(0.28 * var(--poster-flicker));
   background:
+    repeating-radial-gradient(
+      circle at 50% 32%,
+      rgba(255, 248, 239, 0.025) 0 2px,
+      transparent 2px 11px
+    ),
     radial-gradient(circle at center, rgba(255, 255, 255, 0.08) 0 6%, transparent 6.5%),
     repeating-conic-gradient(
       from var(--spiral-rotation) at 50% 32%,
@@ -129,6 +140,41 @@ body::after {
   transition: transform 220ms var(--ease);
 }
 
+.title-wrap {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.release-stamp {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 86px;
+  min-height: 32px;
+  padding: 6px 12px 7px;
+  color: rgba(255, 248, 239, 0.84);
+  font-family: 'Roboto Mono', monospace;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 248, 239, 0.45);
+  border-radius: 8px;
+  background: rgba(92, 13, 7, 0.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 248, 239, 0.12),
+    0 8px 20px rgba(43, 5, 2, 0.16);
+  transform: rotate(10deg);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
 .eyebrow {
   max-width: 18rem;
   margin: 0 auto 8px;
@@ -143,6 +189,7 @@ body::after {
 }
 
 .title {
+  position: relative;
   margin: 0;
   font-family: 'Fugaz One', 'Inter', Arial, Helvetica, sans-serif;
   font-size: clamp(2.9rem, 12.6vw, 4.2rem);
@@ -153,6 +200,18 @@ body::after {
   text-shadow:
     0 2px 0 rgba(255, 248, 239, 0.08),
     0 8px 18px rgba(43, 5, 2, 0.22);
+}
+
+.title::after {
+  content: attr(data-title);
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  color: rgba(255, 248, 239, 0.16);
+  transform: translate(var(--title-shadow-x), var(--title-shadow-y));
+  -webkit-text-stroke: 1px rgba(255, 248, 239, 0.12);
+  filter: blur(0.2px);
+  pointer-events: none;
 }
 
 .vibe {
@@ -369,6 +428,7 @@ body::after {
 
 /* small fade-in only */
 .eyebrow,
+.title-wrap,
 .title,
 .vibe,
 .listen,
@@ -384,15 +444,16 @@ body::after {
 }
 
 .eyebrow { animation-delay: 0.05s; }
-.title { animation-delay: 0.12s; }
-.vibe { animation-delay: 0.18s; }
-.listen { animation-delay: 0.24s; }
-.spotify-embed { animation-delay: 0.32s; }
-.embed-note { animation-delay: 0.38s; }
-.buttons { animation-delay: 0.44s; }
-.contact { animation-delay: 0.5s; }
-.site-footer { animation-delay: 0.56s; }
-.site-credit { animation-delay: 0.62s; }
+.title-wrap { animation-delay: 0.1s; }
+.title { animation-delay: 0.14s; }
+.vibe { animation-delay: 0.2s; }
+.listen { animation-delay: 0.26s; }
+.spotify-embed { animation-delay: 0.34s; }
+.embed-note { animation-delay: 0.4s; }
+.buttons { animation-delay: 0.46s; }
+.contact { animation-delay: 0.52s; }
+.site-footer { animation-delay: 0.58s; }
+.site-credit { animation-delay: 0.64s; }
 
 @keyframes fadeUp {
   to {
@@ -415,6 +476,11 @@ body::after {
 
   .header-logo {
     width: 210px;
+  }
+
+  .release-stamp {
+    top: -4px;
+    right: -36px;
   }
 
   .vibe {
@@ -444,6 +510,7 @@ body::after {
   }
 
   .eyebrow,
+  .title-wrap,
   .title,
   .vibe,
   .listen,
@@ -461,8 +528,23 @@ body::after {
     transition: none;
   }
 
+  .title::after {
+    transform: translate(-8px, 7px);
+  }
+
   .spotify-embed,
   .btn {
     transition: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .release-stamp {
+    top: -14px;
+    right: 2px;
+    min-width: 78px;
+    min-height: 28px;
+    padding: 5px 10px 6px;
+    font-size: 0.56rem;
   }
 }
