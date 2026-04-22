@@ -596,7 +596,7 @@ body::after {
   }
 
   .header-logo {
-    width: clamp(255px, 21vw, 330px);
+    width: clamp(300px, 24vw, 390px);
   }
 
   .page {
