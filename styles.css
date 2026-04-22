@@ -629,7 +629,7 @@ body::after {
   }
 
   .spotify-embed iframe {
-    height: clamp(286px, 36vh, 320px);
+    height: 232px;
   }
 
   .embed-stamp {
