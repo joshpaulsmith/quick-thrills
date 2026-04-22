@@ -555,11 +555,11 @@ body::after {
   }
 
   .site-header {
-    padding: 24px clamp(34px, 4vw, 56px) 4px;
+    padding: 34px clamp(34px, 4vw, 56px) 10px;
   }
 
   .header-logo {
-    width: clamp(170px, 15vw, 220px);
+    width: clamp(210px, 18vw, 270px);
   }
 
   .page {
