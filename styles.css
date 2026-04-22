@@ -46,6 +46,17 @@ body {
   background: var(--embed-red);
 }
 
+.page-frame {
+  position: fixed;
+  inset: 0;
+  z-index: 4;
+  pointer-events: none;
+  box-shadow:
+    inset 0 0 0 14px #090909,
+    inset 0 0 0 15px rgba(255, 248, 239, 0.18),
+    inset 0 0 0 28px rgba(9, 9, 9, 0.18);
+}
+
 body::before,
 body::after {
   content: "";
@@ -191,15 +202,17 @@ body::after {
 .title {
   position: relative;
   margin: 0;
-  font-family: 'Fugaz One', 'Inter', Arial, Helvetica, sans-serif;
-  font-size: clamp(2.9rem, 12.6vw, 4.2rem);
+  font-family: 'Archivo Black', 'Inter', Arial, Helvetica, sans-serif;
+  font-size: clamp(2.85rem, 12vw, 4.1rem);
   font-weight: 400;
-  line-height: 0.94;
-  letter-spacing: -0.02em;
+  line-height: 0.9;
+  letter-spacing: -0.035em;
+  text-transform: uppercase;
   text-wrap: balance;
   text-shadow:
     0 2px 0 rgba(255, 248, 239, 0.08),
-    0 8px 18px rgba(43, 5, 2, 0.22);
+    0 8px 18px rgba(43, 5, 2, 0.22),
+    0 0 22px rgba(88, 17, 9, 0.1);
 }
 
 .title::after {
@@ -494,6 +507,15 @@ body::after {
   .btn {
     width: 270px;
     font-size: 1.65rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-frame {
+    box-shadow:
+      inset 0 0 0 10px #090909,
+      inset 0 0 0 11px rgba(255, 248, 239, 0.18),
+      inset 0 0 0 20px rgba(9, 9, 9, 0.18);
   }
 }
 
