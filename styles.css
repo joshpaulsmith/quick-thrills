@@ -566,15 +566,15 @@ body::after {
   .page {
     display: flex;
     align-items: center;
-    padding: 0 clamp(46px, 4vw, 82px) 4px;
+    padding: 0 clamp(54px, 5vw, 96px) 8px;
   }
 
   .hero {
-    width: min(100%, 1080px);
+    width: min(100%, 980px);
     padding: 0;
     text-align: left;
     display: grid;
-    grid-template-columns: minmax(0, 1.02fr) minmax(320px, 372px);
+    grid-template-columns: minmax(0, 1fr) minmax(372px, 410px);
     grid-template-areas:
       "eyebrow embed"
       "title embed"
@@ -582,7 +582,7 @@ body::after {
       "listen embed-note"
       "buttons buttons";
     align-items: center;
-    column-gap: clamp(28px, 4vw, 62px);
+    column-gap: clamp(18px, 3vw, 36px);
     row-gap: 6px;
   }
 
@@ -605,7 +605,7 @@ body::after {
   }
 
   .title {
-    font-size: clamp(4.2rem, 7.2vw, 5.9rem);
+    font-size: clamp(4rem, 6.6vw, 5.5rem);
     line-height: 0.88;
   }
 
@@ -622,27 +622,28 @@ body::after {
   }
 
   .spotify-embed {
-    width: min(100%, 360px);
+    width: min(100%, 404px);
     margin: 0;
     justify-self: end;
     align-self: center;
-    padding: 2px;
+    padding: 3px;
   }
 
   .spotify-embed iframe {
-    height: clamp(270px, 34vh, 300px);
+    height: clamp(286px, 36vh, 320px);
   }
 
   .embed-stamp {
     top: -12px;
-    right: 16px;
+    right: 18px;
   }
 
   .embed-note {
     margin: 0;
-    max-width: 22rem;
+    max-width: 20rem;
     text-align: left;
     align-self: start;
+    font-size: 0.68rem;
   }
 
   .buttons {
@@ -671,7 +672,7 @@ body::after {
   }
 
   .site-footer {
-    padding: 0 clamp(38px, 4vw, 70px) 34px;
+    padding: 0 clamp(38px, 4vw, 70px) 30px;
   }
 
   .site-footer .contact {
