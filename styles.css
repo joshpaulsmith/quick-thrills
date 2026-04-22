@@ -411,8 +411,17 @@ body::after {
 .site-footer {
   position: relative;
   z-index: 1;
-  padding: 0 18px 26px;
+  padding: 0 18px 42px;
   text-align: center;
+}
+
+.site-footer .contact {
+  margin: 0 0 12px;
+  text-align: center;
+}
+
+.site-footer .contact a {
+  font-size: 1.06rem;
 }
 
 .site-footer p {
@@ -469,14 +478,13 @@ body::after {
 .listen,
 .spotify-embed,
 .embed-note,
-.buttons,
-.contact,
-.site-footer,
-.site-credit {
-  opacity: 0;
-  transform: translateY(12px);
-  animation: fadeUp 0.6s var(--ease) forwards;
-}
+  .buttons,
+  .site-footer,
+  .site-credit {
+    opacity: 0;
+    transform: translateY(12px);
+    animation: fadeUp 0.6s var(--ease) forwards;
+  }
 
 .eyebrow { animation-delay: 0.05s; }
 .title-wrap { animation-delay: 0.1s; }
@@ -486,9 +494,8 @@ body::after {
 .spotify-embed { animation-delay: 0.34s; }
 .embed-note { animation-delay: 0.4s; }
 .buttons { animation-delay: 0.46s; }
-.contact { animation-delay: 0.52s; }
-.site-footer { animation-delay: 0.58s; }
-.site-credit { animation-delay: 0.64s; }
+.site-footer { animation-delay: 0.56s; }
+.site-credit { animation-delay: 0.62s; }
 
 @keyframes fadeUp {
   to {
@@ -553,7 +560,7 @@ body::after {
   .page {
     display: flex;
     align-items: center;
-    padding: 0 clamp(38px, 4vw, 70px) 10px;
+    padding: 0 clamp(38px, 4vw, 70px) 4px;
   }
 
   .hero {
@@ -561,16 +568,16 @@ body::after {
     padding: 0;
     text-align: left;
     display: grid;
-    grid-template-columns: minmax(0, 1.08fr) minmax(360px, 430px);
+    grid-template-columns: minmax(0, 1.08fr) minmax(340px, 392px);
     grid-template-areas:
       "eyebrow embed"
       "title embed"
       "vibe embed"
       "listen embed-note"
-      "buttons contact";
+      "buttons buttons";
     align-items: center;
-    column-gap: clamp(34px, 5vw, 80px);
-    row-gap: 10px;
+    column-gap: clamp(34px, 5vw, 92px);
+    row-gap: 8px;
   }
 
   .eyebrow,
@@ -614,20 +621,20 @@ body::after {
   }
 
   .spotify-embed {
-    width: min(100%, 430px);
+    width: min(100%, 392px);
     margin: 0;
     justify-self: end;
     align-self: center;
-    padding: 12px;
+    padding: 8px;
   }
 
   .spotify-embed iframe {
-    height: clamp(300px, 40vh, 348px);
+    height: clamp(286px, 37vh, 328px);
   }
 
   .embed-note {
     margin: 0;
-    max-width: none;
+    max-width: 22rem;
     text-align: left;
     align-self: start;
   }
@@ -650,10 +657,7 @@ body::after {
   }
 
   .contact {
-    margin: 0;
-    justify-self: end;
-    align-self: center;
-    text-align: right;
+    display: none;
   }
 
   .hero::after {
@@ -661,7 +665,11 @@ body::after {
   }
 
   .site-footer {
-    padding: 0 clamp(38px, 4vw, 70px) 22px;
+    padding: 0 clamp(38px, 4vw, 70px) 34px;
+  }
+
+  .site-footer .contact {
+    margin-bottom: 14px;
   }
 }
 
@@ -694,7 +702,6 @@ body::after {
   .spotify-embed,
   .embed-note,
   .buttons,
-  .contact,
   .site-footer,
   .site-credit {
     opacity: 1;
