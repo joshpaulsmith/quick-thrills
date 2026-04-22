@@ -592,11 +592,11 @@ body::after {
   }
 
   .site-header {
-    padding: 34px clamp(34px, 4vw, 56px) 10px;
+    padding: 58px clamp(34px, 4vw, 56px) 6px;
   }
 
   .header-logo {
-    width: clamp(210px, 18vw, 270px);
+    width: clamp(255px, 21vw, 330px);
   }
 
   .page {
