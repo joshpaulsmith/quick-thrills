@@ -1,5 +1,6 @@
 :root {
   --embed-red: #183a2b;
+  --spotify-card: #9e2e18;
   --cream: #ffffff;
   --cream-soft: rgba(255, 255, 255, 0.82);
   --paper: #f4ecdf;
@@ -306,7 +307,7 @@ body::after {
   display: block;
   width: 100%;
   border: 0;
-  background: var(--embed-red);
+  background: var(--spotify-card);
 }
 
 .hero:hover .spotify-embed {
