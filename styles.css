@@ -225,6 +225,18 @@ body::after {
   text-wrap: balance;
 }
 
+.origin {
+  max-width: 22rem;
+  margin: -2px auto 12px;
+  color: var(--cream-soft);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1.35;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
 .title {
   position: relative;
   margin: 0;
@@ -528,6 +540,7 @@ body::after {
 
 /* small fade-in only */
 .eyebrow,
+.origin,
 .title-wrap,
 .title,
 .vibe,
@@ -543,15 +556,16 @@ body::after {
   }
 
 .eyebrow { animation-delay: 0.05s; }
-.title-wrap { animation-delay: 0.1s; }
-.title { animation-delay: 0.14s; }
-.vibe { animation-delay: 0.2s; }
-.listen { animation-delay: 0.26s; }
-.spotify-embed { animation-delay: 0.34s; }
-.embed-note { animation-delay: 0.4s; }
-.buttons { animation-delay: 0.46s; }
-.site-footer { animation-delay: 0.56s; }
-.site-credit { animation-delay: 0.62s; }
+.origin { animation-delay: 0.09s; }
+.title-wrap { animation-delay: 0.13s; }
+.title { animation-delay: 0.17s; }
+.vibe { animation-delay: 0.23s; }
+.listen { animation-delay: 0.29s; }
+.spotify-embed { animation-delay: 0.37s; }
+.embed-note { animation-delay: 0.43s; }
+.buttons { animation-delay: 0.49s; }
+.site-footer { animation-delay: 0.59s; }
+.site-credit { animation-delay: 0.65s; }
 
 @keyframes fadeUp {
   to {
@@ -639,6 +653,7 @@ body::after {
   }
 
   .eyebrow,
+  .origin,
   .title-wrap,
   .vibe,
   .listen,
@@ -650,6 +665,12 @@ body::after {
     max-width: 24rem;
     margin: 0;
     font-size: 1.28rem;
+  }
+
+  .origin {
+    max-width: 26rem;
+    margin: -2px 0 6px;
+    font-size: 0.78rem;
   }
 
   .title-wrap {
@@ -754,6 +775,7 @@ body::after {
   }
 
   .eyebrow,
+  .origin,
   .title-wrap,
   .title,
   .vibe,
