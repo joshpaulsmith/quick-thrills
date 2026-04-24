@@ -226,6 +226,7 @@ body::after {
 }
 
 .origin {
+  grid-area: origin;
   max-width: 22rem;
   margin: -2px auto 12px;
   color: var(--cream-soft);
@@ -298,10 +299,19 @@ body::after {
   height: auto;
 }
 
-.spotify-embed {
+.embed-stack {
   grid-area: embed;
   width: 100%;
+  max-width: 404px;
   margin: 0 auto 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.spotify-embed {
+  width: 100%;
+  margin: 0;
   filter: drop-shadow(0 18px 28px var(--shadow));
   transition: transform 220ms var(--ease), filter 220ms var(--ease);
   position: relative;
@@ -339,9 +349,8 @@ body::after {
 }
 
 .embed-note {
-  grid-area: embed-note;
-  max-width: 17rem;
-  margin: -4px auto 14px;
+  max-width: none;
+  margin: 0;
   color: var(--cream-soft);
   font-size: 0.72rem;
   font-weight: 700;
@@ -545,9 +554,10 @@ body::after {
 .title,
 .vibe,
 .listen,
+.embed-stack,
 .spotify-embed,
 .embed-note,
-  .buttons,
+.buttons,
   .site-footer,
   .site-credit {
     opacity: 0;
@@ -561,11 +571,12 @@ body::after {
 .title { animation-delay: 0.17s; }
 .vibe { animation-delay: 0.23s; }
 .listen { animation-delay: 0.29s; }
-.spotify-embed { animation-delay: 0.37s; }
-.embed-note { animation-delay: 0.43s; }
-.buttons { animation-delay: 0.49s; }
-.site-footer { animation-delay: 0.59s; }
-.site-credit { animation-delay: 0.65s; }
+.embed-stack { animation-delay: 0.37s; }
+.spotify-embed { animation-delay: 0.41s; }
+.embed-note { animation-delay: 0.45s; }
+.buttons { animation-delay: 0.51s; }
+.site-footer { animation-delay: 0.61s; }
+.site-credit { animation-delay: 0.67s; }
 
 @keyframes fadeUp {
   to {
@@ -643,9 +654,10 @@ body::after {
     grid-template-columns: minmax(0, 1fr) minmax(372px, 410px);
     grid-template-areas:
       "eyebrow embed"
+      "origin embed"
       "title embed"
       "vibe embed"
-      "listen embed-note"
+      "listen embed"
       "buttons buttons";
     align-items: center;
     column-gap: clamp(18px, 3vw, 36px);
@@ -656,8 +668,7 @@ body::after {
   .origin,
   .title-wrap,
   .vibe,
-  .listen,
-  .embed-note {
+  .listen {
     justify-self: start;
   }
 
@@ -694,16 +705,20 @@ body::after {
     align-self: end;
   }
 
-  .spotify-embed {
+  .embed-stack {
     width: min(100%, 404px);
     margin: 0;
     justify-self: end;
     align-self: center;
-    padding: 3px;
+    gap: 10px;
   }
 
   .spotify-embed iframe {
     height: 175px;
+  }
+
+  .spotify-secondary iframe {
+    height: 152px;
   }
 
   .embed-stamp {
@@ -712,10 +727,6 @@ body::after {
   }
 
   .embed-note {
-    margin: 0;
-    max-width: 20rem;
-    text-align: left;
-    align-self: start;
     font-size: 0.68rem;
   }
 
@@ -780,6 +791,7 @@ body::after {
   .title,
   .vibe,
   .listen,
+  .embed-stack,
   .spotify-embed,
   .embed-note,
   .buttons,
