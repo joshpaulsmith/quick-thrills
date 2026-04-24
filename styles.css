@@ -318,7 +318,7 @@ body::after {
   display: block;
   width: 100%;
   border: 0;
-  background: var(--spotify-card);
+  background: transparent;
 }
 
 .hero:hover .spotify-embed {
@@ -682,7 +682,7 @@ body::after {
   }
 
   .spotify-embed iframe {
-    height: 152px;
+    height: 175px;
   }
 
   .embed-stamp {
