@@ -647,21 +647,21 @@ body::after {
   }
 
   .hero {
-    width: min(100%, 980px);
+    width: min(100%, 950px);
     padding: 0;
     text-align: left;
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(372px, 410px);
+    grid-template-columns: minmax(0, 1.02fr) minmax(360px, 392px);
     grid-template-areas:
       "eyebrow embed"
       "origin embed"
       "title embed"
       "vibe embed"
-      "listen embed"
-      "buttons buttons";
+      "listen embed-note"
+      "buttons embed-note";
     align-items: center;
-    column-gap: clamp(18px, 3vw, 36px);
-    row-gap: 6px;
+    column-gap: clamp(20px, 3vw, 34px);
+    row-gap: 8px;
   }
 
   .eyebrow,
@@ -706,18 +706,14 @@ body::after {
   }
 
   .embed-stack {
-    width: min(100%, 404px);
+    width: min(100%, 392px);
     margin: 0;
     justify-self: end;
-    align-self: center;
-    gap: 10px;
+    align-self: start;
+    gap: 8px;
   }
 
   .spotify-embed iframe {
-    height: 175px;
-  }
-
-  .spotify-secondary iframe {
     height: 152px;
   }
 
@@ -727,13 +723,18 @@ body::after {
   }
 
   .embed-note {
+    grid-area: embed-note;
+    margin: 2px 0 0;
+    max-width: 17rem;
+    text-align: left;
+    align-self: start;
     font-size: 0.68rem;
   }
 
   .buttons {
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 12px;
     margin: 0;
