@@ -1,5 +1,5 @@
 :root {
-  --embed-red: #6f1d12;
+  --embed-red: #050505;
   --spotify-card: #9e2e18;
   --cream: #ffffff;
   --cream-soft: rgba(255, 255, 255, 0.82);
@@ -73,7 +73,7 @@ body::before {
   opacity: calc(0.12 * var(--poster-flicker));
   background:
     radial-gradient(circle at 18% 16%, rgba(255, 248, 239, 0.06), transparent 28%),
-    radial-gradient(circle at 82% 22%, rgba(54, 11, 8, 0.16), transparent 24%),
+    radial-gradient(circle at 82% 22%, rgba(54, 11, 8, 0.1), transparent 24%),
     radial-gradient(circle at 52% 82%, rgba(255, 248, 239, 0.03), transparent 18%),
     repeating-linear-gradient(
       45deg,
@@ -82,7 +82,7 @@ body::before {
     ),
     repeating-linear-gradient(
       -45deg,
-      rgba(63, 12, 8, 0.14) 0 22px,
+      rgba(46, 8, 6, 0.1) 0 22px,
       transparent 22px 44px
     );
   transform: translate(var(--bg-shift-x), var(--bg-shift-y));
@@ -100,7 +100,7 @@ body::after {
     repeating-conic-gradient(
       from var(--spiral-rotation) at 50% 32%,
       rgba(255, 248, 239, 0.05) 0deg 8deg,
-      rgba(63, 12, 8, 0.02) 8deg 16deg
+      rgba(46, 8, 6, 0.02) 8deg 16deg
     );
   mix-blend-mode: soft-light;
   transform: translate(calc(var(--bg-shift-x) * -0.65), calc(var(--bg-shift-y) * -0.65));
